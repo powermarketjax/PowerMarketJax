@@ -1,0 +1,62 @@
+{
+  "parquet_file": "SwissDN_459_0_MV_Nodes.parquet",
+  "source_organization": "ETH Zurich (Zapparoli et al., Scientific Data 2025)",
+  "source_url": "https://doi.org/10.5281/zenodo.15056134",
+  "source_citation": "Zapparoli, L., Oneto, A., Parajeles Herrera, M., Gjorgiev, B., Hug, G. & Sansavini, G. Future Deployment and Flexibility of Distributed Energy Resources in the Distribution Grids of Switzerland. Sci Data 12, 1491 (2025). https://doi.org/10.1038/s41597-025-05830-y",
+  "source_archive": "SwissDN_DERs.zip",
+  "source_archive_md5": "490b7b2ef411541fac8db6a7cc9dad03",
+  "licence": "Creative Commons Attribution 4.0 International",
+  "licence_url": "https://creativecommons.org/licenses/by/4.0/",
+  "licence_permits_redistribution": true,
+  "attribution": "Zapparoli, L., Oneto, A., Parajeles Herrera, M., Gjorgiev, B., Hug, G. & Sansavini, G. Future Deployment and Flexibility of Distributed Energy Resources in the Distribution Grids of Switzerland. Sci Data 12, 1491 (2025). https://doi.org/10.1038/s41597-025-05830-y Dataset: https://doi.org/10.5281/zenodo.15056134, CC BY 4.0. Changes: medium-voltage grid 459_0 and its medium-voltage resource rows extracted from the country-wide tables; GeoJSON converted to tabular form; the normalised demand profile multiplied by the nodal peak as the paper prescribes; no gap filling, no unit conversion beyond kW to MW where stated.",
+  "generated_at": "2026-08-14T18:13:14.412816+00:00",
+  "mv_grid": "459_0",
+  "content": "medium-voltage grid nodes: peak demand, coordinates, base-case voltage",
+  "base_kv": 20.0,
+  "crs": "EPSG:2056 (coord_e_m, coord_n_m)",
+  "radial": true,
+  "units": {
+    "peak_mw": "MW, nodal peak non-controllable demand",
+    "base_case_voltage_pu": "per unit, the source's own power-flow solution",
+    "coord_e_m": "metres, EPSG:2056",
+    "coord_n_m": "metres, EPSG:2056"
+  },
+  "source_node_osmid": "134",
+  "n_nodes": 129,
+  "sum_peak_mw": 13.719737946818594,
+  "nodes_with_negative_peak": 0,
+  "base_case_voltage_pu_range": [
+    0.9803608521414791,
+    1.0
+  ],
+  "voltage_limits": "NOT SUPPLIED by the source. Every vendored case in this repository carries per-bus limits and this grid does not, so a band has to be declared before the market can run on it (§14).",
+  "peak_mw_unit_evidence": "summed downstream peak_mw divided by (base_case_flow x s_nom_mva) is the power factor of that flow, and it lands in [0.90001, 0.98927] on all 128 edges. That is what ties peak_mw in MW to s_nom in MVA.",
+  "demand_power_factor": 0.9,
+  "demand_power_factor_evidence": "the minimum of that quotient is exactly 0.90001, reached on the most heavily loaded edges where line charging matters least; values above it are cable runs whose charging offsets reactive demand. This supplies phi_n of §3.1 as tan(arccos(0.9)) = 0.4843 from the data rather than as a declared parameter.",
+  "shape": [
+    129,
+    9
+  ],
+  "columns": [
+    "osmid",
+    "coord_e_m",
+    "coord_n_m",
+    "peak_mw",
+    "lv_grid",
+    "consumers",
+    "label",
+    "source",
+    "base_case_voltage_pu"
+  ],
+  "dtypes": {
+    "osmid": "object",
+    "coord_e_m": "float64",
+    "coord_n_m": "float64",
+    "peak_mw": "float64",
+    "lv_grid": "object",
+    "consumers": "bool",
+    "label": "object",
+    "source": "bool",
+    "base_case_voltage_pu": "float64"
+  }
+}

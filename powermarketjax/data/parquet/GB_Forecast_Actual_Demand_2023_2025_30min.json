@@ -1,0 +1,77 @@
+{
+  "source_file": "GB_Forecast_Actual_Demand_2023_2025_30min.csv",
+  "parquet_file": "GB_Forecast_Actual_Demand_2023_2025_30min.parquet",
+  "source_urls": [
+    "https://data.elexon.co.uk/bmrs/api/v1/demand/actual/total",
+    "https://data.elexon.co.uk/bmrs/api/v1/forecast/demand/total/day-ahead"
+  ],
+  "source_organization": "Elexon Limited",
+  "generated_at": "2026-04-09T20:46:35.514125",
+  "shape": {
+    "rows": 48283,
+    "columns": 3
+  },
+  "columns": [
+    "startTime",
+    "DAForecast",
+    "Actual"
+  ],
+  "dtypes": {
+    "startTime": "datetime64[ns, UTC]",
+    "DAForecast": "float64",
+    "Actual": "float64"
+  },
+  "sample_data": {
+    "row_0": {
+      "startTime": "2023-07-05T00:00:00+00:00",
+      "DAForecast": 19981.0,
+      "Actual": 24906.0
+    },
+    "row_1": {
+      "startTime": "2023-07-05T00:30:00+00:00",
+      "DAForecast": 19757.0,
+      "Actual": 24671.0
+    },
+    "row_2": {
+      "startTime": "2023-07-05T01:00:00+00:00",
+      "DAForecast": 19466.0,
+      "Actual": 23532.0
+    },
+    "row_3": {
+      "startTime": "2023-07-05T01:30:00+00:00",
+      "DAForecast": 19199.0,
+      "Actual": 22903.0
+    },
+    "row_4": {
+      "startTime": "2023-07-05T02:00:00+00:00",
+      "DAForecast": 19024.0,
+      "Actual": 22303.0
+    }
+  },
+  "date_ranges": {
+    "startTime": {
+      "min": "2023-07-05T00:00:00+00:00",
+      "max": "2026-04-05T23:30:00+00:00",
+      "count": 48283,
+      "missing": 0
+    }
+  },
+  "numeric_statistics": {
+    "DAForecast": {
+      "count": 46747,
+      "mean": 29701.024087107195,
+      "std": 6326.6484975890935,
+      "min": 16890.0,
+      "max": 56386.0,
+      "missing": 1536
+    },
+    "Actual": {
+      "count": 48283,
+      "mean": 33136.38461777437,
+      "std": 7492.878071340489,
+      "min": 750.0,
+      "max": 53130.0,
+      "missing": 0
+    }
+  }
+}

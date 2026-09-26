@@ -1,0 +1,26 @@
+{
+  "name": "gb_market_mid",
+  "source": "gb",
+  "data_type": "actual_series",
+  "time_mode": "calendar",
+  "resolution": "30min",
+  "parquet_file": "MID_GB_30min_aligned_to_gen.parquet",
+  "column_map": {
+    "mid_price_APXMIDP": "market.mid_price_apx",
+    "mid_price_N2EXMIDP": "market.mid_price_n2ex",
+    "mid_volume_APXMIDP": "market.mid_volume_apx",
+    "mid_volume_N2EXMIDP": "market.mid_volume_n2ex"
+  },
+  "index_map": {
+    "startTime": "datetime"
+  },
+  "derived": {},
+  "normalize": {},
+  "data_epoch": null,
+  "cyclical": false,
+  "region_values": [],
+  "date_range": ["2023-07-05", "2026-04-05"],
+  "metadata_json": "MID_GB_30min_aligned_to_gen.json",
+  "source_url": "https://data.elexon.co.uk/bmrs/api/v1/datasets/MID",
+  "source_organization": "Elexon Limited"
+}

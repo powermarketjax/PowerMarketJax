@@ -1,0 +1,53 @@
+{
+  "parquet_file": "SwissDN_459_0_MV_BESS.parquet",
+  "source_organization": "ETH Zurich (Zapparoli et al., Scientific Data 2025)",
+  "source_url": "https://doi.org/10.5281/zenodo.15056134",
+  "source_citation": "Zapparoli, L., Oneto, A., Parajeles Herrera, M., Gjorgiev, B., Hug, G. & Sansavini, G. Future Deployment and Flexibility of Distributed Energy Resources in the Distribution Grids of Switzerland. Sci Data 12, 1491 (2025). https://doi.org/10.1038/s41597-025-05830-y",
+  "source_archive": "SwissDN_DERs.zip",
+  "source_archive_md5": "490b7b2ef411541fac8db6a7cc9dad03",
+  "licence": "Creative Commons Attribution 4.0 International",
+  "licence_url": "https://creativecommons.org/licenses/by/4.0/",
+  "licence_permits_redistribution": true,
+  "attribution": "Zapparoli, L., Oneto, A., Parajeles Herrera, M., Gjorgiev, B., Hug, G. & Sansavini, G. Future Deployment and Flexibility of Distributed Energy Resources in the Distribution Grids of Switzerland. Sci Data 12, 1491 (2025). https://doi.org/10.1038/s41597-025-05830-y Dataset: https://doi.org/10.5281/zenodo.15056134, CC BY 4.0. Changes: medium-voltage grid 459_0 and its medium-voltage resource rows extracted from the country-wide tables; GeoJSON converted to tabular form; the normalised demand profile multiplied by the nodal peak as the paper prescribes; no gap filling, no unit conversion beyond kW to MW where stated.",
+  "generated_at": "2026-08-14T18:13:17.348868+00:00",
+  "mv_grid": "459_0",
+  "content": "battery parameters per medium-voltage node and projection year",
+  "supplies": "the energy capacity, power rating and one-way efficiencies §5 and §9.5 need per aggregator, and the population and its placement with them",
+  "does_not_supply": "the degradation cost c_cyc of §9.5, which is a cost parameter and appears in no dataset; it remains a declared parameter",
+  "units": {
+    "capacity_kwh": "kWh",
+    "nominal_power_kw": "kW, charging and discharging alike",
+    "eta_charge": "one-way",
+    "eta_discharge": "one-way"
+  },
+  "round_trip_efficiency": 0.85,
+  "nodes_per_year": {
+    "2030": 15,
+    "2040": 24,
+    "2050": 34
+  },
+  "capacity_kwh_range": [
+    77.42880798567728,
+    1875.3571180953213
+  ],
+  "shape": [
+    73,
+    6
+  ],
+  "columns": [
+    "projection_year",
+    "osmid",
+    "capacity_kwh",
+    "nominal_power_kw",
+    "eta_charge",
+    "eta_discharge"
+  ],
+  "dtypes": {
+    "projection_year": "int64",
+    "osmid": "object",
+    "capacity_kwh": "float64",
+    "nominal_power_kw": "float64",
+    "eta_charge": "float64",
+    "eta_discharge": "float64"
+  }
+}

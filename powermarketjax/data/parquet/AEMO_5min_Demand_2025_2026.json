@@ -1,0 +1,32 @@
+{
+  "source_file": "AEMO_5min_Demand_2025_2026.csv",
+  "parquet_file": "AEMO_5min_Demand_2025_2026.parquet",
+  "source_url": "https://visualisations.aemo.com.au/aemo/nemweb/index.html#",
+  "source_organization": "Australian Energy Market Operator (AEMO)",
+  "generated_at": "2026-03-25T16:17:26.313070",
+  "shape": {
+    "rows": 737400,
+    "columns": 5
+  },
+  "columns": [
+    "REGIONID",
+    "INTERVAL_DATETIME",
+    "OPERATIONAL_DEMAND",
+    "OPERATIONAL_DEMAND_ADJUSTMENT",
+    "WDR_ESTIMATE"
+  ],
+  "dtypes": {
+    "REGIONID": "object",
+    "INTERVAL_DATETIME": "datetime64[ns, UTC]",
+    "OPERATIONAL_DEMAND": "int64",
+    "OPERATIONAL_DEMAND_ADJUSTMENT": "int64",
+    "WDR_ESTIMATE": "int64"
+  },
+  "regions": [
+    "NSW1",
+    "QLD1",
+    "SA1",
+    "TAS1",
+    "VIC1"
+  ]
+}

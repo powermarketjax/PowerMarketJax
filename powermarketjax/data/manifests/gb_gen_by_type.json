@@ -1,0 +1,25 @@
+{
+  "name": "gb_gen_by_type",
+  "source": "gb",
+  "data_type": "actual_series",
+  "time_mode": "calendar",
+  "resolution": "30min",
+  "parquet_file": "GB_Gen_by_Type_2016_2025_30min.parquet",
+  "column_map": {
+    "Solar": "solar.available_mw"
+  },
+  "index_map": {
+    "startTime": "datetime"
+  },
+  "derived": {
+    "wind.available_mw": "Wind Offshore + Wind Onshore"
+  },
+  "normalize": {},
+  "data_epoch": null,
+  "cyclical": false,
+  "region_values": [],
+  "date_range": ["2016-01-01", "2026-04-08"],
+  "metadata_json": "GB_Gen_by_Type_2016_2025_30min.json",
+  "source_url": "https://data.elexon.co.uk/bmrs/api/v1/generation/actual/per-type",
+  "source_organization": "Elexon Limited"
+}

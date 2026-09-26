@@ -1,0 +1,64 @@
+{
+  "parquet_file": "SwissDN_459_0_MV_PV_RepDays.parquet",
+  "source_organization": "ETH Zurich (Zapparoli et al., Scientific Data 2025)",
+  "source_url": "https://doi.org/10.5281/zenodo.15056134",
+  "source_citation": "Zapparoli, L., Oneto, A., Parajeles Herrera, M., Gjorgiev, B., Hug, G. & Sansavini, G. Future Deployment and Flexibility of Distributed Energy Resources in the Distribution Grids of Switzerland. Sci Data 12, 1491 (2025). https://doi.org/10.1038/s41597-025-05830-y",
+  "source_archive": "SwissDN_DERs.zip",
+  "source_archive_md5": "490b7b2ef411541fac8db6a7cc9dad03",
+  "licence": "Creative Commons Attribution 4.0 International",
+  "licence_url": "https://creativecommons.org/licenses/by/4.0/",
+  "licence_permits_redistribution": true,
+  "attribution": "Zapparoli, L., Oneto, A., Parajeles Herrera, M., Gjorgiev, B., Hug, G. & Sansavini, G. Future Deployment and Flexibility of Distributed Energy Resources in the Distribution Grids of Switzerland. Sci Data 12, 1491 (2025). https://doi.org/10.1038/s41597-025-05830-y Dataset: https://doi.org/10.5281/zenodo.15056134, CC BY 4.0. Changes: medium-voltage grid 459_0 and its medium-voltage resource rows extracted from the country-wide tables; GeoJSON converted to tabular form; the normalised demand profile multiplied by the nodal peak as the paper prescribes; no gap filling, no unit conversion beyond kW to MW where stated.",
+  "generated_at": "2026-08-14T18:13:17.324860+00:00",
+  "mv_grid": "459_0",
+  "content": "photovoltaic output on twelve representative days, one per month",
+  "time_axis": "NOT a year. 288 hourly values per node and projection year, being the 15th of each month; the demand series in the same archive carries 8760. Which calendar day of a month receives its representative profile is a declared scenario choice under §14 and is deliberately not baked in here.",
+  "no_manifest_reason": "TimeAligner.align_profile tiles a profile end to end, which would turn twelve monthly days into a twelve-day cycle and destroy the seasonality. This table is therefore not registered with the DataLoader at all.",
+  "slots_per_node_year": 288,
+  "representative_days": [
+    "01-15",
+    "02-15",
+    "03-15",
+    "04-15",
+    "05-15",
+    "06-15",
+    "07-15",
+    "08-15",
+    "09-15",
+    "10-15",
+    "11-15",
+    "12-15"
+  ],
+  "units": {
+    "pv_kw": "kW, mean output",
+    "pv_std_kw": "kW, standard deviation",
+    "p_installed_kw": "kWp, nominal installed capacity"
+  },
+  "nodes_per_year": {
+    "2030": 29,
+    "2040": 37,
+    "2050": 47
+  },
+  "shape": [
+    32544,
+    7
+  ],
+  "columns": [
+    "projection_year",
+    "osmid",
+    "month",
+    "hour_of_day",
+    "pv_kw",
+    "pv_std_kw",
+    "p_installed_kw"
+  ],
+  "dtypes": {
+    "projection_year": "int64",
+    "osmid": "object",
+    "month": "int64",
+    "hour_of_day": "int64",
+    "pv_kw": "float64",
+    "pv_std_kw": "float64",
+    "p_installed_kw": "float64"
+  }
+}

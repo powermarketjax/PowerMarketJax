@@ -1,0 +1,76 @@
+[build-system]
+requires = ["setuptools>=61.0", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "powermarketjax"
+version = "0.0.1"
+description = "Pure-JAX electricity-market benchmark environments for MARL research"
+readme = "README.md"
+license = {text = "MIT"}
+authors = [{name = "PowerMarketJax Contributors"}]
+requires-python = ">=3.10,<3.13"
+dependencies = [
+    "jax>=0.4.30",
+    "chex>=0.1.85",
+    "flax>=0.8.0",
+    "numpy>=1.26",
+    "pandas>=2.0",
+    "pyarrow>=14.0",
+    "scipy>=1.11",
+]
+
+[project.optional-dependencies]
+dev = [
+    "pytest>=8.0",
+]
+cuda = [
+    "jax[cuda12]>=0.4.30; sys_platform == 'linux'",
+]
+# Learning-side only.  `powermarketjax/learning/` imports optax directly
+# (`ippo.py`, `sac.py`), but optax also arrives with `flax`, a core dependency, so
+# that subpackage imports on a `dev`-only install too and the `importorskip("optax")`
+# sites under `tests/learning/` do not skip there (measured 2026-09-06).  What this
+# extra adds on top is `rlax` and `distrax`.  `tools/p2p_experiment/` imports them
+# directly and `tools/benchmark/run_rl_04.py` imports them through it, so market 04's
+# drivers need this extra: measured 2026-09-07, without it they raise
+# ModuleNotFoundError at import, `--help` included.
+# Nothing under `powermarketjax/` imports the learner: `powermarketjax/__init__.py`
+# carries only `__version__`, and no market imports it, so `make_*_env` stays usable
+# on a `dev` install.
+# JaxMARL is deliberately absent: it requires `jax<=0.4.38`,
+# which would downgrade the version this repository is verified on and break the
+# CUDA plugin pinned to it.  `rlax` and `distrax` require only `jax>=0.7.0`.
+rl = [
+    "optax>=0.2",
+    "rlax>=0.1.9",
+    "distrax>=0.1.9",
+]
+# Figures only.  Only plotting scripts import matplotlib; nothing under
+# `powermarketjax/` and none of the benchmark drivers do.  Version
+# floor is what pip resolved unpinned on 2026-09-07, Linux, Python 3.11:
+# matplotlib 3.11.1.
+figs = [
+    "matplotlib>=3.8",
+]
+# Appendix speed experiments only (`tools/env_bench/`).  `sb3_bench.py` imports
+# stable-baselines3, torch and gymnasium; `external/` imports PyPSA (with linopy and
+# HiGHS) and cvxpy, whose default solver on market 02's LP is Clarabel.  Pinned to
+# the versions the appendix timings were recorded with (2026-09-24, Linux,
+# Python 3.11); nothing else in the repository imports them.
+bench = [
+    "pypsa==1.3.0",
+    "linopy==0.9.1",
+    "highspy==1.15.1",
+    "cvxpy==1.9.3",
+    "clarabel==0.11.1",
+    "torch==2.14.0",
+    "stable-baselines3==2.9.0",
+    "gymnasium==1.3.0",
+]
+
+[tool.setuptools.packages.find]
+include = ["powermarketjax*"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]

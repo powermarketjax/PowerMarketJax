@@ -1,0 +1,26 @@
+{
+  "name": "aemo_nsw1_rooftop_pv",
+  "source": "aemo",
+  "data_type": "actual_series",
+  "time_mode": "calendar",
+  "resolution": "30min",
+  "parquet_file": "AEMO_NSW1_Rooftop_PV_30min.parquet",
+  "metadata_json": "AEMO_NSW1_Rooftop_PV_30min.json",
+  "column_map": {
+    "rooftop_pv_mw": "solar.substation_mw"
+  },
+  "index_map": {
+    "datetime": "datetime"
+  },
+  "derived": {},
+  "normalize": {},
+  "data_epoch": null,
+  "cyclical": false,
+  "region_values": [],
+  "date_range": [
+    "2024-03-31",
+    "2025-04-30"
+  ],
+  "source_url": "https://nemweb.com.au/Data_Archive/Wholesale_Electricity/MMSDM/",
+  "source_organization": "Australian Energy Market Operator (AEMO)"
+}

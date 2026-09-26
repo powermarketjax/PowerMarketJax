@@ -1,0 +1,102 @@
+{
+  "parquet_file": "RTS_GMLC_RealTime_Load_and_Renewables_2020_30min.parquet",
+  "source_organization": "National Renewable Energy Laboratory (NREL) / GridMod",
+  "source_url": "https://raw.githubusercontent.com/GridMod/RTS-GMLC/master/RTS_Data/timeseries_data_files/",
+  "licence": "DOE/NREL/ALLIANCE data use disclaimer agreement",
+  "licence_url": "https://github.com/GridMod/RTS-GMLC#data-use-disclaimer-agreement",
+  "licence_permits_redistribution": true,
+  "licence_evidence": "the notice in the source repository's README grants use, copying and distribution for any purpose provided the entire notice appears in all copies; it is reproduced verbatim in powermarketjax/case/raw_cases/rts_gmlc/LICENCE.md",
+  "attribution": "RTS-GMLC time series, National Renewable Energy Laboratory (NREL) operated by Alliance for Sustainable Energy LLC for the U.S. Department of Energy. Changes: per-generator columns summed to a system total, real-time 5-minute series aggregated to period means (12:1 for the hourly file, 6:1 for the 30-minute one), Year/Month/Day/Period replaced by a naive timestamp. No netting and no rescaling.",
+  "generated_at": "2026-09-09T06:01:11.566343+00:00",
+  "resolution": "30min",
+  "real_time_vintage_only": "the five real-time series and nothing else. The day-ahead columns are hourly at the source and are not upsampled here; a consumer that needs the day-ahead leg reads the 60-minute file, which is what `load_rts_demand` does.",
+  "timestamp_convention": "naive 30-minute timestamps over calendar 2020, Period 1 -> 00:00. The source gives Year/Month/Day/Period with no zone and none is invented here; a guessed zone would shift the solar profile.",
+  "aggregation": "each column is the mean of six consecutive 5-minute samples of the per-generator sum, the same samples the 60-minute file averages twelve at a time.",
+  "consistency_with_hourly_file": {
+    "note": "this file aggregated 2:1 against the `*_rt_mw` columns of RTS_GMLC_Load_and_Renewables_2020_60min.parquet; both are means of the same 5-minute samples, so the difference is float64 rounding only. It is a content criterion for this artefact: recomputable from the two files alone, without the source or this script.",
+    "hourly_file": "RTS_GMLC_Load_and_Renewables_2020_60min.parquet",
+    "max_abs_difference_mw": {
+      "load_rt_mw": 2.7284841053187847e-12,
+      "hydro_rt_mw": 3.410605131648481e-13,
+      "pv_rt_mw": 4.547473508864641e-13,
+      "rtpv_rt_mw": 3.410605131648481e-13,
+      "wind_rt_mw": 9.094947017729282e-13
+    }
+  },
+  "net_load_if_all_four_classes_netted": {
+    "real_time_min_mw": -1529.6216235999996,
+    "real_time_max_mw": 5978.809363833333,
+    "periods_below_zero_real_time": 782,
+    "note": "negative periods are real and nothing is removed: the four classes together exceed demand in them. What to do about them is the consumer's choice and `load_rts_demand_half_hourly` takes it as `floor_mw`."
+  },
+  "gap_policy": "no gaps observed and none would be filled",
+  "shape": [
+    17568,
+    6
+  ],
+  "columns": [
+    "datetime",
+    "load_rt_mw",
+    "hydro_rt_mw",
+    "pv_rt_mw",
+    "rtpv_rt_mw",
+    "wind_rt_mw"
+  ],
+  "dtypes": {
+    "datetime": "datetime64[us]",
+    "load_rt_mw": "float64",
+    "hydro_rt_mw": "float64",
+    "pv_rt_mw": "float64",
+    "rtpv_rt_mw": "float64",
+    "wind_rt_mw": "float64"
+  },
+  "date_range": [
+    "2020-01-01 00:00:00",
+    "2020-12-31 23:30:00"
+  ],
+  "date_ranges": {
+    "datetime": {
+      "min": "2020-01-01 00:00:00",
+      "max": "2020-12-31 23:30:00",
+      "count": 17568,
+      "missing": 0
+    }
+  },
+  "numeric_statistics": {
+    "load_rt_mw": {
+      "count": 17568,
+      "mean": 4164.547220525064,
+      "min": 2641.8735013,
+      "max": 7974.283319166668,
+      "missing": 0
+    },
+    "hydro_rt_mw": {
+      "count": 17568,
+      "mean": 464.712253339405,
+      "min": 80.49999999999999,
+      "max": 920.9583333333331,
+      "missing": 0
+    },
+    "pv_rt_mw": {
+      "count": 17568,
+      "mean": 405.2225599574985,
+      "min": 0.0,
+      "max": 1362.8166666666668,
+      "missing": 0
+    },
+    "rtpv_rt_mw": {
+      "count": 17568,
+      "mean": 232.96774058894962,
+      "min": 0.0,
+      "max": 1015.9333333333333,
+      "missing": 0
+    },
+    "wind_rt_mw": {
+      "count": 17568,
+      "mean": 779.092920840923,
+      "min": 15.15,
+      "max": 2472.5833333333335,
+      "missing": 0
+    }
+  }
+}

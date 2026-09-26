@@ -1,0 +1,164 @@
+{
+  "parquet_file": "RTS_GMLC_Load_and_Renewables_2020_60min.parquet",
+  "source_organization": "National Renewable Energy Laboratory (NREL) / GridMod",
+  "source_url": "https://raw.githubusercontent.com/GridMod/RTS-GMLC/master/RTS_Data/timeseries_data_files/",
+  "licence": "DOE/NREL/ALLIANCE data use disclaimer agreement",
+  "licence_url": "https://github.com/GridMod/RTS-GMLC#data-use-disclaimer-agreement",
+  "licence_permits_redistribution": true,
+  "licence_evidence": "the notice in the source repository's README grants use, copying and distribution for any purpose provided the entire notice appears in all copies; it is reproduced verbatim in powermarketjax/case/raw_cases/rts_gmlc/LICENCE.md",
+  "attribution": "RTS-GMLC time series, National Renewable Energy Laboratory (NREL) operated by Alliance for Sustainable Energy LLC for the U.S. Department of Energy. Changes: per-generator columns summed to a system total, real-time 5-minute series aggregated 12:1 to hourly means, Year/Month/Day/Period replaced by a naive hourly timestamp. No netting and no rescaling.",
+  "generated_at": "2026-08-21T20:03:29.035223+00:00",
+  "resolution": "60min",
+  "timestamp_convention": "naive hourly timestamps over calendar 2020, Period 1 -> hour 0. The source gives Year/Month/Day/Period with no zone and none is invented here; a guessed zone would shift the solar profile.",
+  "day_ahead_load_is_not_a_forecast": {
+    "note": "within each region the hourly real-time/day-ahead load ratio has zero variance, so the two load series are one signal times a constant and the load carries no forecast error. The renewable pairs do differ, so a consumer that nets renewables gets a real forecast error and one that does not gets none.",
+    "regional_ratio": {
+      "1": {
+        "mean": 0.9197861497670169,
+        "std": 2.155034750186386e-05,
+        "share_rt_above_da": 0.0
+      },
+      "2": {
+        "mean": 0.9981147289055817,
+        "std": 2.9536576447898146e-05,
+        "share_rt_above_da": 0.0
+      },
+      "3": {
+        "mean": 0.9943380032436351,
+        "std": 2.638949716890337e-05,
+        "share_rt_above_da": 0.0
+      }
+    },
+    "system_ratio_mean": 0.9716534507268814,
+    "system_ratio_std": 0.0019452883693283304,
+    "net_load_residual_after_rescaling": {
+      "median_bias_mw": 43.512266160303625,
+      "median_relative": 0.11612959661968932,
+      "share_positive": 0.5704690346083788,
+      "rescaling_factor": 0.9714674460578314
+    }
+  },
+  "net_load_if_all_four_classes_netted": {
+    "day_ahead_min_mw": -1844.899413256117,
+    "day_ahead_max_mw": 6019.2657855167035,
+    "real_time_min_mw": -1521.8079223750005,
+    "real_time_max_mw": 5962.729613166666,
+    "hours_below_zero_real_time": 393,
+    "note": "negative hours are real: the four classes together exceed demand in them. A thermal-only clearing cannot serve a negative net load and has no over-generation slack, so the consumer decides what to do about them and says so."
+  },
+  "gap_policy": "no gaps observed and none would be filled",
+  "shape": [
+    8784,
+    11
+  ],
+  "columns": [
+    "datetime",
+    "load_da_mw",
+    "load_rt_mw",
+    "hydro_da_mw",
+    "hydro_rt_mw",
+    "pv_da_mw",
+    "pv_rt_mw",
+    "rtpv_da_mw",
+    "rtpv_rt_mw",
+    "wind_da_mw",
+    "wind_rt_mw"
+  ],
+  "dtypes": {
+    "datetime": "datetime64[us]",
+    "load_da_mw": "float64",
+    "load_rt_mw": "float64",
+    "hydro_da_mw": "float64",
+    "hydro_rt_mw": "float64",
+    "pv_da_mw": "float64",
+    "pv_rt_mw": "float64",
+    "rtpv_da_mw": "float64",
+    "rtpv_rt_mw": "float64",
+    "wind_da_mw": "float64",
+    "wind_rt_mw": "float64"
+  },
+  "date_range": [
+    "2020-01-01 00:00:00",
+    "2020-12-31 23:00:00"
+  ],
+  "date_ranges": {
+    "datetime": {
+      "min": "2020-01-01 00:00:00",
+      "max": "2020-12-31 23:00:00",
+      "count": 8784,
+      "missing": 0
+    }
+  },
+  "numeric_statistics": {
+    "load_da_mw": {
+      "count": 8784,
+      "mean": 4286.86235182105,
+      "min": 2728.5265906,
+      "max": 8191.835957,
+      "missing": 0
+    },
+    "load_rt_mw": {
+      "count": 8784,
+      "mean": 4164.547220525064,
+      "min": 2645.8984869750007,
+      "max": 7960.8096479999995,
+      "missing": 0
+    },
+    "hydro_da_mw": {
+      "count": 8784,
+      "mean": 464.71755464480873,
+      "min": 73.79999999999998,
+      "max": 928.0000000000002,
+      "missing": 0
+    },
+    "hydro_rt_mw": {
+      "count": 8784,
+      "mean": 464.712253339405,
+      "min": 84.69999999999997,
+      "max": 912.5083333333332,
+      "missing": 0
+    },
+    "pv_da_mw": {
+      "count": 8784,
+      "mean": 427.096766848816,
+      "min": 0.0,
+      "max": 1370.3999999999999,
+      "missing": 0
+    },
+    "pv_rt_mw": {
+      "count": 8784,
+      "mean": 405.2225599574985,
+      "min": 0.0,
+      "max": 1359.6083333333333,
+      "missing": 0
+    },
+    "rtpv_da_mw": {
+      "count": 8784,
+      "mean": 244.51214708561022,
+      "min": 0.0,
+      "max": 1057.4,
+      "missing": 0
+    },
+    "rtpv_rt_mw": {
+      "count": 8784,
+      "mean": 232.96774058894957,
+      "min": 0.0,
+      "max": 1013.8583333333332,
+      "missing": 0
+    },
+    "wind_da_mw": {
+      "count": 8784,
+      "mean": 813.9096539162114,
+      "min": 0.0,
+      "max": 2506.5,
+      "missing": 0
+    },
+    "wind_rt_mw": {
+      "count": 8784,
+      "mean": 779.092920840923,
+      "min": 15.275,
+      "max": 2470.291666666667,
+      "missing": 0
+    }
+  }
+}

@@ -1,0 +1,8480 @@
+{
+  "parquet_file": "Fluvius_DM_Residential_2024_15min.parquet",
+  "source_organization": "Fluvius",
+  "source_url": "https://opendata.fluvius.be/explore/dataset/1_50-verbruiksprofielen-dm-elek-kwartierwaarden-voor-een-volledig-jaar/",
+  "licence": "Open data licentie Fluvius",
+  "licence_url": "https://opendata.fluvius.be/p/licentieopendatafluvius/",
+  "licence_permits_redistribution": true,
+  "licence_note": "the grant lists 'de informatie verspreiden en herverdelen' and commercial exploitation explicitly, worldwide and for unlimited duration; the attribution obligation is wider than CC BY's in that it requires the date of the last update as well as the name",
+  "last_updated": "2025-09-29",
+  "attribution": "Fluvius, \"Verbruiksprofielen digitale elektriciteitsmeters: kwartierwaarden voor een volledig jaar\" (2024), last updated 2025-09-29, reused under the Fluvius open data licence; changes: the four groups with a photovoltaic array retained, kWh per quarter hour converted to MW, timestamps localised from CET/CEST to UTC.",
+  "archives": {
+    "Deel_1.zip": {
+      "attachment_url": "https://opendata.fluvius.be/api/explore/v2.1/catalog/datasets/1_50-verbruiksprofielen-dm-elek-kwartierwaarden-voor-een-volledig-jaar/attachments/p6269_1_50_dmk_sample_elek_2024_deel_1_zip",
+      "sha256": "0f8addd57bd9f7bc0fd0c28b019a4b6c8753a19e3fd301de758f5a5858c9d86c",
+      "bytes": 197375122
+    },
+    "Deel_2.zip": {
+      "attachment_url": "https://opendata.fluvius.be/api/explore/v2.1/catalog/datasets/1_50-verbruiksprofielen-dm-elek-kwartierwaarden-voor-een-volledig-jaar/attachments/p6269_1_50_dmk_sample_elek_2024_deel_2_zip",
+      "sha256": "cfef37973c40e503fe53afa4966bbdcd7a12525fb8b20881f365d0ee8616a3d6",
+      "bytes": 199377167
+    }
+  },
+  "generated_at": "2026-08-14T06:49:08.366857+00:00",
+  "timezone_local": "Europe/Brussels",
+  "timezone_stored": "UTC",
+  "groups_taken": [
+    "enkel_ZP",
+    "WP_met_ZP",
+    "EV_met_ZP",
+    "WP_EV_met_ZP"
+  ],
+  "groups_omitted": [
+    "geen_ZP",
+    "WP_geen_ZP",
+    "EV_geen_ZP",
+    "WP_EV_geen_ZP"
+  ],
+  "interval_convention": "interval_start is the UTC start of a 15-minute block. The source column Datum_Startuur is the block start in CET/CEST local civil time despite carrying a Z suffix, which was established from the two transition days: 2024-03-31 holds 92 quarters with the labels jumping 01:45 -> 03:00, and 2024-10-27 holds 100 with 02:00 to 02:45 each written twice with different values. Local -> UTC uses tz_localize(ambiguous='infer', nonexistent='raise'), which is lossless here: no row is dropped and no timestamp collides. The stored UTC grid is regular at 15 minutes with no gaps and no duplicates, so a window spanning a transition is well defined in UTC but rotates local time of day by an hour against the row-cursor calendar encoding of ADR-0010 (7); confining a window to one UTC offset is the loader's job.",
+  "duplicate_rows": 0,
+  "timestamps_with_missing_households": 0,
+  "local_days_not_96_periods": {
+    "2024-03-31": 92,
+    "2024-10-27": 100
+  },
+  "source_defects": [
+    "Datum_Startuur carries a Z suffix but is CET/CEST local civil time",
+    "the legend's Warmtepomp_Indicator description is a copy of the Elektrisch_Voertuig_Indicator one and describes charge points",
+    "the CSV header writes Volume_Afname_KWh where the legend writes kWh"
+  ],
+  "publisher_storage_note": "EANs known to hold storage systems were de-scoped by the publisher, which also states that EANs with storage unknown to it may remain",
+  "units": {
+    "offtake_mw": "MW, metered offtake, Volume_Afname_KWh x 4 / 1000",
+    "injection_mw": "MW, metered injection, Volume_Injectie_KWh x 4 / 1000"
+  },
+  "net_position_note": "the net position of specification 3.1 is injection_mw - offtake_mw, a measured difference rather than a recombination; gross photovoltaic output is not recoverable from these two registers",
+  "shape": [
+    42163200,
+    4
+  ],
+  "columns": [
+    "household",
+    "interval_start",
+    "offtake_mw",
+    "injection_mw"
+  ],
+  "dtypes": {
+    "household": "int16",
+    "interval_start": "datetime64[us, UTC]",
+    "offtake_mw": "float32",
+    "injection_mw": "float32"
+  },
+  "n_households": 1200,
+  "n_periods": 35136,
+  "date_range": [
+    "2023-12-31 23:00:00+00:00",
+    "2024-12-31 22:45:00+00:00"
+  ],
+  "households": [
+    {
+      "household": 1,
+      "group": "enkel_ZP",
+      "heat_pump": 0,
+      "electric_vehicle": 0,
+      "pv": 1
+    },
+    {
+      "household": 2,
+      "group": "enkel_ZP",
+      "heat_pump": 0,
+      "electric_vehicle": 0,
+      "pv": 1
+    },
+    {
+      "household": 3,
+      "group": "enkel_ZP",
+      "heat_pump": 0,
+      "electric_vehicle": 0,
+      "pv": 1
+    },
+    {
+      "household": 4,
+      "group": "enkel_ZP",
+      "heat_pump": 0,
+      "electric_vehicle": 0,
+      "pv": 1
+    },
+    {
+      "household": 5,
+      "group": "enkel_ZP",
+      "heat_pump": 0,
+      "electric_vehicle": 0,
+      "pv": 1
+    },
+    {
+      "household": 6,
+      "group": "enkel_ZP",
+      "heat_pump": 0,
+      "electric_vehicle": 0,
+      "pv": 1
+    },
+    {
+      "household": 7,
+      "group": "enkel_ZP",
+      "heat_pump": 0,
+      "electric_vehicle": 0,
+      "pv": 1
+    },
+    {
+      "household": 8,
+      "group": "enkel_ZP",
+      "heat_pump": 0,
+      "electric_vehicle": 0,
+      "pv": 1
+    },
+    {
+      "household": 9,
+      "group": "enkel_ZP",
+      "heat_pump": 0,
+      "electric_vehicle": 0,
+      "pv": 1
+    },
+    {
+      "household": 10,
+      "group": "enkel_ZP",
+      "heat_pump": 0,
+      "electric_vehicle": 0,
+      "pv": 1
+    },
+    {
+      "household": 11,
+      "group": "enkel_ZP",
+      "heat_pump": 0,
+      "electric_vehicle": 0,
+      "pv": 1
+    },
+    {
+      "household": 12,
+      "group": "enkel_ZP",
+      "heat_pump": 0,
+      "electric_vehicle": 0,
+      "pv": 1
+    },
+    {
+      "household": 13,
+      "group": "enkel_ZP",
+      "heat_pump": 0,
+      "electric_vehicle": 0,
+      "pv": 1
+    },
+    {
+      "household": 14,
+      "group": "enkel_ZP",
+      "heat_pump": 0,
+      "electric_vehicle": 0,
+      "pv": 1
+    },
+    {
+      "household": 15,
+      "group": "enkel_ZP",
+      "heat_pump": 0,
+      "electric_vehicle": 0,
+      "pv": 1
+    },
+    {
+      "household": 16,
+      "group": "enkel_ZP",
+      "heat_pump": 0,
+      "electric_vehicle": 0,
+      "pv": 1
+    },
+    {
+      "household": 17,
+      "group": "enkel_ZP",
+      "heat_pump": 0,
+      "electric_vehicle": 0,
+      "pv": 1
+    },
+    {
+      "household": 18,
+      "group": "enkel_ZP",
+      "heat_pump": 0,
+      "electric_vehicle": 0,
+      "pv": 1
+    },
+    {
+      "household": 19,
+      "group": "enkel_ZP",
+      "heat_pump": 0,
+      "electric_vehicle": 0,
+      "pv": 1
+    },
+    {
+      "household": 20,
+      "group": "enkel_ZP",
+      "heat_pump": 0,
+      "electric_vehicle": 0,
+      "pv": 1
+    },
+    {
+      "household": 21,
+      "group": "enkel_ZP",
+      "heat_pump": 0,
+      "electric_vehicle": 0,
+      "pv": 1
+    },
+    {
+      "household": 22,
+      "group": "enkel_ZP",
+      "heat_pump": 0,
+      "electric_vehicle": 0,
+      "pv": 1
+    },
+    {
+      "household": 23,
+      "group": "enkel_ZP",
+      "heat_pump": 0,
+      "electric_vehicle": 0,
+      "pv": 1
+    },
+    {
+      "household": 24,
+      "group": "enkel_ZP",
+      "heat_pump": 0,
+      "electric_vehicle": 0,
+      "pv": 1
+    },
+    {
+      "household": 25,
+      "group": "enkel_ZP",
+      "heat_pump": 0,
+      "electric_vehicle": 0,
+      "pv": 1
+    },
+    {
+      "household": 26,
+      "group": "enkel_ZP",
+      "heat_pump": 0,
+      "electric_vehicle": 0,
+      "pv": 1
+    },
+    {
+      "household": 27,
+      "group": "enkel_ZP",
+      "heat_pump": 0,
+      "electric_vehicle": 0,
+      "pv": 1
+    },
+    {
+      "household": 28,
+      "group": "enkel_ZP",
+      "heat_pump": 0,
+      "electric_vehicle": 0,
+      "pv": 1
+    },
+    {
+      "household": 29,
+      "group": "enkel_ZP",
+      "heat_pump": 0,
+      "electric_vehicle": 0,
+      "pv": 1
+    },
+    {
+      "household": 30,
+      "group": "enkel_ZP",
+      "heat_pump": 0,
+      "electric_vehicle": 0,
+      "pv": 1
+    },
+    {
+      "household": 31,
+      "group": "enkel_ZP",
+      "heat_pump": 0,
+      "electric_vehicle": 0,
+      "pv": 1
+    },
+    {
+      "household": 32,
+      "group": "enkel_ZP",
+      "heat_pump": 0,
+      "electric_vehicle": 0,
+      "pv": 1
+    },
+    {
+      "household": 33,
+      "group": "enkel_ZP",
+      "heat_pump": 0,
+      "electric_vehicle": 0,
+      "pv": 1
+    },
+    {
+      "household": 34,
+      "group": "enkel_ZP",
+      "heat_pump": 0,
+      "electric_vehicle": 0,
+      "pv": 1
+    },
+    {
+      "household": 35,
+      "group": "enkel_ZP",
+      "heat_pump": 0,
+      "electric_vehicle": 0,
+      "pv": 1
+    },
+    {
+      "household": 36,
+      "group": "enkel_ZP",
+      "heat_pump": 0,
+      "electric_vehicle": 0,
+      "pv": 1
+    },
+    {
+      "household": 37,
+      "group": "enkel_ZP",
+      "heat_pump": 0,
+      "electric_vehicle": 0,
+      "pv": 1
+    },
+    {
+      "household": 38,
+      "group": "enkel_ZP",
+      "heat_pump": 0,
+      "electric_vehicle": 0,
+      "pv": 1
+    },
+    {
+      "household": 39,
+      "group": "enkel_ZP",
+      "heat_pump": 0,
+      "electric_vehicle": 0,
+      "pv": 1
+    },
+    {
+      "household": 40,
+      "group": "enkel_ZP",
+      "heat_pump": 0,
+      "electric_vehicle": 0,
+      "pv": 1
+    },
+    {
+      "household": 41,
+      "group": "enkel_ZP",
+      "heat_pump": 0,
+      "electric_vehicle": 0,
+      "pv": 1
+    },
+    {
+      "household": 42,
+      "group": "enkel_ZP",
+      "heat_pump": 0,
+      "electric_vehicle": 0,
+      "pv": 1
+    },
+    {
+      "household": 43,
+      "group": "enkel_ZP",
+      "heat_pump": 0,
+      "electric_vehicle": 0,
+      "pv": 1
+    },
+    {
+      "household": 44,
+      "group": "enkel_ZP",
+      "heat_pump": 0,
+      "electric_vehicle": 0,
+      "pv": 1
+    },
+    {
+      "household": 45,
+      "group": "enkel_ZP",
+      "heat_pump": 0,
+      "electric_vehicle": 0,
+      "pv": 1
+    },
+    {
+      "household": 46,
+      "group": "enkel_ZP",
+      "heat_pump": 0,
+      "electric_vehicle": 0,
+      "pv": 1
+    },
+    {
+      "household": 47,
+      "group": "enkel_ZP",
+      "heat_pump": 0,
+      "electric_vehicle": 0,
+      "pv": 1
+    },
+    {
+      "household": 48,
+      "group": "enkel_ZP",
+      "heat_pump": 0,
+      "electric_vehicle": 0,
+      "pv": 1
+    },
+    {
+      "household": 49,
+      "group": "enkel_ZP",
+      "heat_pump": 0,
+      "electric_vehicle": 0,
+      "pv": 1
+    },
+    {
+      "household": 50,
+      "group": "enkel_ZP",
+      "heat_pump": 0,
+      "electric_vehicle": 0,
+      "pv": 1
+    },
+    {
+      "household": 51,
+      "group": "enkel_ZP",
+      "heat_pump": 0,
+      "electric_vehicle": 0,
+      "pv": 1
+    },
+    {
+      "household": 52,
+      "group": "enkel_ZP",
+      "heat_pump": 0,
+      "electric_vehicle": 0,
+      "pv": 1
+    },
+    {
+      "household": 53,
+      "group": "enkel_ZP",
+      "heat_pump": 0,
+      "electric_vehicle": 0,
+      "pv": 1
+    },
+    {
+      "household": 54,
+      "group": "enkel_ZP",
+      "heat_pump": 0,
+      "electric_vehicle": 0,
+      "pv": 1
+    },
+    {
+      "household": 55,
+      "group": "enkel_ZP",
+      "heat_pump": 0,
+      "electric_vehicle": 0,
+      "pv": 1
+    },
+    {
+      "household": 56,
+      "group": "enkel_ZP",
+      "heat_pump": 0,
+      "electric_vehicle": 0,
+      "pv": 1
+    },
+    {
+      "household": 57,
+      "group": "enkel_ZP",
+      "heat_pump": 0,
+      "electric_vehicle": 0,
+      "pv": 1
+    },
+    {
+      "household": 58,
+      "group": "enkel_ZP",
+      "heat_pump": 0,
+      "electric_vehicle": 0,
+      "pv": 1
+    },
+    {
+      "household": 59,
+      "group": "enkel_ZP",
+      "heat_pump": 0,
+      "electric_vehicle": 0,
+      "pv": 1
+    },
+    {
+      "household": 60,
+      "group": "enkel_ZP",
+      "heat_pump": 0,
+      "electric_vehicle": 0,
+      "pv": 1
+    },
+    {
+      "household": 61,
+      "group": "enkel_ZP",
+      "heat_pump": 0,
+      "electric_vehicle": 0,
+      "pv": 1
+    },
+    {
+      "household": 62,
+      "group": "enkel_ZP",
+      "heat_pump": 0,
+      "electric_vehicle": 0,
+      "pv": 1
+    },
+    {
+      "household": 63,
+      "group": "enkel_ZP",
+      "heat_pump": 0,
+      "electric_vehicle": 0,
+      "pv": 1
+    },
+    {
+      "household": 64,
+      "group": "enkel_ZP",
+      "heat_pump": 0,
+      "electric_vehicle": 0,
+      "pv": 1
+    },
+    {
+      "household": 65,
+      "group": "enkel_ZP",
+      "heat_pump": 0,
+      "electric_vehicle": 0,
+      "pv": 1
+    },
+    {
+      "household": 66,
+      "group": "enkel_ZP",
+      "heat_pump": 0,
+      "electric_vehicle": 0,
+      "pv": 1
+    },
+    {
+      "household": 67,
+      "group": "enkel_ZP",
+      "heat_pump": 0,
+      "electric_vehicle": 0,
+      "pv": 1
+    },
+    {
+      "household": 68,
+      "group": "enkel_ZP",
+      "heat_pump": 0,
+      "electric_vehicle": 0,
+      "pv": 1
+    },
+    {
+      "household": 69,
+      "group": "enkel_ZP",
+      "heat_pump": 0,
+      "electric_vehicle": 0,
+      "pv": 1
+    },
+    {
+      "household": 70,
+      "group": "enkel_ZP",
+      "heat_pump": 0,
+      "electric_vehicle": 0,
+      "pv": 1
+    },
+    {
+      "household": 71,
+      "group": "enkel_ZP",
+      "heat_pump": 0,
+      "electric_vehicle": 0,
+      "pv": 1
+    },
+    {
+      "household": 72,
+      "group": "enkel_ZP",
+      "heat_pump": 0,
+      "electric_vehicle": 0,
+      "pv": 1
+    },
+    {
+      "household": 73,
+      "group": "enkel_ZP",
+      "heat_pump": 0,
+      "electric_vehicle": 0,
+      "pv": 1
+    },
+    {
+      "household": 74,
+      "group": "enkel_ZP",
+      "heat_pump": 0,
+      "electric_vehicle": 0,
+      "pv": 1
+    },
+    {
+      "household": 75,
+      "group": "enkel_ZP",
+      "heat_pump": 0,
+      "electric_vehicle": 0,
+      "pv": 1
+    },
+    {
+      "household": 76,
+      "group": "enkel_ZP",
+      "heat_pump": 0,
+      "electric_vehicle": 0,
+      "pv": 1
+    },
+    {
+      "household": 77,
+      "group": "enkel_ZP",
+      "heat_pump": 0,
+      "electric_vehicle": 0,
+      "pv": 1
+    },
+    {
+      "household": 78,
+      "group": "enkel_ZP",
+      "heat_pump": 0,
+      "electric_vehicle": 0,
+      "pv": 1
+    },
+    {
+      "household": 79,
+      "group": "enkel_ZP",
+      "heat_pump": 0,
+      "electric_vehicle": 0,
+      "pv": 1
+    },
+    {
+      "household": 80,
+      "group": "enkel_ZP",
+      "heat_pump": 0,
+      "electric_vehicle": 0,
+      "pv": 1
+    },
+    {
+      "household": 81,
+      "group": "enkel_ZP",
+      "heat_pump": 0,
+      "electric_vehicle": 0,
+      "pv": 1
+    },
+    {
+      "household": 82,
+      "group": "enkel_ZP",
+      "heat_pump": 0,
+      "electric_vehicle": 0,
+      "pv": 1
+    },
+    {
+      "household": 83,
+      "group": "enkel_ZP",
+      "heat_pump": 0,
+      "electric_vehicle": 0,
+      "pv": 1
+    },
+    {
+      "household": 84,
+      "group": "enkel_ZP",
+      "heat_pump": 0,
+      "electric_vehicle": 0,
+      "pv": 1
+    },
+    {
+      "household": 85,
+      "group": "enkel_ZP",
+      "heat_pump": 0,
+      "electric_vehicle": 0,
+      "pv": 1
+    },
+    {
+      "household": 86,
+      "group": "enkel_ZP",
+      "heat_pump": 0,
+      "electric_vehicle": 0,
+      "pv": 1
+    },
+    {
+      "household": 87,
+      "group": "enkel_ZP",
+      "heat_pump": 0,
+      "electric_vehicle": 0,
+      "pv": 1
+    },
+    {
+      "household": 88,
+      "group": "enkel_ZP",
+      "heat_pump": 0,
+      "electric_vehicle": 0,
+      "pv": 1
+    },
+    {
+      "household": 89,
+      "group": "enkel_ZP",
+      "heat_pump": 0,
+      "electric_vehicle": 0,
+      "pv": 1
+    },
+    {
+      "household": 90,
+      "group": "enkel_ZP",
+      "heat_pump": 0,
+      "electric_vehicle": 0,
+      "pv": 1
+    },
+    {
+      "household": 91,
+      "group": "enkel_ZP",
+      "heat_pump": 0,
+      "electric_vehicle": 0,
+      "pv": 1
+    },
+    {
+      "household": 92,
+      "group": "enkel_ZP",
+      "heat_pump": 0,
+      "electric_vehicle": 0,
+      "pv": 1
+    },
+    {
+      "household": 93,
+      "group": "enkel_ZP",
+      "heat_pump": 0,
+      "electric_vehicle": 0,
+      "pv": 1
+    },
+    {
+      "household": 94,
+      "group": "enkel_ZP",
+      "heat_pump": 0,
+      "electric_vehicle": 0,
+      "pv": 1
+    },
+    {
+      "household": 95,
+      "group": "enkel_ZP",
+      "heat_pump": 0,
+      "electric_vehicle": 0,
+      "pv": 1
+    },
+    {
+      "household": 96,
+      "group": "enkel_ZP",
+      "heat_pump": 0,
+      "electric_vehicle": 0,
+      "pv": 1
+    },
+    {
+      "household": 97,
+      "group": "enkel_ZP",
+      "heat_pump": 0,
+      "electric_vehicle": 0,
+      "pv": 1
+    },
+    {
+      "household": 98,
+      "group": "enkel_ZP",
+      "heat_pump": 0,
+      "electric_vehicle": 0,
+      "pv": 1
+    },
+    {
+      "household": 99,
+      "group": "enkel_ZP",
+      "heat_pump": 0,
+      "electric_vehicle": 0,
+      "pv": 1
+    },
+    {
+      "household": 100,
+      "group": "enkel_ZP",
+      "heat_pump": 0,
+      "electric_vehicle": 0,
+      "pv": 1
+    },
+    {
+      "household": 101,
+      "group": "enkel_ZP",
+      "heat_pump": 0,
+      "electric_vehicle": 0,
+      "pv": 1
+    },
+    {
+      "household": 102,
+      "group": "enkel_ZP",
+      "heat_pump": 0,
+      "electric_vehicle": 0,
+      "pv": 1
+    },
+    {
+      "household": 103,
+      "group": "enkel_ZP",
+      "heat_pump": 0,
+      "electric_vehicle": 0,
+      "pv": 1
+    },
+    {
+      "household": 104,
+      "group": "enkel_ZP",
+      "heat_pump": 0,
+      "electric_vehicle": 0,
+      "pv": 1
+    },
+    {
+      "household": 105,
+      "group": "enkel_ZP",
+      "heat_pump": 0,
+      "electric_vehicle": 0,
+      "pv": 1
+    },
+    {
+      "household": 106,
+      "group": "enkel_ZP",
+      "heat_pump": 0,
+      "electric_vehicle": 0,
+      "pv": 1
+    },
+    {
+      "household": 107,
+      "group": "enkel_ZP",
+      "heat_pump": 0,
+      "electric_vehicle": 0,
+      "pv": 1
+    },
+    {
+      "household": 108,
+      "group": "enkel_ZP",
+      "heat_pump": 0,
+      "electric_vehicle": 0,
+      "pv": 1
+    },
+    {
+      "household": 109,
+      "group": "enkel_ZP",
+      "heat_pump": 0,
+      "electric_vehicle": 0,
+      "pv": 1
+    },
+    {
+      "household": 110,
+      "group": "enkel_ZP",
+      "heat_pump": 0,
+      "electric_vehicle": 0,
+      "pv": 1
+    },
+    {
+      "household": 111,
+      "group": "enkel_ZP",
+      "heat_pump": 0,
+      "electric_vehicle": 0,
+      "pv": 1
+    },
+    {
+      "household": 112,
+      "group": "enkel_ZP",
+      "heat_pump": 0,
+      "electric_vehicle": 0,
+      "pv": 1
+    },
+    {
+      "household": 113,
+      "group": "enkel_ZP",
+      "heat_pump": 0,
+      "electric_vehicle": 0,
+      "pv": 1
+    },
+    {
+      "household": 114,
+      "group": "enkel_ZP",
+      "heat_pump": 0,
+      "electric_vehicle": 0,
+      "pv": 1
+    },
+    {
+      "household": 115,
+      "group": "enkel_ZP",
+      "heat_pump": 0,
+      "electric_vehicle": 0,
+      "pv": 1
+    },
+    {
+      "household": 116,
+      "group": "enkel_ZP",
+      "heat_pump": 0,
+      "electric_vehicle": 0,
+      "pv": 1
+    },
+    {
+      "household": 117,
+      "group": "enkel_ZP",
+      "heat_pump": 0,
+      "electric_vehicle": 0,
+      "pv": 1
+    },
+    {
+      "household": 118,
+      "group": "enkel_ZP",
+      "heat_pump": 0,
+      "electric_vehicle": 0,
+      "pv": 1
+    },
+    {
+      "household": 119,
+      "group": "enkel_ZP",
+      "heat_pump": 0,
+      "electric_vehicle": 0,
+      "pv": 1
+    },
+    {
+      "household": 120,
+      "group": "enkel_ZP",
+      "heat_pump": 0,
+      "electric_vehicle": 0,
+      "pv": 1
+    },
+    {
+      "household": 121,
+      "group": "enkel_ZP",
+      "heat_pump": 0,
+      "electric_vehicle": 0,
+      "pv": 1
+    },
+    {
+      "household": 122,
+      "group": "enkel_ZP",
+      "heat_pump": 0,
+      "electric_vehicle": 0,
+      "pv": 1
+    },
+    {
+      "household": 123,
+      "group": "enkel_ZP",
+      "heat_pump": 0,
+      "electric_vehicle": 0,
+      "pv": 1
+    },
+    {
+      "household": 124,
+      "group": "enkel_ZP",
+      "heat_pump": 0,
+      "electric_vehicle": 0,
+      "pv": 1
+    },
+    {
+      "household": 125,
+      "group": "enkel_ZP",
+      "heat_pump": 0,
+      "electric_vehicle": 0,
+      "pv": 1
+    },
+    {
+      "household": 126,
+      "group": "enkel_ZP",
+      "heat_pump": 0,
+      "electric_vehicle": 0,
+      "pv": 1
+    },
+    {
+      "household": 127,
+      "group": "enkel_ZP",
+      "heat_pump": 0,
+      "electric_vehicle": 0,
+      "pv": 1
+    },
+    {
+      "household": 128,
+      "group": "enkel_ZP",
+      "heat_pump": 0,
+      "electric_vehicle": 0,
+      "pv": 1
+    },
+    {
+      "household": 129,
+      "group": "enkel_ZP",
+      "heat_pump": 0,
+      "electric_vehicle": 0,
+      "pv": 1
+    },
+    {
+      "household": 130,
+      "group": "enkel_ZP",
+      "heat_pump": 0,
+      "electric_vehicle": 0,
+      "pv": 1
+    },
+    {
+      "household": 131,
+      "group": "enkel_ZP",
+      "heat_pump": 0,
+      "electric_vehicle": 0,
+      "pv": 1
+    },
+    {
+      "household": 132,
+      "group": "enkel_ZP",
+      "heat_pump": 0,
+      "electric_vehicle": 0,
+      "pv": 1
+    },
+    {
+      "household": 133,
+      "group": "enkel_ZP",
+      "heat_pump": 0,
+      "electric_vehicle": 0,
+      "pv": 1
+    },
+    {
+      "household": 134,
+      "group": "enkel_ZP",
+      "heat_pump": 0,
+      "electric_vehicle": 0,
+      "pv": 1
+    },
+    {
+      "household": 135,
+      "group": "enkel_ZP",
+      "heat_pump": 0,
+      "electric_vehicle": 0,
+      "pv": 1
+    },
+    {
+      "household": 136,
+      "group": "enkel_ZP",
+      "heat_pump": 0,
+      "electric_vehicle": 0,
+      "pv": 1
+    },
+    {
+      "household": 137,
+      "group": "enkel_ZP",
+      "heat_pump": 0,
+      "electric_vehicle": 0,
+      "pv": 1
+    },
+    {
+      "household": 138,
+      "group": "enkel_ZP",
+      "heat_pump": 0,
+      "electric_vehicle": 0,
+      "pv": 1
+    },
+    {
+      "household": 139,
+      "group": "enkel_ZP",
+      "heat_pump": 0,
+      "electric_vehicle": 0,
+      "pv": 1
+    },
+    {
+      "household": 140,
+      "group": "enkel_ZP",
+      "heat_pump": 0,
+      "electric_vehicle": 0,
+      "pv": 1
+    },
+    {
+      "household": 141,
+      "group": "enkel_ZP",
+      "heat_pump": 0,
+      "electric_vehicle": 0,
+      "pv": 1
+    },
+    {
+      "household": 142,
+      "group": "enkel_ZP",
+      "heat_pump": 0,
+      "electric_vehicle": 0,
+      "pv": 1
+    },
+    {
+      "household": 143,
+      "group": "enkel_ZP",
+      "heat_pump": 0,
+      "electric_vehicle": 0,
+      "pv": 1
+    },
+    {
+      "household": 144,
+      "group": "enkel_ZP",
+      "heat_pump": 0,
+      "electric_vehicle": 0,
+      "pv": 1
+    },
+    {
+      "household": 145,
+      "group": "enkel_ZP",
+      "heat_pump": 0,
+      "electric_vehicle": 0,
+      "pv": 1
+    },
+    {
+      "household": 146,
+      "group": "enkel_ZP",
+      "heat_pump": 0,
+      "electric_vehicle": 0,
+      "pv": 1
+    },
+    {
+      "household": 147,
+      "group": "enkel_ZP",
+      "heat_pump": 0,
+      "electric_vehicle": 0,
+      "pv": 1
+    },
+    {
+      "household": 148,
+      "group": "enkel_ZP",
+      "heat_pump": 0,
+      "electric_vehicle": 0,
+      "pv": 1
+    },
+    {
+      "household": 149,
+      "group": "enkel_ZP",
+      "heat_pump": 0,
+      "electric_vehicle": 0,
+      "pv": 1
+    },
+    {
+      "household": 150,
+      "group": "enkel_ZP",
+      "heat_pump": 0,
+      "electric_vehicle": 0,
+      "pv": 1
+    },
+    {
+      "household": 151,
+      "group": "enkel_ZP",
+      "heat_pump": 0,
+      "electric_vehicle": 0,
+      "pv": 1
+    },
+    {
+      "household": 152,
+      "group": "enkel_ZP",
+      "heat_pump": 0,
+      "electric_vehicle": 0,
+      "pv": 1
+    },
+    {
+      "household": 153,
+      "group": "enkel_ZP",
+      "heat_pump": 0,
+      "electric_vehicle": 0,
+      "pv": 1
+    },
+    {
+      "household": 154,
+      "group": "enkel_ZP",
+      "heat_pump": 0,
+      "electric_vehicle": 0,
+      "pv": 1
+    },
+    {
+      "household": 155,
+      "group": "enkel_ZP",
+      "heat_pump": 0,
+      "electric_vehicle": 0,
+      "pv": 1
+    },
+    {
+      "household": 156,
+      "group": "enkel_ZP",
+      "heat_pump": 0,
+      "electric_vehicle": 0,
+      "pv": 1
+    },
+    {
+      "household": 157,
+      "group": "enkel_ZP",
+      "heat_pump": 0,
+      "electric_vehicle": 0,
+      "pv": 1
+    },
+    {
+      "household": 158,
+      "group": "enkel_ZP",
+      "heat_pump": 0,
+      "electric_vehicle": 0,
+      "pv": 1
+    },
+    {
+      "household": 159,
+      "group": "enkel_ZP",
+      "heat_pump": 0,
+      "electric_vehicle": 0,
+      "pv": 1
+    },
+    {
+      "household": 160,
+      "group": "enkel_ZP",
+      "heat_pump": 0,
+      "electric_vehicle": 0,
+      "pv": 1
+    },
+    {
+      "household": 161,
+      "group": "enkel_ZP",
+      "heat_pump": 0,
+      "electric_vehicle": 0,
+      "pv": 1
+    },
+    {
+      "household": 162,
+      "group": "enkel_ZP",
+      "heat_pump": 0,
+      "electric_vehicle": 0,
+      "pv": 1
+    },
+    {
+      "household": 163,
+      "group": "enkel_ZP",
+      "heat_pump": 0,
+      "electric_vehicle": 0,
+      "pv": 1
+    },
+    {
+      "household": 164,
+      "group": "enkel_ZP",
+      "heat_pump": 0,
+      "electric_vehicle": 0,
+      "pv": 1
+    },
+    {
+      "household": 165,
+      "group": "enkel_ZP",
+      "heat_pump": 0,
+      "electric_vehicle": 0,
+      "pv": 1
+    },
+    {
+      "household": 166,
+      "group": "enkel_ZP",
+      "heat_pump": 0,
+      "electric_vehicle": 0,
+      "pv": 1
+    },
+    {
+      "household": 167,
+      "group": "enkel_ZP",
+      "heat_pump": 0,
+      "electric_vehicle": 0,
+      "pv": 1
+    },
+    {
+      "household": 168,
+      "group": "enkel_ZP",
+      "heat_pump": 0,
+      "electric_vehicle": 0,
+      "pv": 1
+    },
+    {
+      "household": 169,
+      "group": "enkel_ZP",
+      "heat_pump": 0,
+      "electric_vehicle": 0,
+      "pv": 1
+    },
+    {
+      "household": 170,
+      "group": "enkel_ZP",
+      "heat_pump": 0,
+      "electric_vehicle": 0,
+      "pv": 1
+    },
+    {
+      "household": 171,
+      "group": "enkel_ZP",
+      "heat_pump": 0,
+      "electric_vehicle": 0,
+      "pv": 1
+    },
+    {
+      "household": 172,
+      "group": "enkel_ZP",
+      "heat_pump": 0,
+      "electric_vehicle": 0,
+      "pv": 1
+    },
+    {
+      "household": 173,
+      "group": "enkel_ZP",
+      "heat_pump": 0,
+      "electric_vehicle": 0,
+      "pv": 1
+    },
+    {
+      "household": 174,
+      "group": "enkel_ZP",
+      "heat_pump": 0,
+      "electric_vehicle": 0,
+      "pv": 1
+    },
+    {
+      "household": 175,
+      "group": "enkel_ZP",
+      "heat_pump": 0,
+      "electric_vehicle": 0,
+      "pv": 1
+    },
+    {
+      "household": 176,
+      "group": "enkel_ZP",
+      "heat_pump": 0,
+      "electric_vehicle": 0,
+      "pv": 1
+    },
+    {
+      "household": 177,
+      "group": "enkel_ZP",
+      "heat_pump": 0,
+      "electric_vehicle": 0,
+      "pv": 1
+    },
+    {
+      "household": 178,
+      "group": "enkel_ZP",
+      "heat_pump": 0,
+      "electric_vehicle": 0,
+      "pv": 1
+    },
+    {
+      "household": 179,
+      "group": "enkel_ZP",
+      "heat_pump": 0,
+      "electric_vehicle": 0,
+      "pv": 1
+    },
+    {
+      "household": 180,
+      "group": "enkel_ZP",
+      "heat_pump": 0,
+      "electric_vehicle": 0,
+      "pv": 1
+    },
+    {
+      "household": 181,
+      "group": "enkel_ZP",
+      "heat_pump": 0,
+      "electric_vehicle": 0,
+      "pv": 1
+    },
+    {
+      "household": 182,
+      "group": "enkel_ZP",
+      "heat_pump": 0,
+      "electric_vehicle": 0,
+      "pv": 1
+    },
+    {
+      "household": 183,
+      "group": "enkel_ZP",
+      "heat_pump": 0,
+      "electric_vehicle": 0,
+      "pv": 1
+    },
+    {
+      "household": 184,
+      "group": "enkel_ZP",
+      "heat_pump": 0,
+      "electric_vehicle": 0,
+      "pv": 1
+    },
+    {
+      "household": 185,
+      "group": "enkel_ZP",
+      "heat_pump": 0,
+      "electric_vehicle": 0,
+      "pv": 1
+    },
+    {
+      "household": 186,
+      "group": "enkel_ZP",
+      "heat_pump": 0,
+      "electric_vehicle": 0,
+      "pv": 1
+    },
+    {
+      "household": 187,
+      "group": "enkel_ZP",
+      "heat_pump": 0,
+      "electric_vehicle": 0,
+      "pv": 1
+    },
+    {
+      "household": 188,
+      "group": "enkel_ZP",
+      "heat_pump": 0,
+      "electric_vehicle": 0,
+      "pv": 1
+    },
+    {
+      "household": 189,
+      "group": "enkel_ZP",
+      "heat_pump": 0,
+      "electric_vehicle": 0,
+      "pv": 1
+    },
+    {
+      "household": 190,
+      "group": "enkel_ZP",
+      "heat_pump": 0,
+      "electric_vehicle": 0,
+      "pv": 1
+    },
+    {
+      "household": 191,
+      "group": "enkel_ZP",
+      "heat_pump": 0,
+      "electric_vehicle": 0,
+      "pv": 1
+    },
+    {
+      "household": 192,
+      "group": "enkel_ZP",
+      "heat_pump": 0,
+      "electric_vehicle": 0,
+      "pv": 1
+    },
+    {
+      "household": 193,
+      "group": "enkel_ZP",
+      "heat_pump": 0,
+      "electric_vehicle": 0,
+      "pv": 1
+    },
+    {
+      "household": 194,
+      "group": "enkel_ZP",
+      "heat_pump": 0,
+      "electric_vehicle": 0,
+      "pv": 1
+    },
+    {
+      "household": 195,
+      "group": "enkel_ZP",
+      "heat_pump": 0,
+      "electric_vehicle": 0,
+      "pv": 1
+    },
+    {
+      "household": 196,
+      "group": "enkel_ZP",
+      "heat_pump": 0,
+      "electric_vehicle": 0,
+      "pv": 1
+    },
+    {
+      "household": 197,
+      "group": "enkel_ZP",
+      "heat_pump": 0,
+      "electric_vehicle": 0,
+      "pv": 1
+    },
+    {
+      "household": 198,
+      "group": "enkel_ZP",
+      "heat_pump": 0,
+      "electric_vehicle": 0,
+      "pv": 1
+    },
+    {
+      "household": 199,
+      "group": "enkel_ZP",
+      "heat_pump": 0,
+      "electric_vehicle": 0,
+      "pv": 1
+    },
+    {
+      "household": 200,
+      "group": "enkel_ZP",
+      "heat_pump": 0,
+      "electric_vehicle": 0,
+      "pv": 1
+    },
+    {
+      "household": 201,
+      "group": "enkel_ZP",
+      "heat_pump": 0,
+      "electric_vehicle": 0,
+      "pv": 1
+    },
+    {
+      "household": 202,
+      "group": "enkel_ZP",
+      "heat_pump": 0,
+      "electric_vehicle": 0,
+      "pv": 1
+    },
+    {
+      "household": 203,
+      "group": "enkel_ZP",
+      "heat_pump": 0,
+      "electric_vehicle": 0,
+      "pv": 1
+    },
+    {
+      "household": 204,
+      "group": "enkel_ZP",
+      "heat_pump": 0,
+      "electric_vehicle": 0,
+      "pv": 1
+    },
+    {
+      "household": 205,
+      "group": "enkel_ZP",
+      "heat_pump": 0,
+      "electric_vehicle": 0,
+      "pv": 1
+    },
+    {
+      "household": 206,
+      "group": "enkel_ZP",
+      "heat_pump": 0,
+      "electric_vehicle": 0,
+      "pv": 1
+    },
+    {
+      "household": 207,
+      "group": "enkel_ZP",
+      "heat_pump": 0,
+      "electric_vehicle": 0,
+      "pv": 1
+    },
+    {
+      "household": 208,
+      "group": "enkel_ZP",
+      "heat_pump": 0,
+      "electric_vehicle": 0,
+      "pv": 1
+    },
+    {
+      "household": 209,
+      "group": "enkel_ZP",
+      "heat_pump": 0,
+      "electric_vehicle": 0,
+      "pv": 1
+    },
+    {
+      "household": 210,
+      "group": "enkel_ZP",
+      "heat_pump": 0,
+      "electric_vehicle": 0,
+      "pv": 1
+    },
+    {
+      "household": 211,
+      "group": "enkel_ZP",
+      "heat_pump": 0,
+      "electric_vehicle": 0,
+      "pv": 1
+    },
+    {
+      "household": 212,
+      "group": "enkel_ZP",
+      "heat_pump": 0,
+      "electric_vehicle": 0,
+      "pv": 1
+    },
+    {
+      "household": 213,
+      "group": "enkel_ZP",
+      "heat_pump": 0,
+      "electric_vehicle": 0,
+      "pv": 1
+    },
+    {
+      "household": 214,
+      "group": "enkel_ZP",
+      "heat_pump": 0,
+      "electric_vehicle": 0,
+      "pv": 1
+    },
+    {
+      "household": 215,
+      "group": "enkel_ZP",
+      "heat_pump": 0,
+      "electric_vehicle": 0,
+      "pv": 1
+    },
+    {
+      "household": 216,
+      "group": "enkel_ZP",
+      "heat_pump": 0,
+      "electric_vehicle": 0,
+      "pv": 1
+    },
+    {
+      "household": 217,
+      "group": "enkel_ZP",
+      "heat_pump": 0,
+      "electric_vehicle": 0,
+      "pv": 1
+    },
+    {
+      "household": 218,
+      "group": "enkel_ZP",
+      "heat_pump": 0,
+      "electric_vehicle": 0,
+      "pv": 1
+    },
+    {
+      "household": 219,
+      "group": "enkel_ZP",
+      "heat_pump": 0,
+      "electric_vehicle": 0,
+      "pv": 1
+    },
+    {
+      "household": 220,
+      "group": "enkel_ZP",
+      "heat_pump": 0,
+      "electric_vehicle": 0,
+      "pv": 1
+    },
+    {
+      "household": 221,
+      "group": "enkel_ZP",
+      "heat_pump": 0,
+      "electric_vehicle": 0,
+      "pv": 1
+    },
+    {
+      "household": 222,
+      "group": "enkel_ZP",
+      "heat_pump": 0,
+      "electric_vehicle": 0,
+      "pv": 1
+    },
+    {
+      "household": 223,
+      "group": "enkel_ZP",
+      "heat_pump": 0,
+      "electric_vehicle": 0,
+      "pv": 1
+    },
+    {
+      "household": 224,
+      "group": "enkel_ZP",
+      "heat_pump": 0,
+      "electric_vehicle": 0,
+      "pv": 1
+    },
+    {
+      "household": 225,
+      "group": "enkel_ZP",
+      "heat_pump": 0,
+      "electric_vehicle": 0,
+      "pv": 1
+    },
+    {
+      "household": 226,
+      "group": "enkel_ZP",
+      "heat_pump": 0,
+      "electric_vehicle": 0,
+      "pv": 1
+    },
+    {
+      "household": 227,
+      "group": "enkel_ZP",
+      "heat_pump": 0,
+      "electric_vehicle": 0,
+      "pv": 1
+    },
+    {
+      "household": 228,
+      "group": "enkel_ZP",
+      "heat_pump": 0,
+      "electric_vehicle": 0,
+      "pv": 1
+    },
+    {
+      "household": 229,
+      "group": "enkel_ZP",
+      "heat_pump": 0,
+      "electric_vehicle": 0,
+      "pv": 1
+    },
+    {
+      "household": 230,
+      "group": "enkel_ZP",
+      "heat_pump": 0,
+      "electric_vehicle": 0,
+      "pv": 1
+    },
+    {
+      "household": 231,
+      "group": "enkel_ZP",
+      "heat_pump": 0,
+      "electric_vehicle": 0,
+      "pv": 1
+    },
+    {
+      "household": 232,
+      "group": "enkel_ZP",
+      "heat_pump": 0,
+      "electric_vehicle": 0,
+      "pv": 1
+    },
+    {
+      "household": 233,
+      "group": "enkel_ZP",
+      "heat_pump": 0,
+      "electric_vehicle": 0,
+      "pv": 1
+    },
+    {
+      "household": 234,
+      "group": "enkel_ZP",
+      "heat_pump": 0,
+      "electric_vehicle": 0,
+      "pv": 1
+    },
+    {
+      "household": 235,
+      "group": "enkel_ZP",
+      "heat_pump": 0,
+      "electric_vehicle": 0,
+      "pv": 1
+    },
+    {
+      "household": 236,
+      "group": "enkel_ZP",
+      "heat_pump": 0,
+      "electric_vehicle": 0,
+      "pv": 1
+    },
+    {
+      "household": 237,
+      "group": "enkel_ZP",
+      "heat_pump": 0,
+      "electric_vehicle": 0,
+      "pv": 1
+    },
+    {
+      "household": 238,
+      "group": "enkel_ZP",
+      "heat_pump": 0,
+      "electric_vehicle": 0,
+      "pv": 1
+    },
+    {
+      "household": 239,
+      "group": "enkel_ZP",
+      "heat_pump": 0,
+      "electric_vehicle": 0,
+      "pv": 1
+    },
+    {
+      "household": 240,
+      "group": "enkel_ZP",
+      "heat_pump": 0,
+      "electric_vehicle": 0,
+      "pv": 1
+    },
+    {
+      "household": 241,
+      "group": "enkel_ZP",
+      "heat_pump": 0,
+      "electric_vehicle": 0,
+      "pv": 1
+    },
+    {
+      "household": 242,
+      "group": "enkel_ZP",
+      "heat_pump": 0,
+      "electric_vehicle": 0,
+      "pv": 1
+    },
+    {
+      "household": 243,
+      "group": "enkel_ZP",
+      "heat_pump": 0,
+      "electric_vehicle": 0,
+      "pv": 1
+    },
+    {
+      "household": 244,
+      "group": "enkel_ZP",
+      "heat_pump": 0,
+      "electric_vehicle": 0,
+      "pv": 1
+    },
+    {
+      "household": 245,
+      "group": "enkel_ZP",
+      "heat_pump": 0,
+      "electric_vehicle": 0,
+      "pv": 1
+    },
+    {
+      "household": 246,
+      "group": "enkel_ZP",
+      "heat_pump": 0,
+      "electric_vehicle": 0,
+      "pv": 1
+    },
+    {
+      "household": 247,
+      "group": "enkel_ZP",
+      "heat_pump": 0,
+      "electric_vehicle": 0,
+      "pv": 1
+    },
+    {
+      "household": 248,
+      "group": "enkel_ZP",
+      "heat_pump": 0,
+      "electric_vehicle": 0,
+      "pv": 1
+    },
+    {
+      "household": 249,
+      "group": "enkel_ZP",
+      "heat_pump": 0,
+      "electric_vehicle": 0,
+      "pv": 1
+    },
+    {
+      "household": 250,
+      "group": "enkel_ZP",
+      "heat_pump": 0,
+      "electric_vehicle": 0,
+      "pv": 1
+    },
+    {
+      "household": 251,
+      "group": "enkel_ZP",
+      "heat_pump": 0,
+      "electric_vehicle": 0,
+      "pv": 1
+    },
+    {
+      "household": 252,
+      "group": "enkel_ZP",
+      "heat_pump": 0,
+      "electric_vehicle": 0,
+      "pv": 1
+    },
+    {
+      "household": 253,
+      "group": "enkel_ZP",
+      "heat_pump": 0,
+      "electric_vehicle": 0,
+      "pv": 1
+    },
+    {
+      "household": 254,
+      "group": "enkel_ZP",
+      "heat_pump": 0,
+      "electric_vehicle": 0,
+      "pv": 1
+    },
+    {
+      "household": 255,
+      "group": "enkel_ZP",
+      "heat_pump": 0,
+      "electric_vehicle": 0,
+      "pv": 1
+    },
+    {
+      "household": 256,
+      "group": "enkel_ZP",
+      "heat_pump": 0,
+      "electric_vehicle": 0,
+      "pv": 1
+    },
+    {
+      "household": 257,
+      "group": "enkel_ZP",
+      "heat_pump": 0,
+      "electric_vehicle": 0,
+      "pv": 1
+    },
+    {
+      "household": 258,
+      "group": "enkel_ZP",
+      "heat_pump": 0,
+      "electric_vehicle": 0,
+      "pv": 1
+    },
+    {
+      "household": 259,
+      "group": "enkel_ZP",
+      "heat_pump": 0,
+      "electric_vehicle": 0,
+      "pv": 1
+    },
+    {
+      "household": 260,
+      "group": "enkel_ZP",
+      "heat_pump": 0,
+      "electric_vehicle": 0,
+      "pv": 1
+    },
+    {
+      "household": 261,
+      "group": "enkel_ZP",
+      "heat_pump": 0,
+      "electric_vehicle": 0,
+      "pv": 1
+    },
+    {
+      "household": 262,
+      "group": "enkel_ZP",
+      "heat_pump": 0,
+      "electric_vehicle": 0,
+      "pv": 1
+    },
+    {
+      "household": 263,
+      "group": "enkel_ZP",
+      "heat_pump": 0,
+      "electric_vehicle": 0,
+      "pv": 1
+    },
+    {
+      "household": 264,
+      "group": "enkel_ZP",
+      "heat_pump": 0,
+      "electric_vehicle": 0,
+      "pv": 1
+    },
+    {
+      "household": 265,
+      "group": "enkel_ZP",
+      "heat_pump": 0,
+      "electric_vehicle": 0,
+      "pv": 1
+    },
+    {
+      "household": 266,
+      "group": "enkel_ZP",
+      "heat_pump": 0,
+      "electric_vehicle": 0,
+      "pv": 1
+    },
+    {
+      "household": 267,
+      "group": "enkel_ZP",
+      "heat_pump": 0,
+      "electric_vehicle": 0,
+      "pv": 1
+    },
+    {
+      "household": 268,
+      "group": "enkel_ZP",
+      "heat_pump": 0,
+      "electric_vehicle": 0,
+      "pv": 1
+    },
+    {
+      "household": 269,
+      "group": "enkel_ZP",
+      "heat_pump": 0,
+      "electric_vehicle": 0,
+      "pv": 1
+    },
+    {
+      "household": 270,
+      "group": "enkel_ZP",
+      "heat_pump": 0,
+      "electric_vehicle": 0,
+      "pv": 1
+    },
+    {
+      "household": 271,
+      "group": "enkel_ZP",
+      "heat_pump": 0,
+      "electric_vehicle": 0,
+      "pv": 1
+    },
+    {
+      "household": 272,
+      "group": "enkel_ZP",
+      "heat_pump": 0,
+      "electric_vehicle": 0,
+      "pv": 1
+    },
+    {
+      "household": 273,
+      "group": "enkel_ZP",
+      "heat_pump": 0,
+      "electric_vehicle": 0,
+      "pv": 1
+    },
+    {
+      "household": 274,
+      "group": "enkel_ZP",
+      "heat_pump": 0,
+      "electric_vehicle": 0,
+      "pv": 1
+    },
+    {
+      "household": 275,
+      "group": "enkel_ZP",
+      "heat_pump": 0,
+      "electric_vehicle": 0,
+      "pv": 1
+    },
+    {
+      "household": 276,
+      "group": "enkel_ZP",
+      "heat_pump": 0,
+      "electric_vehicle": 0,
+      "pv": 1
+    },
+    {
+      "household": 277,
+      "group": "enkel_ZP",
+      "heat_pump": 0,
+      "electric_vehicle": 0,
+      "pv": 1
+    },
+    {
+      "household": 278,
+      "group": "enkel_ZP",
+      "heat_pump": 0,
+      "electric_vehicle": 0,
+      "pv": 1
+    },
+    {
+      "household": 279,
+      "group": "enkel_ZP",
+      "heat_pump": 0,
+      "electric_vehicle": 0,
+      "pv": 1
+    },
+    {
+      "household": 280,
+      "group": "enkel_ZP",
+      "heat_pump": 0,
+      "electric_vehicle": 0,
+      "pv": 1
+    },
+    {
+      "household": 281,
+      "group": "enkel_ZP",
+      "heat_pump": 0,
+      "electric_vehicle": 0,
+      "pv": 1
+    },
+    {
+      "household": 282,
+      "group": "enkel_ZP",
+      "heat_pump": 0,
+      "electric_vehicle": 0,
+      "pv": 1
+    },
+    {
+      "household": 283,
+      "group": "enkel_ZP",
+      "heat_pump": 0,
+      "electric_vehicle": 0,
+      "pv": 1
+    },
+    {
+      "household": 284,
+      "group": "enkel_ZP",
+      "heat_pump": 0,
+      "electric_vehicle": 0,
+      "pv": 1
+    },
+    {
+      "household": 285,
+      "group": "enkel_ZP",
+      "heat_pump": 0,
+      "electric_vehicle": 0,
+      "pv": 1
+    },
+    {
+      "household": 286,
+      "group": "enkel_ZP",
+      "heat_pump": 0,
+      "electric_vehicle": 0,
+      "pv": 1
+    },
+    {
+      "household": 287,
+      "group": "enkel_ZP",
+      "heat_pump": 0,
+      "electric_vehicle": 0,
+      "pv": 1
+    },
+    {
+      "household": 288,
+      "group": "enkel_ZP",
+      "heat_pump": 0,
+      "electric_vehicle": 0,
+      "pv": 1
+    },
+    {
+      "household": 289,
+      "group": "enkel_ZP",
+      "heat_pump": 0,
+      "electric_vehicle": 0,
+      "pv": 1
+    },
+    {
+      "household": 290,
+      "group": "enkel_ZP",
+      "heat_pump": 0,
+      "electric_vehicle": 0,
+      "pv": 1
+    },
+    {
+      "household": 291,
+      "group": "enkel_ZP",
+      "heat_pump": 0,
+      "electric_vehicle": 0,
+      "pv": 1
+    },
+    {
+      "household": 292,
+      "group": "enkel_ZP",
+      "heat_pump": 0,
+      "electric_vehicle": 0,
+      "pv": 1
+    },
+    {
+      "household": 293,
+      "group": "enkel_ZP",
+      "heat_pump": 0,
+      "electric_vehicle": 0,
+      "pv": 1
+    },
+    {
+      "household": 294,
+      "group": "enkel_ZP",
+      "heat_pump": 0,
+      "electric_vehicle": 0,
+      "pv": 1
+    },
+    {
+      "household": 295,
+      "group": "enkel_ZP",
+      "heat_pump": 0,
+      "electric_vehicle": 0,
+      "pv": 1
+    },
+    {
+      "household": 296,
+      "group": "enkel_ZP",
+      "heat_pump": 0,
+      "electric_vehicle": 0,
+      "pv": 1
+    },
+    {
+      "household": 297,
+      "group": "enkel_ZP",
+      "heat_pump": 0,
+      "electric_vehicle": 0,
+      "pv": 1
+    },
+    {
+      "household": 298,
+      "group": "enkel_ZP",
+      "heat_pump": 0,
+      "electric_vehicle": 0,
+      "pv": 1
+    },
+    {
+      "household": 299,
+      "group": "enkel_ZP",
+      "heat_pump": 0,
+      "electric_vehicle": 0,
+      "pv": 1
+    },
+    {
+      "household": 300,
+      "group": "enkel_ZP",
+      "heat_pump": 0,
+      "electric_vehicle": 0,
+      "pv": 1
+    },
+    {
+      "household": 601,
+      "group": "WP_met_ZP",
+      "heat_pump": 1,
+      "electric_vehicle": 0,
+      "pv": 1
+    },
+    {
+      "household": 602,
+      "group": "WP_met_ZP",
+      "heat_pump": 1,
+      "electric_vehicle": 0,
+      "pv": 1
+    },
+    {
+      "household": 603,
+      "group": "WP_met_ZP",
+      "heat_pump": 1,
+      "electric_vehicle": 0,
+      "pv": 1
+    },
+    {
+      "household": 604,
+      "group": "WP_met_ZP",
+      "heat_pump": 1,
+      "electric_vehicle": 0,
+      "pv": 1
+    },
+    {
+      "household": 605,
+      "group": "WP_met_ZP",
+      "heat_pump": 1,
+      "electric_vehicle": 0,
+      "pv": 1
+    },
+    {
+      "household": 606,
+      "group": "WP_met_ZP",
+      "heat_pump": 1,
+      "electric_vehicle": 0,
+      "pv": 1
+    },
+    {
+      "household": 607,
+      "group": "WP_met_ZP",
+      "heat_pump": 1,
+      "electric_vehicle": 0,
+      "pv": 1
+    },
+    {
+      "household": 608,
+      "group": "WP_met_ZP",
+      "heat_pump": 1,
+      "electric_vehicle": 0,
+      "pv": 1
+    },
+    {
+      "household": 609,
+      "group": "WP_met_ZP",
+      "heat_pump": 1,
+      "electric_vehicle": 0,
+      "pv": 1
+    },
+    {
+      "household": 610,
+      "group": "WP_met_ZP",
+      "heat_pump": 1,
+      "electric_vehicle": 0,
+      "pv": 1
+    },
+    {
+      "household": 611,
+      "group": "WP_met_ZP",
+      "heat_pump": 1,
+      "electric_vehicle": 0,
+      "pv": 1
+    },
+    {
+      "household": 612,
+      "group": "WP_met_ZP",
+      "heat_pump": 1,
+      "electric_vehicle": 0,
+      "pv": 1
+    },
+    {
+      "household": 613,
+      "group": "WP_met_ZP",
+      "heat_pump": 1,
+      "electric_vehicle": 0,
+      "pv": 1
+    },
+    {
+      "household": 614,
+      "group": "WP_met_ZP",
+      "heat_pump": 1,
+      "electric_vehicle": 0,
+      "pv": 1
+    },
+    {
+      "household": 615,
+      "group": "WP_met_ZP",
+      "heat_pump": 1,
+      "electric_vehicle": 0,
+      "pv": 1
+    },
+    {
+      "household": 616,
+      "group": "WP_met_ZP",
+      "heat_pump": 1,
+      "electric_vehicle": 0,
+      "pv": 1
+    },
+    {
+      "household": 617,
+      "group": "WP_met_ZP",
+      "heat_pump": 1,
+      "electric_vehicle": 0,
+      "pv": 1
+    },
+    {
+      "household": 618,
+      "group": "WP_met_ZP",
+      "heat_pump": 1,
+      "electric_vehicle": 0,
+      "pv": 1
+    },
+    {
+      "household": 619,
+      "group": "WP_met_ZP",
+      "heat_pump": 1,
+      "electric_vehicle": 0,
+      "pv": 1
+    },
+    {
+      "household": 620,
+      "group": "WP_met_ZP",
+      "heat_pump": 1,
+      "electric_vehicle": 0,
+      "pv": 1
+    },
+    {
+      "household": 621,
+      "group": "WP_met_ZP",
+      "heat_pump": 1,
+      "electric_vehicle": 0,
+      "pv": 1
+    },
+    {
+      "household": 622,
+      "group": "WP_met_ZP",
+      "heat_pump": 1,
+      "electric_vehicle": 0,
+      "pv": 1
+    },
+    {
+      "household": 623,
+      "group": "WP_met_ZP",
+      "heat_pump": 1,
+      "electric_vehicle": 0,
+      "pv": 1
+    },
+    {
+      "household": 624,
+      "group": "WP_met_ZP",
+      "heat_pump": 1,
+      "electric_vehicle": 0,
+      "pv": 1
+    },
+    {
+      "household": 625,
+      "group": "WP_met_ZP",
+      "heat_pump": 1,
+      "electric_vehicle": 0,
+      "pv": 1
+    },
+    {
+      "household": 626,
+      "group": "WP_met_ZP",
+      "heat_pump": 1,
+      "electric_vehicle": 0,
+      "pv": 1
+    },
+    {
+      "household": 627,
+      "group": "WP_met_ZP",
+      "heat_pump": 1,
+      "electric_vehicle": 0,
+      "pv": 1
+    },
+    {
+      "household": 628,
+      "group": "WP_met_ZP",
+      "heat_pump": 1,
+      "electric_vehicle": 0,
+      "pv": 1
+    },
+    {
+      "household": 629,
+      "group": "WP_met_ZP",
+      "heat_pump": 1,
+      "electric_vehicle": 0,
+      "pv": 1
+    },
+    {
+      "household": 630,
+      "group": "WP_met_ZP",
+      "heat_pump": 1,
+      "electric_vehicle": 0,
+      "pv": 1
+    },
+    {
+      "household": 631,
+      "group": "WP_met_ZP",
+      "heat_pump": 1,
+      "electric_vehicle": 0,
+      "pv": 1
+    },
+    {
+      "household": 632,
+      "group": "WP_met_ZP",
+      "heat_pump": 1,
+      "electric_vehicle": 0,
+      "pv": 1
+    },
+    {
+      "household": 633,
+      "group": "WP_met_ZP",
+      "heat_pump": 1,
+      "electric_vehicle": 0,
+      "pv": 1
+    },
+    {
+      "household": 634,
+      "group": "WP_met_ZP",
+      "heat_pump": 1,
+      "electric_vehicle": 0,
+      "pv": 1
+    },
+    {
+      "household": 635,
+      "group": "WP_met_ZP",
+      "heat_pump": 1,
+      "electric_vehicle": 0,
+      "pv": 1
+    },
+    {
+      "household": 636,
+      "group": "WP_met_ZP",
+      "heat_pump": 1,
+      "electric_vehicle": 0,
+      "pv": 1
+    },
+    {
+      "household": 637,
+      "group": "WP_met_ZP",
+      "heat_pump": 1,
+      "electric_vehicle": 0,
+      "pv": 1
+    },
+    {
+      "household": 638,
+      "group": "WP_met_ZP",
+      "heat_pump": 1,
+      "electric_vehicle": 0,
+      "pv": 1
+    },
+    {
+      "household": 639,
+      "group": "WP_met_ZP",
+      "heat_pump": 1,
+      "electric_vehicle": 0,
+      "pv": 1
+    },
+    {
+      "household": 640,
+      "group": "WP_met_ZP",
+      "heat_pump": 1,
+      "electric_vehicle": 0,
+      "pv": 1
+    },
+    {
+      "household": 641,
+      "group": "WP_met_ZP",
+      "heat_pump": 1,
+      "electric_vehicle": 0,
+      "pv": 1
+    },
+    {
+      "household": 642,
+      "group": "WP_met_ZP",
+      "heat_pump": 1,
+      "electric_vehicle": 0,
+      "pv": 1
+    },
+    {
+      "household": 643,
+      "group": "WP_met_ZP",
+      "heat_pump": 1,
+      "electric_vehicle": 0,
+      "pv": 1
+    },
+    {
+      "household": 644,
+      "group": "WP_met_ZP",
+      "heat_pump": 1,
+      "electric_vehicle": 0,
+      "pv": 1
+    },
+    {
+      "household": 645,
+      "group": "WP_met_ZP",
+      "heat_pump": 1,
+      "electric_vehicle": 0,
+      "pv": 1
+    },
+    {
+      "household": 646,
+      "group": "WP_met_ZP",
+      "heat_pump": 1,
+      "electric_vehicle": 0,
+      "pv": 1
+    },
+    {
+      "household": 647,
+      "group": "WP_met_ZP",
+      "heat_pump": 1,
+      "electric_vehicle": 0,
+      "pv": 1
+    },
+    {
+      "household": 648,
+      "group": "WP_met_ZP",
+      "heat_pump": 1,
+      "electric_vehicle": 0,
+      "pv": 1
+    },
+    {
+      "household": 649,
+      "group": "WP_met_ZP",
+      "heat_pump": 1,
+      "electric_vehicle": 0,
+      "pv": 1
+    },
+    {
+      "household": 650,
+      "group": "WP_met_ZP",
+      "heat_pump": 1,
+      "electric_vehicle": 0,
+      "pv": 1
+    },
+    {
+      "household": 651,
+      "group": "WP_met_ZP",
+      "heat_pump": 1,
+      "electric_vehicle": 0,
+      "pv": 1
+    },
+    {
+      "household": 652,
+      "group": "WP_met_ZP",
+      "heat_pump": 1,
+      "electric_vehicle": 0,
+      "pv": 1
+    },
+    {
+      "household": 653,
+      "group": "WP_met_ZP",
+      "heat_pump": 1,
+      "electric_vehicle": 0,
+      "pv": 1
+    },
+    {
+      "household": 654,
+      "group": "WP_met_ZP",
+      "heat_pump": 1,
+      "electric_vehicle": 0,
+      "pv": 1
+    },
+    {
+      "household": 655,
+      "group": "WP_met_ZP",
+      "heat_pump": 1,
+      "electric_vehicle": 0,
+      "pv": 1
+    },
+    {
+      "household": 656,
+      "group": "WP_met_ZP",
+      "heat_pump": 1,
+      "electric_vehicle": 0,
+      "pv": 1
+    },
+    {
+      "household": 657,
+      "group": "WP_met_ZP",
+      "heat_pump": 1,
+      "electric_vehicle": 0,
+      "pv": 1
+    },
+    {
+      "household": 658,
+      "group": "WP_met_ZP",
+      "heat_pump": 1,
+      "electric_vehicle": 0,
+      "pv": 1
+    },
+    {
+      "household": 659,
+      "group": "WP_met_ZP",
+      "heat_pump": 1,
+      "electric_vehicle": 0,
+      "pv": 1
+    },
+    {
+      "household": 660,
+      "group": "WP_met_ZP",
+      "heat_pump": 1,
+      "electric_vehicle": 0,
+      "pv": 1
+    },
+    {
+      "household": 661,
+      "group": "WP_met_ZP",
+      "heat_pump": 1,
+      "electric_vehicle": 0,
+      "pv": 1
+    },
+    {
+      "household": 662,
+      "group": "WP_met_ZP",
+      "heat_pump": 1,
+      "electric_vehicle": 0,
+      "pv": 1
+    },
+    {
+      "household": 663,
+      "group": "WP_met_ZP",
+      "heat_pump": 1,
+      "electric_vehicle": 0,
+      "pv": 1
+    },
+    {
+      "household": 664,
+      "group": "WP_met_ZP",
+      "heat_pump": 1,
+      "electric_vehicle": 0,
+      "pv": 1
+    },
+    {
+      "household": 665,
+      "group": "WP_met_ZP",
+      "heat_pump": 1,
+      "electric_vehicle": 0,
+      "pv": 1
+    },
+    {
+      "household": 666,
+      "group": "WP_met_ZP",
+      "heat_pump": 1,
+      "electric_vehicle": 0,
+      "pv": 1
+    },
+    {
+      "household": 667,
+      "group": "WP_met_ZP",
+      "heat_pump": 1,
+      "electric_vehicle": 0,
+      "pv": 1
+    },
+    {
+      "household": 668,
+      "group": "WP_met_ZP",
+      "heat_pump": 1,
+      "electric_vehicle": 0,
+      "pv": 1
+    },
+    {
+      "household": 669,
+      "group": "WP_met_ZP",
+      "heat_pump": 1,
+      "electric_vehicle": 0,
+      "pv": 1
+    },
+    {
+      "household": 670,
+      "group": "WP_met_ZP",
+      "heat_pump": 1,
+      "electric_vehicle": 0,
+      "pv": 1
+    },
+    {
+      "household": 671,
+      "group": "WP_met_ZP",
+      "heat_pump": 1,
+      "electric_vehicle": 0,
+      "pv": 1
+    },
+    {
+      "household": 672,
+      "group": "WP_met_ZP",
+      "heat_pump": 1,
+      "electric_vehicle": 0,
+      "pv": 1
+    },
+    {
+      "household": 673,
+      "group": "WP_met_ZP",
+      "heat_pump": 1,
+      "electric_vehicle": 0,
+      "pv": 1
+    },
+    {
+      "household": 674,
+      "group": "WP_met_ZP",
+      "heat_pump": 1,
+      "electric_vehicle": 0,
+      "pv": 1
+    },
+    {
+      "household": 675,
+      "group": "WP_met_ZP",
+      "heat_pump": 1,
+      "electric_vehicle": 0,
+      "pv": 1
+    },
+    {
+      "household": 676,
+      "group": "WP_met_ZP",
+      "heat_pump": 1,
+      "electric_vehicle": 0,
+      "pv": 1
+    },
+    {
+      "household": 677,
+      "group": "WP_met_ZP",
+      "heat_pump": 1,
+      "electric_vehicle": 0,
+      "pv": 1
+    },
+    {
+      "household": 678,
+      "group": "WP_met_ZP",
+      "heat_pump": 1,
+      "electric_vehicle": 0,
+      "pv": 1
+    },
+    {
+      "household": 679,
+      "group": "WP_met_ZP",
+      "heat_pump": 1,
+      "electric_vehicle": 0,
+      "pv": 1
+    },
+    {
+      "household": 680,
+      "group": "WP_met_ZP",
+      "heat_pump": 1,
+      "electric_vehicle": 0,
+      "pv": 1
+    },
+    {
+      "household": 681,
+      "group": "WP_met_ZP",
+      "heat_pump": 1,
+      "electric_vehicle": 0,
+      "pv": 1
+    },
+    {
+      "household": 682,
+      "group": "WP_met_ZP",
+      "heat_pump": 1,
+      "electric_vehicle": 0,
+      "pv": 1
+    },
+    {
+      "household": 683,
+      "group": "WP_met_ZP",
+      "heat_pump": 1,
+      "electric_vehicle": 0,
+      "pv": 1
+    },
+    {
+      "household": 684,
+      "group": "WP_met_ZP",
+      "heat_pump": 1,
+      "electric_vehicle": 0,
+      "pv": 1
+    },
+    {
+      "household": 685,
+      "group": "WP_met_ZP",
+      "heat_pump": 1,
+      "electric_vehicle": 0,
+      "pv": 1
+    },
+    {
+      "household": 686,
+      "group": "WP_met_ZP",
+      "heat_pump": 1,
+      "electric_vehicle": 0,
+      "pv": 1
+    },
+    {
+      "household": 687,
+      "group": "WP_met_ZP",
+      "heat_pump": 1,
+      "electric_vehicle": 0,
+      "pv": 1
+    },
+    {
+      "household": 688,
+      "group": "WP_met_ZP",
+      "heat_pump": 1,
+      "electric_vehicle": 0,
+      "pv": 1
+    },
+    {
+      "household": 689,
+      "group": "WP_met_ZP",
+      "heat_pump": 1,
+      "electric_vehicle": 0,
+      "pv": 1
+    },
+    {
+      "household": 690,
+      "group": "WP_met_ZP",
+      "heat_pump": 1,
+      "electric_vehicle": 0,
+      "pv": 1
+    },
+    {
+      "household": 691,
+      "group": "WP_met_ZP",
+      "heat_pump": 1,
+      "electric_vehicle": 0,
+      "pv": 1
+    },
+    {
+      "household": 692,
+      "group": "WP_met_ZP",
+      "heat_pump": 1,
+      "electric_vehicle": 0,
+      "pv": 1
+    },
+    {
+      "household": 693,
+      "group": "WP_met_ZP",
+      "heat_pump": 1,
+      "electric_vehicle": 0,
+      "pv": 1
+    },
+    {
+      "household": 694,
+      "group": "WP_met_ZP",
+      "heat_pump": 1,
+      "electric_vehicle": 0,
+      "pv": 1
+    },
+    {
+      "household": 695,
+      "group": "WP_met_ZP",
+      "heat_pump": 1,
+      "electric_vehicle": 0,
+      "pv": 1
+    },
+    {
+      "household": 696,
+      "group": "WP_met_ZP",
+      "heat_pump": 1,
+      "electric_vehicle": 0,
+      "pv": 1
+    },
+    {
+      "household": 697,
+      "group": "WP_met_ZP",
+      "heat_pump": 1,
+      "electric_vehicle": 0,
+      "pv": 1
+    },
+    {
+      "household": 698,
+      "group": "WP_met_ZP",
+      "heat_pump": 1,
+      "electric_vehicle": 0,
+      "pv": 1
+    },
+    {
+      "household": 699,
+      "group": "WP_met_ZP",
+      "heat_pump": 1,
+      "electric_vehicle": 0,
+      "pv": 1
+    },
+    {
+      "household": 700,
+      "group": "WP_met_ZP",
+      "heat_pump": 1,
+      "electric_vehicle": 0,
+      "pv": 1
+    },
+    {
+      "household": 701,
+      "group": "WP_met_ZP",
+      "heat_pump": 1,
+      "electric_vehicle": 0,
+      "pv": 1
+    },
+    {
+      "household": 702,
+      "group": "WP_met_ZP",
+      "heat_pump": 1,
+      "electric_vehicle": 0,
+      "pv": 1
+    },
+    {
+      "household": 703,
+      "group": "WP_met_ZP",
+      "heat_pump": 1,
+      "electric_vehicle": 0,
+      "pv": 1
+    },
+    {
+      "household": 704,
+      "group": "WP_met_ZP",
+      "heat_pump": 1,
+      "electric_vehicle": 0,
+      "pv": 1
+    },
+    {
+      "household": 705,
+      "group": "WP_met_ZP",
+      "heat_pump": 1,
+      "electric_vehicle": 0,
+      "pv": 1
+    },
+    {
+      "household": 706,
+      "group": "WP_met_ZP",
+      "heat_pump": 1,
+      "electric_vehicle": 0,
+      "pv": 1
+    },
+    {
+      "household": 707,
+      "group": "WP_met_ZP",
+      "heat_pump": 1,
+      "electric_vehicle": 0,
+      "pv": 1
+    },
+    {
+      "household": 708,
+      "group": "WP_met_ZP",
+      "heat_pump": 1,
+      "electric_vehicle": 0,
+      "pv": 1
+    },
+    {
+      "household": 709,
+      "group": "WP_met_ZP",
+      "heat_pump": 1,
+      "electric_vehicle": 0,
+      "pv": 1
+    },
+    {
+      "household": 710,
+      "group": "WP_met_ZP",
+      "heat_pump": 1,
+      "electric_vehicle": 0,
+      "pv": 1
+    },
+    {
+      "household": 711,
+      "group": "WP_met_ZP",
+      "heat_pump": 1,
+      "electric_vehicle": 0,
+      "pv": 1
+    },
+    {
+      "household": 712,
+      "group": "WP_met_ZP",
+      "heat_pump": 1,
+      "electric_vehicle": 0,
+      "pv": 1
+    },
+    {
+      "household": 713,
+      "group": "WP_met_ZP",
+      "heat_pump": 1,
+      "electric_vehicle": 0,
+      "pv": 1
+    },
+    {
+      "household": 714,
+      "group": "WP_met_ZP",
+      "heat_pump": 1,
+      "electric_vehicle": 0,
+      "pv": 1
+    },
+    {
+      "household": 715,
+      "group": "WP_met_ZP",
+      "heat_pump": 1,
+      "electric_vehicle": 0,
+      "pv": 1
+    },
+    {
+      "household": 716,
+      "group": "WP_met_ZP",
+      "heat_pump": 1,
+      "electric_vehicle": 0,
+      "pv": 1
+    },
+    {
+      "household": 717,
+      "group": "WP_met_ZP",
+      "heat_pump": 1,
+      "electric_vehicle": 0,
+      "pv": 1
+    },
+    {
+      "household": 718,
+      "group": "WP_met_ZP",
+      "heat_pump": 1,
+      "electric_vehicle": 0,
+      "pv": 1
+    },
+    {
+      "household": 719,
+      "group": "WP_met_ZP",
+      "heat_pump": 1,
+      "electric_vehicle": 0,
+      "pv": 1
+    },
+    {
+      "household": 720,
+      "group": "WP_met_ZP",
+      "heat_pump": 1,
+      "electric_vehicle": 0,
+      "pv": 1
+    },
+    {
+      "household": 721,
+      "group": "WP_met_ZP",
+      "heat_pump": 1,
+      "electric_vehicle": 0,
+      "pv": 1
+    },
+    {
+      "household": 722,
+      "group": "WP_met_ZP",
+      "heat_pump": 1,
+      "electric_vehicle": 0,
+      "pv": 1
+    },
+    {
+      "household": 723,
+      "group": "WP_met_ZP",
+      "heat_pump": 1,
+      "electric_vehicle": 0,
+      "pv": 1
+    },
+    {
+      "household": 724,
+      "group": "WP_met_ZP",
+      "heat_pump": 1,
+      "electric_vehicle": 0,
+      "pv": 1
+    },
+    {
+      "household": 725,
+      "group": "WP_met_ZP",
+      "heat_pump": 1,
+      "electric_vehicle": 0,
+      "pv": 1
+    },
+    {
+      "household": 726,
+      "group": "WP_met_ZP",
+      "heat_pump": 1,
+      "electric_vehicle": 0,
+      "pv": 1
+    },
+    {
+      "household": 727,
+      "group": "WP_met_ZP",
+      "heat_pump": 1,
+      "electric_vehicle": 0,
+      "pv": 1
+    },
+    {
+      "household": 728,
+      "group": "WP_met_ZP",
+      "heat_pump": 1,
+      "electric_vehicle": 0,
+      "pv": 1
+    },
+    {
+      "household": 729,
+      "group": "WP_met_ZP",
+      "heat_pump": 1,
+      "electric_vehicle": 0,
+      "pv": 1
+    },
+    {
+      "household": 730,
+      "group": "WP_met_ZP",
+      "heat_pump": 1,
+      "electric_vehicle": 0,
+      "pv": 1
+    },
+    {
+      "household": 731,
+      "group": "WP_met_ZP",
+      "heat_pump": 1,
+      "electric_vehicle": 0,
+      "pv": 1
+    },
+    {
+      "household": 732,
+      "group": "WP_met_ZP",
+      "heat_pump": 1,
+      "electric_vehicle": 0,
+      "pv": 1
+    },
+    {
+      "household": 733,
+      "group": "WP_met_ZP",
+      "heat_pump": 1,
+      "electric_vehicle": 0,
+      "pv": 1
+    },
+    {
+      "household": 734,
+      "group": "WP_met_ZP",
+      "heat_pump": 1,
+      "electric_vehicle": 0,
+      "pv": 1
+    },
+    {
+      "household": 735,
+      "group": "WP_met_ZP",
+      "heat_pump": 1,
+      "electric_vehicle": 0,
+      "pv": 1
+    },
+    {
+      "household": 736,
+      "group": "WP_met_ZP",
+      "heat_pump": 1,
+      "electric_vehicle": 0,
+      "pv": 1
+    },
+    {
+      "household": 737,
+      "group": "WP_met_ZP",
+      "heat_pump": 1,
+      "electric_vehicle": 0,
+      "pv": 1
+    },
+    {
+      "household": 738,
+      "group": "WP_met_ZP",
+      "heat_pump": 1,
+      "electric_vehicle": 0,
+      "pv": 1
+    },
+    {
+      "household": 739,
+      "group": "WP_met_ZP",
+      "heat_pump": 1,
+      "electric_vehicle": 0,
+      "pv": 1
+    },
+    {
+      "household": 740,
+      "group": "WP_met_ZP",
+      "heat_pump": 1,
+      "electric_vehicle": 0,
+      "pv": 1
+    },
+    {
+      "household": 741,
+      "group": "WP_met_ZP",
+      "heat_pump": 1,
+      "electric_vehicle": 0,
+      "pv": 1
+    },
+    {
+      "household": 742,
+      "group": "WP_met_ZP",
+      "heat_pump": 1,
+      "electric_vehicle": 0,
+      "pv": 1
+    },
+    {
+      "household": 743,
+      "group": "WP_met_ZP",
+      "heat_pump": 1,
+      "electric_vehicle": 0,
+      "pv": 1
+    },
+    {
+      "household": 744,
+      "group": "WP_met_ZP",
+      "heat_pump": 1,
+      "electric_vehicle": 0,
+      "pv": 1
+    },
+    {
+      "household": 745,
+      "group": "WP_met_ZP",
+      "heat_pump": 1,
+      "electric_vehicle": 0,
+      "pv": 1
+    },
+    {
+      "household": 746,
+      "group": "WP_met_ZP",
+      "heat_pump": 1,
+      "electric_vehicle": 0,
+      "pv": 1
+    },
+    {
+      "household": 747,
+      "group": "WP_met_ZP",
+      "heat_pump": 1,
+      "electric_vehicle": 0,
+      "pv": 1
+    },
+    {
+      "household": 748,
+      "group": "WP_met_ZP",
+      "heat_pump": 1,
+      "electric_vehicle": 0,
+      "pv": 1
+    },
+    {
+      "household": 749,
+      "group": "WP_met_ZP",
+      "heat_pump": 1,
+      "electric_vehicle": 0,
+      "pv": 1
+    },
+    {
+      "household": 750,
+      "group": "WP_met_ZP",
+      "heat_pump": 1,
+      "electric_vehicle": 0,
+      "pv": 1
+    },
+    {
+      "household": 751,
+      "group": "WP_met_ZP",
+      "heat_pump": 1,
+      "electric_vehicle": 0,
+      "pv": 1
+    },
+    {
+      "household": 752,
+      "group": "WP_met_ZP",
+      "heat_pump": 1,
+      "electric_vehicle": 0,
+      "pv": 1
+    },
+    {
+      "household": 753,
+      "group": "WP_met_ZP",
+      "heat_pump": 1,
+      "electric_vehicle": 0,
+      "pv": 1
+    },
+    {
+      "household": 754,
+      "group": "WP_met_ZP",
+      "heat_pump": 1,
+      "electric_vehicle": 0,
+      "pv": 1
+    },
+    {
+      "household": 755,
+      "group": "WP_met_ZP",
+      "heat_pump": 1,
+      "electric_vehicle": 0,
+      "pv": 1
+    },
+    {
+      "household": 756,
+      "group": "WP_met_ZP",
+      "heat_pump": 1,
+      "electric_vehicle": 0,
+      "pv": 1
+    },
+    {
+      "household": 757,
+      "group": "WP_met_ZP",
+      "heat_pump": 1,
+      "electric_vehicle": 0,
+      "pv": 1
+    },
+    {
+      "household": 758,
+      "group": "WP_met_ZP",
+      "heat_pump": 1,
+      "electric_vehicle": 0,
+      "pv": 1
+    },
+    {
+      "household": 759,
+      "group": "WP_met_ZP",
+      "heat_pump": 1,
+      "electric_vehicle": 0,
+      "pv": 1
+    },
+    {
+      "household": 760,
+      "group": "WP_met_ZP",
+      "heat_pump": 1,
+      "electric_vehicle": 0,
+      "pv": 1
+    },
+    {
+      "household": 761,
+      "group": "WP_met_ZP",
+      "heat_pump": 1,
+      "electric_vehicle": 0,
+      "pv": 1
+    },
+    {
+      "household": 762,
+      "group": "WP_met_ZP",
+      "heat_pump": 1,
+      "electric_vehicle": 0,
+      "pv": 1
+    },
+    {
+      "household": 763,
+      "group": "WP_met_ZP",
+      "heat_pump": 1,
+      "electric_vehicle": 0,
+      "pv": 1
+    },
+    {
+      "household": 764,
+      "group": "WP_met_ZP",
+      "heat_pump": 1,
+      "electric_vehicle": 0,
+      "pv": 1
+    },
+    {
+      "household": 765,
+      "group": "WP_met_ZP",
+      "heat_pump": 1,
+      "electric_vehicle": 0,
+      "pv": 1
+    },
+    {
+      "household": 766,
+      "group": "WP_met_ZP",
+      "heat_pump": 1,
+      "electric_vehicle": 0,
+      "pv": 1
+    },
+    {
+      "household": 767,
+      "group": "WP_met_ZP",
+      "heat_pump": 1,
+      "electric_vehicle": 0,
+      "pv": 1
+    },
+    {
+      "household": 768,
+      "group": "WP_met_ZP",
+      "heat_pump": 1,
+      "electric_vehicle": 0,
+      "pv": 1
+    },
+    {
+      "household": 769,
+      "group": "WP_met_ZP",
+      "heat_pump": 1,
+      "electric_vehicle": 0,
+      "pv": 1
+    },
+    {
+      "household": 770,
+      "group": "WP_met_ZP",
+      "heat_pump": 1,
+      "electric_vehicle": 0,
+      "pv": 1
+    },
+    {
+      "household": 771,
+      "group": "WP_met_ZP",
+      "heat_pump": 1,
+      "electric_vehicle": 0,
+      "pv": 1
+    },
+    {
+      "household": 772,
+      "group": "WP_met_ZP",
+      "heat_pump": 1,
+      "electric_vehicle": 0,
+      "pv": 1
+    },
+    {
+      "household": 773,
+      "group": "WP_met_ZP",
+      "heat_pump": 1,
+      "electric_vehicle": 0,
+      "pv": 1
+    },
+    {
+      "household": 774,
+      "group": "WP_met_ZP",
+      "heat_pump": 1,
+      "electric_vehicle": 0,
+      "pv": 1
+    },
+    {
+      "household": 775,
+      "group": "WP_met_ZP",
+      "heat_pump": 1,
+      "electric_vehicle": 0,
+      "pv": 1
+    },
+    {
+      "household": 776,
+      "group": "WP_met_ZP",
+      "heat_pump": 1,
+      "electric_vehicle": 0,
+      "pv": 1
+    },
+    {
+      "household": 777,
+      "group": "WP_met_ZP",
+      "heat_pump": 1,
+      "electric_vehicle": 0,
+      "pv": 1
+    },
+    {
+      "household": 778,
+      "group": "WP_met_ZP",
+      "heat_pump": 1,
+      "electric_vehicle": 0,
+      "pv": 1
+    },
+    {
+      "household": 779,
+      "group": "WP_met_ZP",
+      "heat_pump": 1,
+      "electric_vehicle": 0,
+      "pv": 1
+    },
+    {
+      "household": 780,
+      "group": "WP_met_ZP",
+      "heat_pump": 1,
+      "electric_vehicle": 0,
+      "pv": 1
+    },
+    {
+      "household": 781,
+      "group": "WP_met_ZP",
+      "heat_pump": 1,
+      "electric_vehicle": 0,
+      "pv": 1
+    },
+    {
+      "household": 782,
+      "group": "WP_met_ZP",
+      "heat_pump": 1,
+      "electric_vehicle": 0,
+      "pv": 1
+    },
+    {
+      "household": 783,
+      "group": "WP_met_ZP",
+      "heat_pump": 1,
+      "electric_vehicle": 0,
+      "pv": 1
+    },
+    {
+      "household": 784,
+      "group": "WP_met_ZP",
+      "heat_pump": 1,
+      "electric_vehicle": 0,
+      "pv": 1
+    },
+    {
+      "household": 785,
+      "group": "WP_met_ZP",
+      "heat_pump": 1,
+      "electric_vehicle": 0,
+      "pv": 1
+    },
+    {
+      "household": 786,
+      "group": "WP_met_ZP",
+      "heat_pump": 1,
+      "electric_vehicle": 0,
+      "pv": 1
+    },
+    {
+      "household": 787,
+      "group": "WP_met_ZP",
+      "heat_pump": 1,
+      "electric_vehicle": 0,
+      "pv": 1
+    },
+    {
+      "household": 788,
+      "group": "WP_met_ZP",
+      "heat_pump": 1,
+      "electric_vehicle": 0,
+      "pv": 1
+    },
+    {
+      "household": 789,
+      "group": "WP_met_ZP",
+      "heat_pump": 1,
+      "electric_vehicle": 0,
+      "pv": 1
+    },
+    {
+      "household": 790,
+      "group": "WP_met_ZP",
+      "heat_pump": 1,
+      "electric_vehicle": 0,
+      "pv": 1
+    },
+    {
+      "household": 791,
+      "group": "WP_met_ZP",
+      "heat_pump": 1,
+      "electric_vehicle": 0,
+      "pv": 1
+    },
+    {
+      "household": 792,
+      "group": "WP_met_ZP",
+      "heat_pump": 1,
+      "electric_vehicle": 0,
+      "pv": 1
+    },
+    {
+      "household": 793,
+      "group": "WP_met_ZP",
+      "heat_pump": 1,
+      "electric_vehicle": 0,
+      "pv": 1
+    },
+    {
+      "household": 794,
+      "group": "WP_met_ZP",
+      "heat_pump": 1,
+      "electric_vehicle": 0,
+      "pv": 1
+    },
+    {
+      "household": 795,
+      "group": "WP_met_ZP",
+      "heat_pump": 1,
+      "electric_vehicle": 0,
+      "pv": 1
+    },
+    {
+      "household": 796,
+      "group": "WP_met_ZP",
+      "heat_pump": 1,
+      "electric_vehicle": 0,
+      "pv": 1
+    },
+    {
+      "household": 797,
+      "group": "WP_met_ZP",
+      "heat_pump": 1,
+      "electric_vehicle": 0,
+      "pv": 1
+    },
+    {
+      "household": 798,
+      "group": "WP_met_ZP",
+      "heat_pump": 1,
+      "electric_vehicle": 0,
+      "pv": 1
+    },
+    {
+      "household": 799,
+      "group": "WP_met_ZP",
+      "heat_pump": 1,
+      "electric_vehicle": 0,
+      "pv": 1
+    },
+    {
+      "household": 800,
+      "group": "WP_met_ZP",
+      "heat_pump": 1,
+      "electric_vehicle": 0,
+      "pv": 1
+    },
+    {
+      "household": 801,
+      "group": "WP_met_ZP",
+      "heat_pump": 1,
+      "electric_vehicle": 0,
+      "pv": 1
+    },
+    {
+      "household": 802,
+      "group": "WP_met_ZP",
+      "heat_pump": 1,
+      "electric_vehicle": 0,
+      "pv": 1
+    },
+    {
+      "household": 803,
+      "group": "WP_met_ZP",
+      "heat_pump": 1,
+      "electric_vehicle": 0,
+      "pv": 1
+    },
+    {
+      "household": 804,
+      "group": "WP_met_ZP",
+      "heat_pump": 1,
+      "electric_vehicle": 0,
+      "pv": 1
+    },
+    {
+      "household": 805,
+      "group": "WP_met_ZP",
+      "heat_pump": 1,
+      "electric_vehicle": 0,
+      "pv": 1
+    },
+    {
+      "household": 806,
+      "group": "WP_met_ZP",
+      "heat_pump": 1,
+      "electric_vehicle": 0,
+      "pv": 1
+    },
+    {
+      "household": 807,
+      "group": "WP_met_ZP",
+      "heat_pump": 1,
+      "electric_vehicle": 0,
+      "pv": 1
+    },
+    {
+      "household": 808,
+      "group": "WP_met_ZP",
+      "heat_pump": 1,
+      "electric_vehicle": 0,
+      "pv": 1
+    },
+    {
+      "household": 809,
+      "group": "WP_met_ZP",
+      "heat_pump": 1,
+      "electric_vehicle": 0,
+      "pv": 1
+    },
+    {
+      "household": 810,
+      "group": "WP_met_ZP",
+      "heat_pump": 1,
+      "electric_vehicle": 0,
+      "pv": 1
+    },
+    {
+      "household": 811,
+      "group": "WP_met_ZP",
+      "heat_pump": 1,
+      "electric_vehicle": 0,
+      "pv": 1
+    },
+    {
+      "household": 812,
+      "group": "WP_met_ZP",
+      "heat_pump": 1,
+      "electric_vehicle": 0,
+      "pv": 1
+    },
+    {
+      "household": 813,
+      "group": "WP_met_ZP",
+      "heat_pump": 1,
+      "electric_vehicle": 0,
+      "pv": 1
+    },
+    {
+      "household": 814,
+      "group": "WP_met_ZP",
+      "heat_pump": 1,
+      "electric_vehicle": 0,
+      "pv": 1
+    },
+    {
+      "household": 815,
+      "group": "WP_met_ZP",
+      "heat_pump": 1,
+      "electric_vehicle": 0,
+      "pv": 1
+    },
+    {
+      "household": 816,
+      "group": "WP_met_ZP",
+      "heat_pump": 1,
+      "electric_vehicle": 0,
+      "pv": 1
+    },
+    {
+      "household": 817,
+      "group": "WP_met_ZP",
+      "heat_pump": 1,
+      "electric_vehicle": 0,
+      "pv": 1
+    },
+    {
+      "household": 818,
+      "group": "WP_met_ZP",
+      "heat_pump": 1,
+      "electric_vehicle": 0,
+      "pv": 1
+    },
+    {
+      "household": 819,
+      "group": "WP_met_ZP",
+      "heat_pump": 1,
+      "electric_vehicle": 0,
+      "pv": 1
+    },
+    {
+      "household": 820,
+      "group": "WP_met_ZP",
+      "heat_pump": 1,
+      "electric_vehicle": 0,
+      "pv": 1
+    },
+    {
+      "household": 821,
+      "group": "WP_met_ZP",
+      "heat_pump": 1,
+      "electric_vehicle": 0,
+      "pv": 1
+    },
+    {
+      "household": 822,
+      "group": "WP_met_ZP",
+      "heat_pump": 1,
+      "electric_vehicle": 0,
+      "pv": 1
+    },
+    {
+      "household": 823,
+      "group": "WP_met_ZP",
+      "heat_pump": 1,
+      "electric_vehicle": 0,
+      "pv": 1
+    },
+    {
+      "household": 824,
+      "group": "WP_met_ZP",
+      "heat_pump": 1,
+      "electric_vehicle": 0,
+      "pv": 1
+    },
+    {
+      "household": 825,
+      "group": "WP_met_ZP",
+      "heat_pump": 1,
+      "electric_vehicle": 0,
+      "pv": 1
+    },
+    {
+      "household": 826,
+      "group": "WP_met_ZP",
+      "heat_pump": 1,
+      "electric_vehicle": 0,
+      "pv": 1
+    },
+    {
+      "household": 827,
+      "group": "WP_met_ZP",
+      "heat_pump": 1,
+      "electric_vehicle": 0,
+      "pv": 1
+    },
+    {
+      "household": 828,
+      "group": "WP_met_ZP",
+      "heat_pump": 1,
+      "electric_vehicle": 0,
+      "pv": 1
+    },
+    {
+      "household": 829,
+      "group": "WP_met_ZP",
+      "heat_pump": 1,
+      "electric_vehicle": 0,
+      "pv": 1
+    },
+    {
+      "household": 830,
+      "group": "WP_met_ZP",
+      "heat_pump": 1,
+      "electric_vehicle": 0,
+      "pv": 1
+    },
+    {
+      "household": 831,
+      "group": "WP_met_ZP",
+      "heat_pump": 1,
+      "electric_vehicle": 0,
+      "pv": 1
+    },
+    {
+      "household": 832,
+      "group": "WP_met_ZP",
+      "heat_pump": 1,
+      "electric_vehicle": 0,
+      "pv": 1
+    },
+    {
+      "household": 833,
+      "group": "WP_met_ZP",
+      "heat_pump": 1,
+      "electric_vehicle": 0,
+      "pv": 1
+    },
+    {
+      "household": 834,
+      "group": "WP_met_ZP",
+      "heat_pump": 1,
+      "electric_vehicle": 0,
+      "pv": 1
+    },
+    {
+      "household": 835,
+      "group": "WP_met_ZP",
+      "heat_pump": 1,
+      "electric_vehicle": 0,
+      "pv": 1
+    },
+    {
+      "household": 836,
+      "group": "WP_met_ZP",
+      "heat_pump": 1,
+      "electric_vehicle": 0,
+      "pv": 1
+    },
+    {
+      "household": 837,
+      "group": "WP_met_ZP",
+      "heat_pump": 1,
+      "electric_vehicle": 0,
+      "pv": 1
+    },
+    {
+      "household": 838,
+      "group": "WP_met_ZP",
+      "heat_pump": 1,
+      "electric_vehicle": 0,
+      "pv": 1
+    },
+    {
+      "household": 839,
+      "group": "WP_met_ZP",
+      "heat_pump": 1,
+      "electric_vehicle": 0,
+      "pv": 1
+    },
+    {
+      "household": 840,
+      "group": "WP_met_ZP",
+      "heat_pump": 1,
+      "electric_vehicle": 0,
+      "pv": 1
+    },
+    {
+      "household": 841,
+      "group": "WP_met_ZP",
+      "heat_pump": 1,
+      "electric_vehicle": 0,
+      "pv": 1
+    },
+    {
+      "household": 842,
+      "group": "WP_met_ZP",
+      "heat_pump": 1,
+      "electric_vehicle": 0,
+      "pv": 1
+    },
+    {
+      "household": 843,
+      "group": "WP_met_ZP",
+      "heat_pump": 1,
+      "electric_vehicle": 0,
+      "pv": 1
+    },
+    {
+      "household": 844,
+      "group": "WP_met_ZP",
+      "heat_pump": 1,
+      "electric_vehicle": 0,
+      "pv": 1
+    },
+    {
+      "household": 845,
+      "group": "WP_met_ZP",
+      "heat_pump": 1,
+      "electric_vehicle": 0,
+      "pv": 1
+    },
+    {
+      "household": 846,
+      "group": "WP_met_ZP",
+      "heat_pump": 1,
+      "electric_vehicle": 0,
+      "pv": 1
+    },
+    {
+      "household": 847,
+      "group": "WP_met_ZP",
+      "heat_pump": 1,
+      "electric_vehicle": 0,
+      "pv": 1
+    },
+    {
+      "household": 848,
+      "group": "WP_met_ZP",
+      "heat_pump": 1,
+      "electric_vehicle": 0,
+      "pv": 1
+    },
+    {
+      "household": 849,
+      "group": "WP_met_ZP",
+      "heat_pump": 1,
+      "electric_vehicle": 0,
+      "pv": 1
+    },
+    {
+      "household": 850,
+      "group": "WP_met_ZP",
+      "heat_pump": 1,
+      "electric_vehicle": 0,
+      "pv": 1
+    },
+    {
+      "household": 851,
+      "group": "WP_met_ZP",
+      "heat_pump": 1,
+      "electric_vehicle": 0,
+      "pv": 1
+    },
+    {
+      "household": 852,
+      "group": "WP_met_ZP",
+      "heat_pump": 1,
+      "electric_vehicle": 0,
+      "pv": 1
+    },
+    {
+      "household": 853,
+      "group": "WP_met_ZP",
+      "heat_pump": 1,
+      "electric_vehicle": 0,
+      "pv": 1
+    },
+    {
+      "household": 854,
+      "group": "WP_met_ZP",
+      "heat_pump": 1,
+      "electric_vehicle": 0,
+      "pv": 1
+    },
+    {
+      "household": 855,
+      "group": "WP_met_ZP",
+      "heat_pump": 1,
+      "electric_vehicle": 0,
+      "pv": 1
+    },
+    {
+      "household": 856,
+      "group": "WP_met_ZP",
+      "heat_pump": 1,
+      "electric_vehicle": 0,
+      "pv": 1
+    },
+    {
+      "household": 857,
+      "group": "WP_met_ZP",
+      "heat_pump": 1,
+      "electric_vehicle": 0,
+      "pv": 1
+    },
+    {
+      "household": 858,
+      "group": "WP_met_ZP",
+      "heat_pump": 1,
+      "electric_vehicle": 0,
+      "pv": 1
+    },
+    {
+      "household": 859,
+      "group": "WP_met_ZP",
+      "heat_pump": 1,
+      "electric_vehicle": 0,
+      "pv": 1
+    },
+    {
+      "household": 860,
+      "group": "WP_met_ZP",
+      "heat_pump": 1,
+      "electric_vehicle": 0,
+      "pv": 1
+    },
+    {
+      "household": 861,
+      "group": "WP_met_ZP",
+      "heat_pump": 1,
+      "electric_vehicle": 0,
+      "pv": 1
+    },
+    {
+      "household": 862,
+      "group": "WP_met_ZP",
+      "heat_pump": 1,
+      "electric_vehicle": 0,
+      "pv": 1
+    },
+    {
+      "household": 863,
+      "group": "WP_met_ZP",
+      "heat_pump": 1,
+      "electric_vehicle": 0,
+      "pv": 1
+    },
+    {
+      "household": 864,
+      "group": "WP_met_ZP",
+      "heat_pump": 1,
+      "electric_vehicle": 0,
+      "pv": 1
+    },
+    {
+      "household": 865,
+      "group": "WP_met_ZP",
+      "heat_pump": 1,
+      "electric_vehicle": 0,
+      "pv": 1
+    },
+    {
+      "household": 866,
+      "group": "WP_met_ZP",
+      "heat_pump": 1,
+      "electric_vehicle": 0,
+      "pv": 1
+    },
+    {
+      "household": 867,
+      "group": "WP_met_ZP",
+      "heat_pump": 1,
+      "electric_vehicle": 0,
+      "pv": 1
+    },
+    {
+      "household": 868,
+      "group": "WP_met_ZP",
+      "heat_pump": 1,
+      "electric_vehicle": 0,
+      "pv": 1
+    },
+    {
+      "household": 869,
+      "group": "WP_met_ZP",
+      "heat_pump": 1,
+      "electric_vehicle": 0,
+      "pv": 1
+    },
+    {
+      "household": 870,
+      "group": "WP_met_ZP",
+      "heat_pump": 1,
+      "electric_vehicle": 0,
+      "pv": 1
+    },
+    {
+      "household": 871,
+      "group": "WP_met_ZP",
+      "heat_pump": 1,
+      "electric_vehicle": 0,
+      "pv": 1
+    },
+    {
+      "household": 872,
+      "group": "WP_met_ZP",
+      "heat_pump": 1,
+      "electric_vehicle": 0,
+      "pv": 1
+    },
+    {
+      "household": 873,
+      "group": "WP_met_ZP",
+      "heat_pump": 1,
+      "electric_vehicle": 0,
+      "pv": 1
+    },
+    {
+      "household": 874,
+      "group": "WP_met_ZP",
+      "heat_pump": 1,
+      "electric_vehicle": 0,
+      "pv": 1
+    },
+    {
+      "household": 875,
+      "group": "WP_met_ZP",
+      "heat_pump": 1,
+      "electric_vehicle": 0,
+      "pv": 1
+    },
+    {
+      "household": 876,
+      "group": "WP_met_ZP",
+      "heat_pump": 1,
+      "electric_vehicle": 0,
+      "pv": 1
+    },
+    {
+      "household": 877,
+      "group": "WP_met_ZP",
+      "heat_pump": 1,
+      "electric_vehicle": 0,
+      "pv": 1
+    },
+    {
+      "household": 878,
+      "group": "WP_met_ZP",
+      "heat_pump": 1,
+      "electric_vehicle": 0,
+      "pv": 1
+    },
+    {
+      "household": 879,
+      "group": "WP_met_ZP",
+      "heat_pump": 1,
+      "electric_vehicle": 0,
+      "pv": 1
+    },
+    {
+      "household": 880,
+      "group": "WP_met_ZP",
+      "heat_pump": 1,
+      "electric_vehicle": 0,
+      "pv": 1
+    },
+    {
+      "household": 881,
+      "group": "WP_met_ZP",
+      "heat_pump": 1,
+      "electric_vehicle": 0,
+      "pv": 1
+    },
+    {
+      "household": 882,
+      "group": "WP_met_ZP",
+      "heat_pump": 1,
+      "electric_vehicle": 0,
+      "pv": 1
+    },
+    {
+      "household": 883,
+      "group": "WP_met_ZP",
+      "heat_pump": 1,
+      "electric_vehicle": 0,
+      "pv": 1
+    },
+    {
+      "household": 884,
+      "group": "WP_met_ZP",
+      "heat_pump": 1,
+      "electric_vehicle": 0,
+      "pv": 1
+    },
+    {
+      "household": 885,
+      "group": "WP_met_ZP",
+      "heat_pump": 1,
+      "electric_vehicle": 0,
+      "pv": 1
+    },
+    {
+      "household": 886,
+      "group": "WP_met_ZP",
+      "heat_pump": 1,
+      "electric_vehicle": 0,
+      "pv": 1
+    },
+    {
+      "household": 887,
+      "group": "WP_met_ZP",
+      "heat_pump": 1,
+      "electric_vehicle": 0,
+      "pv": 1
+    },
+    {
+      "household": 888,
+      "group": "WP_met_ZP",
+      "heat_pump": 1,
+      "electric_vehicle": 0,
+      "pv": 1
+    },
+    {
+      "household": 889,
+      "group": "WP_met_ZP",
+      "heat_pump": 1,
+      "electric_vehicle": 0,
+      "pv": 1
+    },
+    {
+      "household": 890,
+      "group": "WP_met_ZP",
+      "heat_pump": 1,
+      "electric_vehicle": 0,
+      "pv": 1
+    },
+    {
+      "household": 891,
+      "group": "WP_met_ZP",
+      "heat_pump": 1,
+      "electric_vehicle": 0,
+      "pv": 1
+    },
+    {
+      "household": 892,
+      "group": "WP_met_ZP",
+      "heat_pump": 1,
+      "electric_vehicle": 0,
+      "pv": 1
+    },
+    {
+      "household": 893,
+      "group": "WP_met_ZP",
+      "heat_pump": 1,
+      "electric_vehicle": 0,
+      "pv": 1
+    },
+    {
+      "household": 894,
+      "group": "WP_met_ZP",
+      "heat_pump": 1,
+      "electric_vehicle": 0,
+      "pv": 1
+    },
+    {
+      "household": 895,
+      "group": "WP_met_ZP",
+      "heat_pump": 1,
+      "electric_vehicle": 0,
+      "pv": 1
+    },
+    {
+      "household": 896,
+      "group": "WP_met_ZP",
+      "heat_pump": 1,
+      "electric_vehicle": 0,
+      "pv": 1
+    },
+    {
+      "household": 897,
+      "group": "WP_met_ZP",
+      "heat_pump": 1,
+      "electric_vehicle": 0,
+      "pv": 1
+    },
+    {
+      "household": 898,
+      "group": "WP_met_ZP",
+      "heat_pump": 1,
+      "electric_vehicle": 0,
+      "pv": 1
+    },
+    {
+      "household": 899,
+      "group": "WP_met_ZP",
+      "heat_pump": 1,
+      "electric_vehicle": 0,
+      "pv": 1
+    },
+    {
+      "household": 900,
+      "group": "WP_met_ZP",
+      "heat_pump": 1,
+      "electric_vehicle": 0,
+      "pv": 1
+    },
+    {
+      "household": 1201,
+      "group": "EV_met_ZP",
+      "heat_pump": 0,
+      "electric_vehicle": 1,
+      "pv": 1
+    },
+    {
+      "household": 1202,
+      "group": "EV_met_ZP",
+      "heat_pump": 0,
+      "electric_vehicle": 1,
+      "pv": 1
+    },
+    {
+      "household": 1203,
+      "group": "EV_met_ZP",
+      "heat_pump": 0,
+      "electric_vehicle": 1,
+      "pv": 1
+    },
+    {
+      "household": 1204,
+      "group": "EV_met_ZP",
+      "heat_pump": 0,
+      "electric_vehicle": 1,
+      "pv": 1
+    },
+    {
+      "household": 1205,
+      "group": "EV_met_ZP",
+      "heat_pump": 0,
+      "electric_vehicle": 1,
+      "pv": 1
+    },
+    {
+      "household": 1206,
+      "group": "EV_met_ZP",
+      "heat_pump": 0,
+      "electric_vehicle": 1,
+      "pv": 1
+    },
+    {
+      "household": 1207,
+      "group": "EV_met_ZP",
+      "heat_pump": 0,
+      "electric_vehicle": 1,
+      "pv": 1
+    },
+    {
+      "household": 1208,
+      "group": "EV_met_ZP",
+      "heat_pump": 0,
+      "electric_vehicle": 1,
+      "pv": 1
+    },
+    {
+      "household": 1209,
+      "group": "EV_met_ZP",
+      "heat_pump": 0,
+      "electric_vehicle": 1,
+      "pv": 1
+    },
+    {
+      "household": 1210,
+      "group": "EV_met_ZP",
+      "heat_pump": 0,
+      "electric_vehicle": 1,
+      "pv": 1
+    },
+    {
+      "household": 1211,
+      "group": "EV_met_ZP",
+      "heat_pump": 0,
+      "electric_vehicle": 1,
+      "pv": 1
+    },
+    {
+      "household": 1212,
+      "group": "EV_met_ZP",
+      "heat_pump": 0,
+      "electric_vehicle": 1,
+      "pv": 1
+    },
+    {
+      "household": 1213,
+      "group": "EV_met_ZP",
+      "heat_pump": 0,
+      "electric_vehicle": 1,
+      "pv": 1
+    },
+    {
+      "household": 1214,
+      "group": "EV_met_ZP",
+      "heat_pump": 0,
+      "electric_vehicle": 1,
+      "pv": 1
+    },
+    {
+      "household": 1215,
+      "group": "EV_met_ZP",
+      "heat_pump": 0,
+      "electric_vehicle": 1,
+      "pv": 1
+    },
+    {
+      "household": 1216,
+      "group": "EV_met_ZP",
+      "heat_pump": 0,
+      "electric_vehicle": 1,
+      "pv": 1
+    },
+    {
+      "household": 1217,
+      "group": "EV_met_ZP",
+      "heat_pump": 0,
+      "electric_vehicle": 1,
+      "pv": 1
+    },
+    {
+      "household": 1218,
+      "group": "EV_met_ZP",
+      "heat_pump": 0,
+      "electric_vehicle": 1,
+      "pv": 1
+    },
+    {
+      "household": 1219,
+      "group": "EV_met_ZP",
+      "heat_pump": 0,
+      "electric_vehicle": 1,
+      "pv": 1
+    },
+    {
+      "household": 1220,
+      "group": "EV_met_ZP",
+      "heat_pump": 0,
+      "electric_vehicle": 1,
+      "pv": 1
+    },
+    {
+      "household": 1221,
+      "group": "EV_met_ZP",
+      "heat_pump": 0,
+      "electric_vehicle": 1,
+      "pv": 1
+    },
+    {
+      "household": 1222,
+      "group": "EV_met_ZP",
+      "heat_pump": 0,
+      "electric_vehicle": 1,
+      "pv": 1
+    },
+    {
+      "household": 1223,
+      "group": "EV_met_ZP",
+      "heat_pump": 0,
+      "electric_vehicle": 1,
+      "pv": 1
+    },
+    {
+      "household": 1224,
+      "group": "EV_met_ZP",
+      "heat_pump": 0,
+      "electric_vehicle": 1,
+      "pv": 1
+    },
+    {
+      "household": 1225,
+      "group": "EV_met_ZP",
+      "heat_pump": 0,
+      "electric_vehicle": 1,
+      "pv": 1
+    },
+    {
+      "household": 1226,
+      "group": "EV_met_ZP",
+      "heat_pump": 0,
+      "electric_vehicle": 1,
+      "pv": 1
+    },
+    {
+      "household": 1227,
+      "group": "EV_met_ZP",
+      "heat_pump": 0,
+      "electric_vehicle": 1,
+      "pv": 1
+    },
+    {
+      "household": 1228,
+      "group": "EV_met_ZP",
+      "heat_pump": 0,
+      "electric_vehicle": 1,
+      "pv": 1
+    },
+    {
+      "household": 1229,
+      "group": "EV_met_ZP",
+      "heat_pump": 0,
+      "electric_vehicle": 1,
+      "pv": 1
+    },
+    {
+      "household": 1230,
+      "group": "EV_met_ZP",
+      "heat_pump": 0,
+      "electric_vehicle": 1,
+      "pv": 1
+    },
+    {
+      "household": 1231,
+      "group": "EV_met_ZP",
+      "heat_pump": 0,
+      "electric_vehicle": 1,
+      "pv": 1
+    },
+    {
+      "household": 1232,
+      "group": "EV_met_ZP",
+      "heat_pump": 0,
+      "electric_vehicle": 1,
+      "pv": 1
+    },
+    {
+      "household": 1233,
+      "group": "EV_met_ZP",
+      "heat_pump": 0,
+      "electric_vehicle": 1,
+      "pv": 1
+    },
+    {
+      "household": 1234,
+      "group": "EV_met_ZP",
+      "heat_pump": 0,
+      "electric_vehicle": 1,
+      "pv": 1
+    },
+    {
+      "household": 1235,
+      "group": "EV_met_ZP",
+      "heat_pump": 0,
+      "electric_vehicle": 1,
+      "pv": 1
+    },
+    {
+      "household": 1236,
+      "group": "EV_met_ZP",
+      "heat_pump": 0,
+      "electric_vehicle": 1,
+      "pv": 1
+    },
+    {
+      "household": 1237,
+      "group": "EV_met_ZP",
+      "heat_pump": 0,
+      "electric_vehicle": 1,
+      "pv": 1
+    },
+    {
+      "household": 1238,
+      "group": "EV_met_ZP",
+      "heat_pump": 0,
+      "electric_vehicle": 1,
+      "pv": 1
+    },
+    {
+      "household": 1239,
+      "group": "EV_met_ZP",
+      "heat_pump": 0,
+      "electric_vehicle": 1,
+      "pv": 1
+    },
+    {
+      "household": 1240,
+      "group": "EV_met_ZP",
+      "heat_pump": 0,
+      "electric_vehicle": 1,
+      "pv": 1
+    },
+    {
+      "household": 1241,
+      "group": "EV_met_ZP",
+      "heat_pump": 0,
+      "electric_vehicle": 1,
+      "pv": 1
+    },
+    {
+      "household": 1242,
+      "group": "EV_met_ZP",
+      "heat_pump": 0,
+      "electric_vehicle": 1,
+      "pv": 1
+    },
+    {
+      "household": 1243,
+      "group": "EV_met_ZP",
+      "heat_pump": 0,
+      "electric_vehicle": 1,
+      "pv": 1
+    },
+    {
+      "household": 1244,
+      "group": "EV_met_ZP",
+      "heat_pump": 0,
+      "electric_vehicle": 1,
+      "pv": 1
+    },
+    {
+      "household": 1245,
+      "group": "EV_met_ZP",
+      "heat_pump": 0,
+      "electric_vehicle": 1,
+      "pv": 1
+    },
+    {
+      "household": 1246,
+      "group": "EV_met_ZP",
+      "heat_pump": 0,
+      "electric_vehicle": 1,
+      "pv": 1
+    },
+    {
+      "household": 1247,
+      "group": "EV_met_ZP",
+      "heat_pump": 0,
+      "electric_vehicle": 1,
+      "pv": 1
+    },
+    {
+      "household": 1248,
+      "group": "EV_met_ZP",
+      "heat_pump": 0,
+      "electric_vehicle": 1,
+      "pv": 1
+    },
+    {
+      "household": 1249,
+      "group": "EV_met_ZP",
+      "heat_pump": 0,
+      "electric_vehicle": 1,
+      "pv": 1
+    },
+    {
+      "household": 1250,
+      "group": "EV_met_ZP",
+      "heat_pump": 0,
+      "electric_vehicle": 1,
+      "pv": 1
+    },
+    {
+      "household": 1251,
+      "group": "EV_met_ZP",
+      "heat_pump": 0,
+      "electric_vehicle": 1,
+      "pv": 1
+    },
+    {
+      "household": 1252,
+      "group": "EV_met_ZP",
+      "heat_pump": 0,
+      "electric_vehicle": 1,
+      "pv": 1
+    },
+    {
+      "household": 1253,
+      "group": "EV_met_ZP",
+      "heat_pump": 0,
+      "electric_vehicle": 1,
+      "pv": 1
+    },
+    {
+      "household": 1254,
+      "group": "EV_met_ZP",
+      "heat_pump": 0,
+      "electric_vehicle": 1,
+      "pv": 1
+    },
+    {
+      "household": 1255,
+      "group": "EV_met_ZP",
+      "heat_pump": 0,
+      "electric_vehicle": 1,
+      "pv": 1
+    },
+    {
+      "household": 1256,
+      "group": "EV_met_ZP",
+      "heat_pump": 0,
+      "electric_vehicle": 1,
+      "pv": 1
+    },
+    {
+      "household": 1257,
+      "group": "EV_met_ZP",
+      "heat_pump": 0,
+      "electric_vehicle": 1,
+      "pv": 1
+    },
+    {
+      "household": 1258,
+      "group": "EV_met_ZP",
+      "heat_pump": 0,
+      "electric_vehicle": 1,
+      "pv": 1
+    },
+    {
+      "household": 1259,
+      "group": "EV_met_ZP",
+      "heat_pump": 0,
+      "electric_vehicle": 1,
+      "pv": 1
+    },
+    {
+      "household": 1260,
+      "group": "EV_met_ZP",
+      "heat_pump": 0,
+      "electric_vehicle": 1,
+      "pv": 1
+    },
+    {
+      "household": 1261,
+      "group": "EV_met_ZP",
+      "heat_pump": 0,
+      "electric_vehicle": 1,
+      "pv": 1
+    },
+    {
+      "household": 1262,
+      "group": "EV_met_ZP",
+      "heat_pump": 0,
+      "electric_vehicle": 1,
+      "pv": 1
+    },
+    {
+      "household": 1263,
+      "group": "EV_met_ZP",
+      "heat_pump": 0,
+      "electric_vehicle": 1,
+      "pv": 1
+    },
+    {
+      "household": 1264,
+      "group": "EV_met_ZP",
+      "heat_pump": 0,
+      "electric_vehicle": 1,
+      "pv": 1
+    },
+    {
+      "household": 1265,
+      "group": "EV_met_ZP",
+      "heat_pump": 0,
+      "electric_vehicle": 1,
+      "pv": 1
+    },
+    {
+      "household": 1266,
+      "group": "EV_met_ZP",
+      "heat_pump": 0,
+      "electric_vehicle": 1,
+      "pv": 1
+    },
+    {
+      "household": 1267,
+      "group": "EV_met_ZP",
+      "heat_pump": 0,
+      "electric_vehicle": 1,
+      "pv": 1
+    },
+    {
+      "household": 1268,
+      "group": "EV_met_ZP",
+      "heat_pump": 0,
+      "electric_vehicle": 1,
+      "pv": 1
+    },
+    {
+      "household": 1269,
+      "group": "EV_met_ZP",
+      "heat_pump": 0,
+      "electric_vehicle": 1,
+      "pv": 1
+    },
+    {
+      "household": 1270,
+      "group": "EV_met_ZP",
+      "heat_pump": 0,
+      "electric_vehicle": 1,
+      "pv": 1
+    },
+    {
+      "household": 1271,
+      "group": "EV_met_ZP",
+      "heat_pump": 0,
+      "electric_vehicle": 1,
+      "pv": 1
+    },
+    {
+      "household": 1272,
+      "group": "EV_met_ZP",
+      "heat_pump": 0,
+      "electric_vehicle": 1,
+      "pv": 1
+    },
+    {
+      "household": 1273,
+      "group": "EV_met_ZP",
+      "heat_pump": 0,
+      "electric_vehicle": 1,
+      "pv": 1
+    },
+    {
+      "household": 1274,
+      "group": "EV_met_ZP",
+      "heat_pump": 0,
+      "electric_vehicle": 1,
+      "pv": 1
+    },
+    {
+      "household": 1275,
+      "group": "EV_met_ZP",
+      "heat_pump": 0,
+      "electric_vehicle": 1,
+      "pv": 1
+    },
+    {
+      "household": 1276,
+      "group": "EV_met_ZP",
+      "heat_pump": 0,
+      "electric_vehicle": 1,
+      "pv": 1
+    },
+    {
+      "household": 1277,
+      "group": "EV_met_ZP",
+      "heat_pump": 0,
+      "electric_vehicle": 1,
+      "pv": 1
+    },
+    {
+      "household": 1278,
+      "group": "EV_met_ZP",
+      "heat_pump": 0,
+      "electric_vehicle": 1,
+      "pv": 1
+    },
+    {
+      "household": 1279,
+      "group": "EV_met_ZP",
+      "heat_pump": 0,
+      "electric_vehicle": 1,
+      "pv": 1
+    },
+    {
+      "household": 1280,
+      "group": "EV_met_ZP",
+      "heat_pump": 0,
+      "electric_vehicle": 1,
+      "pv": 1
+    },
+    {
+      "household": 1281,
+      "group": "EV_met_ZP",
+      "heat_pump": 0,
+      "electric_vehicle": 1,
+      "pv": 1
+    },
+    {
+      "household": 1282,
+      "group": "EV_met_ZP",
+      "heat_pump": 0,
+      "electric_vehicle": 1,
+      "pv": 1
+    },
+    {
+      "household": 1283,
+      "group": "EV_met_ZP",
+      "heat_pump": 0,
+      "electric_vehicle": 1,
+      "pv": 1
+    },
+    {
+      "household": 1284,
+      "group": "EV_met_ZP",
+      "heat_pump": 0,
+      "electric_vehicle": 1,
+      "pv": 1
+    },
+    {
+      "household": 1285,
+      "group": "EV_met_ZP",
+      "heat_pump": 0,
+      "electric_vehicle": 1,
+      "pv": 1
+    },
+    {
+      "household": 1286,
+      "group": "EV_met_ZP",
+      "heat_pump": 0,
+      "electric_vehicle": 1,
+      "pv": 1
+    },
+    {
+      "household": 1287,
+      "group": "EV_met_ZP",
+      "heat_pump": 0,
+      "electric_vehicle": 1,
+      "pv": 1
+    },
+    {
+      "household": 1288,
+      "group": "EV_met_ZP",
+      "heat_pump": 0,
+      "electric_vehicle": 1,
+      "pv": 1
+    },
+    {
+      "household": 1289,
+      "group": "EV_met_ZP",
+      "heat_pump": 0,
+      "electric_vehicle": 1,
+      "pv": 1
+    },
+    {
+      "household": 1290,
+      "group": "EV_met_ZP",
+      "heat_pump": 0,
+      "electric_vehicle": 1,
+      "pv": 1
+    },
+    {
+      "household": 1291,
+      "group": "EV_met_ZP",
+      "heat_pump": 0,
+      "electric_vehicle": 1,
+      "pv": 1
+    },
+    {
+      "household": 1292,
+      "group": "EV_met_ZP",
+      "heat_pump": 0,
+      "electric_vehicle": 1,
+      "pv": 1
+    },
+    {
+      "household": 1293,
+      "group": "EV_met_ZP",
+      "heat_pump": 0,
+      "electric_vehicle": 1,
+      "pv": 1
+    },
+    {
+      "household": 1294,
+      "group": "EV_met_ZP",
+      "heat_pump": 0,
+      "electric_vehicle": 1,
+      "pv": 1
+    },
+    {
+      "household": 1295,
+      "group": "EV_met_ZP",
+      "heat_pump": 0,
+      "electric_vehicle": 1,
+      "pv": 1
+    },
+    {
+      "household": 1296,
+      "group": "EV_met_ZP",
+      "heat_pump": 0,
+      "electric_vehicle": 1,
+      "pv": 1
+    },
+    {
+      "household": 1297,
+      "group": "EV_met_ZP",
+      "heat_pump": 0,
+      "electric_vehicle": 1,
+      "pv": 1
+    },
+    {
+      "household": 1298,
+      "group": "EV_met_ZP",
+      "heat_pump": 0,
+      "electric_vehicle": 1,
+      "pv": 1
+    },
+    {
+      "household": 1299,
+      "group": "EV_met_ZP",
+      "heat_pump": 0,
+      "electric_vehicle": 1,
+      "pv": 1
+    },
+    {
+      "household": 1300,
+      "group": "EV_met_ZP",
+      "heat_pump": 0,
+      "electric_vehicle": 1,
+      "pv": 1
+    },
+    {
+      "household": 1301,
+      "group": "EV_met_ZP",
+      "heat_pump": 0,
+      "electric_vehicle": 1,
+      "pv": 1
+    },
+    {
+      "household": 1302,
+      "group": "EV_met_ZP",
+      "heat_pump": 0,
+      "electric_vehicle": 1,
+      "pv": 1
+    },
+    {
+      "household": 1303,
+      "group": "EV_met_ZP",
+      "heat_pump": 0,
+      "electric_vehicle": 1,
+      "pv": 1
+    },
+    {
+      "household": 1304,
+      "group": "EV_met_ZP",
+      "heat_pump": 0,
+      "electric_vehicle": 1,
+      "pv": 1
+    },
+    {
+      "household": 1305,
+      "group": "EV_met_ZP",
+      "heat_pump": 0,
+      "electric_vehicle": 1,
+      "pv": 1
+    },
+    {
+      "household": 1306,
+      "group": "EV_met_ZP",
+      "heat_pump": 0,
+      "electric_vehicle": 1,
+      "pv": 1
+    },
+    {
+      "household": 1307,
+      "group": "EV_met_ZP",
+      "heat_pump": 0,
+      "electric_vehicle": 1,
+      "pv": 1
+    },
+    {
+      "household": 1308,
+      "group": "EV_met_ZP",
+      "heat_pump": 0,
+      "electric_vehicle": 1,
+      "pv": 1
+    },
+    {
+      "household": 1309,
+      "group": "EV_met_ZP",
+      "heat_pump": 0,
+      "electric_vehicle": 1,
+      "pv": 1
+    },
+    {
+      "household": 1310,
+      "group": "EV_met_ZP",
+      "heat_pump": 0,
+      "electric_vehicle": 1,
+      "pv": 1
+    },
+    {
+      "household": 1311,
+      "group": "EV_met_ZP",
+      "heat_pump": 0,
+      "electric_vehicle": 1,
+      "pv": 1
+    },
+    {
+      "household": 1312,
+      "group": "EV_met_ZP",
+      "heat_pump": 0,
+      "electric_vehicle": 1,
+      "pv": 1
+    },
+    {
+      "household": 1313,
+      "group": "EV_met_ZP",
+      "heat_pump": 0,
+      "electric_vehicle": 1,
+      "pv": 1
+    },
+    {
+      "household": 1314,
+      "group": "EV_met_ZP",
+      "heat_pump": 0,
+      "electric_vehicle": 1,
+      "pv": 1
+    },
+    {
+      "household": 1315,
+      "group": "EV_met_ZP",
+      "heat_pump": 0,
+      "electric_vehicle": 1,
+      "pv": 1
+    },
+    {
+      "household": 1316,
+      "group": "EV_met_ZP",
+      "heat_pump": 0,
+      "electric_vehicle": 1,
+      "pv": 1
+    },
+    {
+      "household": 1317,
+      "group": "EV_met_ZP",
+      "heat_pump": 0,
+      "electric_vehicle": 1,
+      "pv": 1
+    },
+    {
+      "household": 1318,
+      "group": "EV_met_ZP",
+      "heat_pump": 0,
+      "electric_vehicle": 1,
+      "pv": 1
+    },
+    {
+      "household": 1319,
+      "group": "EV_met_ZP",
+      "heat_pump": 0,
+      "electric_vehicle": 1,
+      "pv": 1
+    },
+    {
+      "household": 1320,
+      "group": "EV_met_ZP",
+      "heat_pump": 0,
+      "electric_vehicle": 1,
+      "pv": 1
+    },
+    {
+      "household": 1321,
+      "group": "EV_met_ZP",
+      "heat_pump": 0,
+      "electric_vehicle": 1,
+      "pv": 1
+    },
+    {
+      "household": 1322,
+      "group": "EV_met_ZP",
+      "heat_pump": 0,
+      "electric_vehicle": 1,
+      "pv": 1
+    },
+    {
+      "household": 1323,
+      "group": "EV_met_ZP",
+      "heat_pump": 0,
+      "electric_vehicle": 1,
+      "pv": 1
+    },
+    {
+      "household": 1324,
+      "group": "EV_met_ZP",
+      "heat_pump": 0,
+      "electric_vehicle": 1,
+      "pv": 1
+    },
+    {
+      "household": 1325,
+      "group": "EV_met_ZP",
+      "heat_pump": 0,
+      "electric_vehicle": 1,
+      "pv": 1
+    },
+    {
+      "household": 1326,
+      "group": "EV_met_ZP",
+      "heat_pump": 0,
+      "electric_vehicle": 1,
+      "pv": 1
+    },
+    {
+      "household": 1327,
+      "group": "EV_met_ZP",
+      "heat_pump": 0,
+      "electric_vehicle": 1,
+      "pv": 1
+    },
+    {
+      "household": 1328,
+      "group": "EV_met_ZP",
+      "heat_pump": 0,
+      "electric_vehicle": 1,
+      "pv": 1
+    },
+    {
+      "household": 1329,
+      "group": "EV_met_ZP",
+      "heat_pump": 0,
+      "electric_vehicle": 1,
+      "pv": 1
+    },
+    {
+      "household": 1330,
+      "group": "EV_met_ZP",
+      "heat_pump": 0,
+      "electric_vehicle": 1,
+      "pv": 1
+    },
+    {
+      "household": 1331,
+      "group": "EV_met_ZP",
+      "heat_pump": 0,
+      "electric_vehicle": 1,
+      "pv": 1
+    },
+    {
+      "household": 1332,
+      "group": "EV_met_ZP",
+      "heat_pump": 0,
+      "electric_vehicle": 1,
+      "pv": 1
+    },
+    {
+      "household": 1333,
+      "group": "EV_met_ZP",
+      "heat_pump": 0,
+      "electric_vehicle": 1,
+      "pv": 1
+    },
+    {
+      "household": 1334,
+      "group": "EV_met_ZP",
+      "heat_pump": 0,
+      "electric_vehicle": 1,
+      "pv": 1
+    },
+    {
+      "household": 1335,
+      "group": "EV_met_ZP",
+      "heat_pump": 0,
+      "electric_vehicle": 1,
+      "pv": 1
+    },
+    {
+      "household": 1336,
+      "group": "EV_met_ZP",
+      "heat_pump": 0,
+      "electric_vehicle": 1,
+      "pv": 1
+    },
+    {
+      "household": 1337,
+      "group": "EV_met_ZP",
+      "heat_pump": 0,
+      "electric_vehicle": 1,
+      "pv": 1
+    },
+    {
+      "household": 1338,
+      "group": "EV_met_ZP",
+      "heat_pump": 0,
+      "electric_vehicle": 1,
+      "pv": 1
+    },
+    {
+      "household": 1339,
+      "group": "EV_met_ZP",
+      "heat_pump": 0,
+      "electric_vehicle": 1,
+      "pv": 1
+    },
+    {
+      "household": 1340,
+      "group": "EV_met_ZP",
+      "heat_pump": 0,
+      "electric_vehicle": 1,
+      "pv": 1
+    },
+    {
+      "household": 1341,
+      "group": "EV_met_ZP",
+      "heat_pump": 0,
+      "electric_vehicle": 1,
+      "pv": 1
+    },
+    {
+      "household": 1342,
+      "group": "EV_met_ZP",
+      "heat_pump": 0,
+      "electric_vehicle": 1,
+      "pv": 1
+    },
+    {
+      "household": 1343,
+      "group": "EV_met_ZP",
+      "heat_pump": 0,
+      "electric_vehicle": 1,
+      "pv": 1
+    },
+    {
+      "household": 1344,
+      "group": "EV_met_ZP",
+      "heat_pump": 0,
+      "electric_vehicle": 1,
+      "pv": 1
+    },
+    {
+      "household": 1345,
+      "group": "EV_met_ZP",
+      "heat_pump": 0,
+      "electric_vehicle": 1,
+      "pv": 1
+    },
+    {
+      "household": 1346,
+      "group": "EV_met_ZP",
+      "heat_pump": 0,
+      "electric_vehicle": 1,
+      "pv": 1
+    },
+    {
+      "household": 1347,
+      "group": "EV_met_ZP",
+      "heat_pump": 0,
+      "electric_vehicle": 1,
+      "pv": 1
+    },
+    {
+      "household": 1348,
+      "group": "EV_met_ZP",
+      "heat_pump": 0,
+      "electric_vehicle": 1,
+      "pv": 1
+    },
+    {
+      "household": 1349,
+      "group": "EV_met_ZP",
+      "heat_pump": 0,
+      "electric_vehicle": 1,
+      "pv": 1
+    },
+    {
+      "household": 1350,
+      "group": "EV_met_ZP",
+      "heat_pump": 0,
+      "electric_vehicle": 1,
+      "pv": 1
+    },
+    {
+      "household": 1351,
+      "group": "EV_met_ZP",
+      "heat_pump": 0,
+      "electric_vehicle": 1,
+      "pv": 1
+    },
+    {
+      "household": 1352,
+      "group": "EV_met_ZP",
+      "heat_pump": 0,
+      "electric_vehicle": 1,
+      "pv": 1
+    },
+    {
+      "household": 1353,
+      "group": "EV_met_ZP",
+      "heat_pump": 0,
+      "electric_vehicle": 1,
+      "pv": 1
+    },
+    {
+      "household": 1354,
+      "group": "EV_met_ZP",
+      "heat_pump": 0,
+      "electric_vehicle": 1,
+      "pv": 1
+    },
+    {
+      "household": 1355,
+      "group": "EV_met_ZP",
+      "heat_pump": 0,
+      "electric_vehicle": 1,
+      "pv": 1
+    },
+    {
+      "household": 1356,
+      "group": "EV_met_ZP",
+      "heat_pump": 0,
+      "electric_vehicle": 1,
+      "pv": 1
+    },
+    {
+      "household": 1357,
+      "group": "EV_met_ZP",
+      "heat_pump": 0,
+      "electric_vehicle": 1,
+      "pv": 1
+    },
+    {
+      "household": 1358,
+      "group": "EV_met_ZP",
+      "heat_pump": 0,
+      "electric_vehicle": 1,
+      "pv": 1
+    },
+    {
+      "household": 1359,
+      "group": "EV_met_ZP",
+      "heat_pump": 0,
+      "electric_vehicle": 1,
+      "pv": 1
+    },
+    {
+      "household": 1360,
+      "group": "EV_met_ZP",
+      "heat_pump": 0,
+      "electric_vehicle": 1,
+      "pv": 1
+    },
+    {
+      "household": 1361,
+      "group": "EV_met_ZP",
+      "heat_pump": 0,
+      "electric_vehicle": 1,
+      "pv": 1
+    },
+    {
+      "household": 1362,
+      "group": "EV_met_ZP",
+      "heat_pump": 0,
+      "electric_vehicle": 1,
+      "pv": 1
+    },
+    {
+      "household": 1363,
+      "group": "EV_met_ZP",
+      "heat_pump": 0,
+      "electric_vehicle": 1,
+      "pv": 1
+    },
+    {
+      "household": 1364,
+      "group": "EV_met_ZP",
+      "heat_pump": 0,
+      "electric_vehicle": 1,
+      "pv": 1
+    },
+    {
+      "household": 1365,
+      "group": "EV_met_ZP",
+      "heat_pump": 0,
+      "electric_vehicle": 1,
+      "pv": 1
+    },
+    {
+      "household": 1366,
+      "group": "EV_met_ZP",
+      "heat_pump": 0,
+      "electric_vehicle": 1,
+      "pv": 1
+    },
+    {
+      "household": 1367,
+      "group": "EV_met_ZP",
+      "heat_pump": 0,
+      "electric_vehicle": 1,
+      "pv": 1
+    },
+    {
+      "household": 1368,
+      "group": "EV_met_ZP",
+      "heat_pump": 0,
+      "electric_vehicle": 1,
+      "pv": 1
+    },
+    {
+      "household": 1369,
+      "group": "EV_met_ZP",
+      "heat_pump": 0,
+      "electric_vehicle": 1,
+      "pv": 1
+    },
+    {
+      "household": 1370,
+      "group": "EV_met_ZP",
+      "heat_pump": 0,
+      "electric_vehicle": 1,
+      "pv": 1
+    },
+    {
+      "household": 1371,
+      "group": "EV_met_ZP",
+      "heat_pump": 0,
+      "electric_vehicle": 1,
+      "pv": 1
+    },
+    {
+      "household": 1372,
+      "group": "EV_met_ZP",
+      "heat_pump": 0,
+      "electric_vehicle": 1,
+      "pv": 1
+    },
+    {
+      "household": 1373,
+      "group": "EV_met_ZP",
+      "heat_pump": 0,
+      "electric_vehicle": 1,
+      "pv": 1
+    },
+    {
+      "household": 1374,
+      "group": "EV_met_ZP",
+      "heat_pump": 0,
+      "electric_vehicle": 1,
+      "pv": 1
+    },
+    {
+      "household": 1375,
+      "group": "EV_met_ZP",
+      "heat_pump": 0,
+      "electric_vehicle": 1,
+      "pv": 1
+    },
+    {
+      "household": 1376,
+      "group": "EV_met_ZP",
+      "heat_pump": 0,
+      "electric_vehicle": 1,
+      "pv": 1
+    },
+    {
+      "household": 1377,
+      "group": "EV_met_ZP",
+      "heat_pump": 0,
+      "electric_vehicle": 1,
+      "pv": 1
+    },
+    {
+      "household": 1378,
+      "group": "EV_met_ZP",
+      "heat_pump": 0,
+      "electric_vehicle": 1,
+      "pv": 1
+    },
+    {
+      "household": 1379,
+      "group": "EV_met_ZP",
+      "heat_pump": 0,
+      "electric_vehicle": 1,
+      "pv": 1
+    },
+    {
+      "household": 1380,
+      "group": "EV_met_ZP",
+      "heat_pump": 0,
+      "electric_vehicle": 1,
+      "pv": 1
+    },
+    {
+      "household": 1381,
+      "group": "EV_met_ZP",
+      "heat_pump": 0,
+      "electric_vehicle": 1,
+      "pv": 1
+    },
+    {
+      "household": 1382,
+      "group": "EV_met_ZP",
+      "heat_pump": 0,
+      "electric_vehicle": 1,
+      "pv": 1
+    },
+    {
+      "household": 1383,
+      "group": "EV_met_ZP",
+      "heat_pump": 0,
+      "electric_vehicle": 1,
+      "pv": 1
+    },
+    {
+      "household": 1384,
+      "group": "EV_met_ZP",
+      "heat_pump": 0,
+      "electric_vehicle": 1,
+      "pv": 1
+    },
+    {
+      "household": 1385,
+      "group": "EV_met_ZP",
+      "heat_pump": 0,
+      "electric_vehicle": 1,
+      "pv": 1
+    },
+    {
+      "household": 1386,
+      "group": "EV_met_ZP",
+      "heat_pump": 0,
+      "electric_vehicle": 1,
+      "pv": 1
+    },
+    {
+      "household": 1387,
+      "group": "EV_met_ZP",
+      "heat_pump": 0,
+      "electric_vehicle": 1,
+      "pv": 1
+    },
+    {
+      "household": 1388,
+      "group": "EV_met_ZP",
+      "heat_pump": 0,
+      "electric_vehicle": 1,
+      "pv": 1
+    },
+    {
+      "household": 1389,
+      "group": "EV_met_ZP",
+      "heat_pump": 0,
+      "electric_vehicle": 1,
+      "pv": 1
+    },
+    {
+      "household": 1390,
+      "group": "EV_met_ZP",
+      "heat_pump": 0,
+      "electric_vehicle": 1,
+      "pv": 1
+    },
+    {
+      "household": 1391,
+      "group": "EV_met_ZP",
+      "heat_pump": 0,
+      "electric_vehicle": 1,
+      "pv": 1
+    },
+    {
+      "household": 1392,
+      "group": "EV_met_ZP",
+      "heat_pump": 0,
+      "electric_vehicle": 1,
+      "pv": 1
+    },
+    {
+      "household": 1393,
+      "group": "EV_met_ZP",
+      "heat_pump": 0,
+      "electric_vehicle": 1,
+      "pv": 1
+    },
+    {
+      "household": 1394,
+      "group": "EV_met_ZP",
+      "heat_pump": 0,
+      "electric_vehicle": 1,
+      "pv": 1
+    },
+    {
+      "household": 1395,
+      "group": "EV_met_ZP",
+      "heat_pump": 0,
+      "electric_vehicle": 1,
+      "pv": 1
+    },
+    {
+      "household": 1396,
+      "group": "EV_met_ZP",
+      "heat_pump": 0,
+      "electric_vehicle": 1,
+      "pv": 1
+    },
+    {
+      "household": 1397,
+      "group": "EV_met_ZP",
+      "heat_pump": 0,
+      "electric_vehicle": 1,
+      "pv": 1
+    },
+    {
+      "household": 1398,
+      "group": "EV_met_ZP",
+      "heat_pump": 0,
+      "electric_vehicle": 1,
+      "pv": 1
+    },
+    {
+      "household": 1399,
+      "group": "EV_met_ZP",
+      "heat_pump": 0,
+      "electric_vehicle": 1,
+      "pv": 1
+    },
+    {
+      "household": 1400,
+      "group": "EV_met_ZP",
+      "heat_pump": 0,
+      "electric_vehicle": 1,
+      "pv": 1
+    },
+    {
+      "household": 1401,
+      "group": "EV_met_ZP",
+      "heat_pump": 0,
+      "electric_vehicle": 1,
+      "pv": 1
+    },
+    {
+      "household": 1402,
+      "group": "EV_met_ZP",
+      "heat_pump": 0,
+      "electric_vehicle": 1,
+      "pv": 1
+    },
+    {
+      "household": 1403,
+      "group": "EV_met_ZP",
+      "heat_pump": 0,
+      "electric_vehicle": 1,
+      "pv": 1
+    },
+    {
+      "household": 1404,
+      "group": "EV_met_ZP",
+      "heat_pump": 0,
+      "electric_vehicle": 1,
+      "pv": 1
+    },
+    {
+      "household": 1405,
+      "group": "EV_met_ZP",
+      "heat_pump": 0,
+      "electric_vehicle": 1,
+      "pv": 1
+    },
+    {
+      "household": 1406,
+      "group": "EV_met_ZP",
+      "heat_pump": 0,
+      "electric_vehicle": 1,
+      "pv": 1
+    },
+    {
+      "household": 1407,
+      "group": "EV_met_ZP",
+      "heat_pump": 0,
+      "electric_vehicle": 1,
+      "pv": 1
+    },
+    {
+      "household": 1408,
+      "group": "EV_met_ZP",
+      "heat_pump": 0,
+      "electric_vehicle": 1,
+      "pv": 1
+    },
+    {
+      "household": 1409,
+      "group": "EV_met_ZP",
+      "heat_pump": 0,
+      "electric_vehicle": 1,
+      "pv": 1
+    },
+    {
+      "household": 1410,
+      "group": "EV_met_ZP",
+      "heat_pump": 0,
+      "electric_vehicle": 1,
+      "pv": 1
+    },
+    {
+      "household": 1411,
+      "group": "EV_met_ZP",
+      "heat_pump": 0,
+      "electric_vehicle": 1,
+      "pv": 1
+    },
+    {
+      "household": 1412,
+      "group": "EV_met_ZP",
+      "heat_pump": 0,
+      "electric_vehicle": 1,
+      "pv": 1
+    },
+    {
+      "household": 1413,
+      "group": "EV_met_ZP",
+      "heat_pump": 0,
+      "electric_vehicle": 1,
+      "pv": 1
+    },
+    {
+      "household": 1414,
+      "group": "EV_met_ZP",
+      "heat_pump": 0,
+      "electric_vehicle": 1,
+      "pv": 1
+    },
+    {
+      "household": 1415,
+      "group": "EV_met_ZP",
+      "heat_pump": 0,
+      "electric_vehicle": 1,
+      "pv": 1
+    },
+    {
+      "household": 1416,
+      "group": "EV_met_ZP",
+      "heat_pump": 0,
+      "electric_vehicle": 1,
+      "pv": 1
+    },
+    {
+      "household": 1417,
+      "group": "EV_met_ZP",
+      "heat_pump": 0,
+      "electric_vehicle": 1,
+      "pv": 1
+    },
+    {
+      "household": 1418,
+      "group": "EV_met_ZP",
+      "heat_pump": 0,
+      "electric_vehicle": 1,
+      "pv": 1
+    },
+    {
+      "household": 1419,
+      "group": "EV_met_ZP",
+      "heat_pump": 0,
+      "electric_vehicle": 1,
+      "pv": 1
+    },
+    {
+      "household": 1420,
+      "group": "EV_met_ZP",
+      "heat_pump": 0,
+      "electric_vehicle": 1,
+      "pv": 1
+    },
+    {
+      "household": 1421,
+      "group": "EV_met_ZP",
+      "heat_pump": 0,
+      "electric_vehicle": 1,
+      "pv": 1
+    },
+    {
+      "household": 1422,
+      "group": "EV_met_ZP",
+      "heat_pump": 0,
+      "electric_vehicle": 1,
+      "pv": 1
+    },
+    {
+      "household": 1423,
+      "group": "EV_met_ZP",
+      "heat_pump": 0,
+      "electric_vehicle": 1,
+      "pv": 1
+    },
+    {
+      "household": 1424,
+      "group": "EV_met_ZP",
+      "heat_pump": 0,
+      "electric_vehicle": 1,
+      "pv": 1
+    },
+    {
+      "household": 1425,
+      "group": "EV_met_ZP",
+      "heat_pump": 0,
+      "electric_vehicle": 1,
+      "pv": 1
+    },
+    {
+      "household": 1426,
+      "group": "EV_met_ZP",
+      "heat_pump": 0,
+      "electric_vehicle": 1,
+      "pv": 1
+    },
+    {
+      "household": 1427,
+      "group": "EV_met_ZP",
+      "heat_pump": 0,
+      "electric_vehicle": 1,
+      "pv": 1
+    },
+    {
+      "household": 1428,
+      "group": "EV_met_ZP",
+      "heat_pump": 0,
+      "electric_vehicle": 1,
+      "pv": 1
+    },
+    {
+      "household": 1429,
+      "group": "EV_met_ZP",
+      "heat_pump": 0,
+      "electric_vehicle": 1,
+      "pv": 1
+    },
+    {
+      "household": 1430,
+      "group": "EV_met_ZP",
+      "heat_pump": 0,
+      "electric_vehicle": 1,
+      "pv": 1
+    },
+    {
+      "household": 1431,
+      "group": "EV_met_ZP",
+      "heat_pump": 0,
+      "electric_vehicle": 1,
+      "pv": 1
+    },
+    {
+      "household": 1432,
+      "group": "EV_met_ZP",
+      "heat_pump": 0,
+      "electric_vehicle": 1,
+      "pv": 1
+    },
+    {
+      "household": 1433,
+      "group": "EV_met_ZP",
+      "heat_pump": 0,
+      "electric_vehicle": 1,
+      "pv": 1
+    },
+    {
+      "household": 1434,
+      "group": "EV_met_ZP",
+      "heat_pump": 0,
+      "electric_vehicle": 1,
+      "pv": 1
+    },
+    {
+      "household": 1435,
+      "group": "EV_met_ZP",
+      "heat_pump": 0,
+      "electric_vehicle": 1,
+      "pv": 1
+    },
+    {
+      "household": 1436,
+      "group": "EV_met_ZP",
+      "heat_pump": 0,
+      "electric_vehicle": 1,
+      "pv": 1
+    },
+    {
+      "household": 1437,
+      "group": "EV_met_ZP",
+      "heat_pump": 0,
+      "electric_vehicle": 1,
+      "pv": 1
+    },
+    {
+      "household": 1438,
+      "group": "EV_met_ZP",
+      "heat_pump": 0,
+      "electric_vehicle": 1,
+      "pv": 1
+    },
+    {
+      "household": 1439,
+      "group": "EV_met_ZP",
+      "heat_pump": 0,
+      "electric_vehicle": 1,
+      "pv": 1
+    },
+    {
+      "household": 1440,
+      "group": "EV_met_ZP",
+      "heat_pump": 0,
+      "electric_vehicle": 1,
+      "pv": 1
+    },
+    {
+      "household": 1441,
+      "group": "EV_met_ZP",
+      "heat_pump": 0,
+      "electric_vehicle": 1,
+      "pv": 1
+    },
+    {
+      "household": 1442,
+      "group": "EV_met_ZP",
+      "heat_pump": 0,
+      "electric_vehicle": 1,
+      "pv": 1
+    },
+    {
+      "household": 1443,
+      "group": "EV_met_ZP",
+      "heat_pump": 0,
+      "electric_vehicle": 1,
+      "pv": 1
+    },
+    {
+      "household": 1444,
+      "group": "EV_met_ZP",
+      "heat_pump": 0,
+      "electric_vehicle": 1,
+      "pv": 1
+    },
+    {
+      "household": 1445,
+      "group": "EV_met_ZP",
+      "heat_pump": 0,
+      "electric_vehicle": 1,
+      "pv": 1
+    },
+    {
+      "household": 1446,
+      "group": "EV_met_ZP",
+      "heat_pump": 0,
+      "electric_vehicle": 1,
+      "pv": 1
+    },
+    {
+      "household": 1447,
+      "group": "EV_met_ZP",
+      "heat_pump": 0,
+      "electric_vehicle": 1,
+      "pv": 1
+    },
+    {
+      "household": 1448,
+      "group": "EV_met_ZP",
+      "heat_pump": 0,
+      "electric_vehicle": 1,
+      "pv": 1
+    },
+    {
+      "household": 1449,
+      "group": "EV_met_ZP",
+      "heat_pump": 0,
+      "electric_vehicle": 1,
+      "pv": 1
+    },
+    {
+      "household": 1450,
+      "group": "EV_met_ZP",
+      "heat_pump": 0,
+      "electric_vehicle": 1,
+      "pv": 1
+    },
+    {
+      "household": 1451,
+      "group": "EV_met_ZP",
+      "heat_pump": 0,
+      "electric_vehicle": 1,
+      "pv": 1
+    },
+    {
+      "household": 1452,
+      "group": "EV_met_ZP",
+      "heat_pump": 0,
+      "electric_vehicle": 1,
+      "pv": 1
+    },
+    {
+      "household": 1453,
+      "group": "EV_met_ZP",
+      "heat_pump": 0,
+      "electric_vehicle": 1,
+      "pv": 1
+    },
+    {
+      "household": 1454,
+      "group": "EV_met_ZP",
+      "heat_pump": 0,
+      "electric_vehicle": 1,
+      "pv": 1
+    },
+    {
+      "household": 1455,
+      "group": "EV_met_ZP",
+      "heat_pump": 0,
+      "electric_vehicle": 1,
+      "pv": 1
+    },
+    {
+      "household": 1456,
+      "group": "EV_met_ZP",
+      "heat_pump": 0,
+      "electric_vehicle": 1,
+      "pv": 1
+    },
+    {
+      "household": 1457,
+      "group": "EV_met_ZP",
+      "heat_pump": 0,
+      "electric_vehicle": 1,
+      "pv": 1
+    },
+    {
+      "household": 1458,
+      "group": "EV_met_ZP",
+      "heat_pump": 0,
+      "electric_vehicle": 1,
+      "pv": 1
+    },
+    {
+      "household": 1459,
+      "group": "EV_met_ZP",
+      "heat_pump": 0,
+      "electric_vehicle": 1,
+      "pv": 1
+    },
+    {
+      "household": 1460,
+      "group": "EV_met_ZP",
+      "heat_pump": 0,
+      "electric_vehicle": 1,
+      "pv": 1
+    },
+    {
+      "household": 1461,
+      "group": "EV_met_ZP",
+      "heat_pump": 0,
+      "electric_vehicle": 1,
+      "pv": 1
+    },
+    {
+      "household": 1462,
+      "group": "EV_met_ZP",
+      "heat_pump": 0,
+      "electric_vehicle": 1,
+      "pv": 1
+    },
+    {
+      "household": 1463,
+      "group": "EV_met_ZP",
+      "heat_pump": 0,
+      "electric_vehicle": 1,
+      "pv": 1
+    },
+    {
+      "household": 1464,
+      "group": "EV_met_ZP",
+      "heat_pump": 0,
+      "electric_vehicle": 1,
+      "pv": 1
+    },
+    {
+      "household": 1465,
+      "group": "EV_met_ZP",
+      "heat_pump": 0,
+      "electric_vehicle": 1,
+      "pv": 1
+    },
+    {
+      "household": 1466,
+      "group": "EV_met_ZP",
+      "heat_pump": 0,
+      "electric_vehicle": 1,
+      "pv": 1
+    },
+    {
+      "household": 1467,
+      "group": "EV_met_ZP",
+      "heat_pump": 0,
+      "electric_vehicle": 1,
+      "pv": 1
+    },
+    {
+      "household": 1468,
+      "group": "EV_met_ZP",
+      "heat_pump": 0,
+      "electric_vehicle": 1,
+      "pv": 1
+    },
+    {
+      "household": 1469,
+      "group": "EV_met_ZP",
+      "heat_pump": 0,
+      "electric_vehicle": 1,
+      "pv": 1
+    },
+    {
+      "household": 1470,
+      "group": "EV_met_ZP",
+      "heat_pump": 0,
+      "electric_vehicle": 1,
+      "pv": 1
+    },
+    {
+      "household": 1471,
+      "group": "EV_met_ZP",
+      "heat_pump": 0,
+      "electric_vehicle": 1,
+      "pv": 1
+    },
+    {
+      "household": 1472,
+      "group": "EV_met_ZP",
+      "heat_pump": 0,
+      "electric_vehicle": 1,
+      "pv": 1
+    },
+    {
+      "household": 1473,
+      "group": "EV_met_ZP",
+      "heat_pump": 0,
+      "electric_vehicle": 1,
+      "pv": 1
+    },
+    {
+      "household": 1474,
+      "group": "EV_met_ZP",
+      "heat_pump": 0,
+      "electric_vehicle": 1,
+      "pv": 1
+    },
+    {
+      "household": 1475,
+      "group": "EV_met_ZP",
+      "heat_pump": 0,
+      "electric_vehicle": 1,
+      "pv": 1
+    },
+    {
+      "household": 1476,
+      "group": "EV_met_ZP",
+      "heat_pump": 0,
+      "electric_vehicle": 1,
+      "pv": 1
+    },
+    {
+      "household": 1477,
+      "group": "EV_met_ZP",
+      "heat_pump": 0,
+      "electric_vehicle": 1,
+      "pv": 1
+    },
+    {
+      "household": 1478,
+      "group": "EV_met_ZP",
+      "heat_pump": 0,
+      "electric_vehicle": 1,
+      "pv": 1
+    },
+    {
+      "household": 1479,
+      "group": "EV_met_ZP",
+      "heat_pump": 0,
+      "electric_vehicle": 1,
+      "pv": 1
+    },
+    {
+      "household": 1480,
+      "group": "EV_met_ZP",
+      "heat_pump": 0,
+      "electric_vehicle": 1,
+      "pv": 1
+    },
+    {
+      "household": 1481,
+      "group": "EV_met_ZP",
+      "heat_pump": 0,
+      "electric_vehicle": 1,
+      "pv": 1
+    },
+    {
+      "household": 1482,
+      "group": "EV_met_ZP",
+      "heat_pump": 0,
+      "electric_vehicle": 1,
+      "pv": 1
+    },
+    {
+      "household": 1483,
+      "group": "EV_met_ZP",
+      "heat_pump": 0,
+      "electric_vehicle": 1,
+      "pv": 1
+    },
+    {
+      "household": 1484,
+      "group": "EV_met_ZP",
+      "heat_pump": 0,
+      "electric_vehicle": 1,
+      "pv": 1
+    },
+    {
+      "household": 1485,
+      "group": "EV_met_ZP",
+      "heat_pump": 0,
+      "electric_vehicle": 1,
+      "pv": 1
+    },
+    {
+      "household": 1486,
+      "group": "EV_met_ZP",
+      "heat_pump": 0,
+      "electric_vehicle": 1,
+      "pv": 1
+    },
+    {
+      "household": 1487,
+      "group": "EV_met_ZP",
+      "heat_pump": 0,
+      "electric_vehicle": 1,
+      "pv": 1
+    },
+    {
+      "household": 1488,
+      "group": "EV_met_ZP",
+      "heat_pump": 0,
+      "electric_vehicle": 1,
+      "pv": 1
+    },
+    {
+      "household": 1489,
+      "group": "EV_met_ZP",
+      "heat_pump": 0,
+      "electric_vehicle": 1,
+      "pv": 1
+    },
+    {
+      "household": 1490,
+      "group": "EV_met_ZP",
+      "heat_pump": 0,
+      "electric_vehicle": 1,
+      "pv": 1
+    },
+    {
+      "household": 1491,
+      "group": "EV_met_ZP",
+      "heat_pump": 0,
+      "electric_vehicle": 1,
+      "pv": 1
+    },
+    {
+      "household": 1492,
+      "group": "EV_met_ZP",
+      "heat_pump": 0,
+      "electric_vehicle": 1,
+      "pv": 1
+    },
+    {
+      "household": 1493,
+      "group": "EV_met_ZP",
+      "heat_pump": 0,
+      "electric_vehicle": 1,
+      "pv": 1
+    },
+    {
+      "household": 1494,
+      "group": "EV_met_ZP",
+      "heat_pump": 0,
+      "electric_vehicle": 1,
+      "pv": 1
+    },
+    {
+      "household": 1495,
+      "group": "EV_met_ZP",
+      "heat_pump": 0,
+      "electric_vehicle": 1,
+      "pv": 1
+    },
+    {
+      "household": 1496,
+      "group": "EV_met_ZP",
+      "heat_pump": 0,
+      "electric_vehicle": 1,
+      "pv": 1
+    },
+    {
+      "household": 1497,
+      "group": "EV_met_ZP",
+      "heat_pump": 0,
+      "electric_vehicle": 1,
+      "pv": 1
+    },
+    {
+      "household": 1498,
+      "group": "EV_met_ZP",
+      "heat_pump": 0,
+      "electric_vehicle": 1,
+      "pv": 1
+    },
+    {
+      "household": 1499,
+      "group": "EV_met_ZP",
+      "heat_pump": 0,
+      "electric_vehicle": 1,
+      "pv": 1
+    },
+    {
+      "household": 1500,
+      "group": "EV_met_ZP",
+      "heat_pump": 0,
+      "electric_vehicle": 1,
+      "pv": 1
+    },
+    {
+      "household": 1801,
+      "group": "WP_EV_met_ZP",
+      "heat_pump": 1,
+      "electric_vehicle": 1,
+      "pv": 1
+    },
+    {
+      "household": 1802,
+      "group": "WP_EV_met_ZP",
+      "heat_pump": 1,
+      "electric_vehicle": 1,
+      "pv": 1
+    },
+    {
+      "household": 1803,
+      "group": "WP_EV_met_ZP",
+      "heat_pump": 1,
+      "electric_vehicle": 1,
+      "pv": 1
+    },
+    {
+      "household": 1804,
+      "group": "WP_EV_met_ZP",
+      "heat_pump": 1,
+      "electric_vehicle": 1,
+      "pv": 1
+    },
+    {
+      "household": 1805,
+      "group": "WP_EV_met_ZP",
+      "heat_pump": 1,
+      "electric_vehicle": 1,
+      "pv": 1
+    },
+    {
+      "household": 1806,
+      "group": "WP_EV_met_ZP",
+      "heat_pump": 1,
+      "electric_vehicle": 1,
+      "pv": 1
+    },
+    {
+      "household": 1807,
+      "group": "WP_EV_met_ZP",
+      "heat_pump": 1,
+      "electric_vehicle": 1,
+      "pv": 1
+    },
+    {
+      "household": 1808,
+      "group": "WP_EV_met_ZP",
+      "heat_pump": 1,
+      "electric_vehicle": 1,
+      "pv": 1
+    },
+    {
+      "household": 1809,
+      "group": "WP_EV_met_ZP",
+      "heat_pump": 1,
+      "electric_vehicle": 1,
+      "pv": 1
+    },
+    {
+      "household": 1810,
+      "group": "WP_EV_met_ZP",
+      "heat_pump": 1,
+      "electric_vehicle": 1,
+      "pv": 1
+    },
+    {
+      "household": 1811,
+      "group": "WP_EV_met_ZP",
+      "heat_pump": 1,
+      "electric_vehicle": 1,
+      "pv": 1
+    },
+    {
+      "household": 1812,
+      "group": "WP_EV_met_ZP",
+      "heat_pump": 1,
+      "electric_vehicle": 1,
+      "pv": 1
+    },
+    {
+      "household": 1813,
+      "group": "WP_EV_met_ZP",
+      "heat_pump": 1,
+      "electric_vehicle": 1,
+      "pv": 1
+    },
+    {
+      "household": 1814,
+      "group": "WP_EV_met_ZP",
+      "heat_pump": 1,
+      "electric_vehicle": 1,
+      "pv": 1
+    },
+    {
+      "household": 1815,
+      "group": "WP_EV_met_ZP",
+      "heat_pump": 1,
+      "electric_vehicle": 1,
+      "pv": 1
+    },
+    {
+      "household": 1816,
+      "group": "WP_EV_met_ZP",
+      "heat_pump": 1,
+      "electric_vehicle": 1,
+      "pv": 1
+    },
+    {
+      "household": 1817,
+      "group": "WP_EV_met_ZP",
+      "heat_pump": 1,
+      "electric_vehicle": 1,
+      "pv": 1
+    },
+    {
+      "household": 1818,
+      "group": "WP_EV_met_ZP",
+      "heat_pump": 1,
+      "electric_vehicle": 1,
+      "pv": 1
+    },
+    {
+      "household": 1819,
+      "group": "WP_EV_met_ZP",
+      "heat_pump": 1,
+      "electric_vehicle": 1,
+      "pv": 1
+    },
+    {
+      "household": 1820,
+      "group": "WP_EV_met_ZP",
+      "heat_pump": 1,
+      "electric_vehicle": 1,
+      "pv": 1
+    },
+    {
+      "household": 1821,
+      "group": "WP_EV_met_ZP",
+      "heat_pump": 1,
+      "electric_vehicle": 1,
+      "pv": 1
+    },
+    {
+      "household": 1822,
+      "group": "WP_EV_met_ZP",
+      "heat_pump": 1,
+      "electric_vehicle": 1,
+      "pv": 1
+    },
+    {
+      "household": 1823,
+      "group": "WP_EV_met_ZP",
+      "heat_pump": 1,
+      "electric_vehicle": 1,
+      "pv": 1
+    },
+    {
+      "household": 1824,
+      "group": "WP_EV_met_ZP",
+      "heat_pump": 1,
+      "electric_vehicle": 1,
+      "pv": 1
+    },
+    {
+      "household": 1825,
+      "group": "WP_EV_met_ZP",
+      "heat_pump": 1,
+      "electric_vehicle": 1,
+      "pv": 1
+    },
+    {
+      "household": 1826,
+      "group": "WP_EV_met_ZP",
+      "heat_pump": 1,
+      "electric_vehicle": 1,
+      "pv": 1
+    },
+    {
+      "household": 1827,
+      "group": "WP_EV_met_ZP",
+      "heat_pump": 1,
+      "electric_vehicle": 1,
+      "pv": 1
+    },
+    {
+      "household": 1828,
+      "group": "WP_EV_met_ZP",
+      "heat_pump": 1,
+      "electric_vehicle": 1,
+      "pv": 1
+    },
+    {
+      "household": 1829,
+      "group": "WP_EV_met_ZP",
+      "heat_pump": 1,
+      "electric_vehicle": 1,
+      "pv": 1
+    },
+    {
+      "household": 1830,
+      "group": "WP_EV_met_ZP",
+      "heat_pump": 1,
+      "electric_vehicle": 1,
+      "pv": 1
+    },
+    {
+      "household": 1831,
+      "group": "WP_EV_met_ZP",
+      "heat_pump": 1,
+      "electric_vehicle": 1,
+      "pv": 1
+    },
+    {
+      "household": 1832,
+      "group": "WP_EV_met_ZP",
+      "heat_pump": 1,
+      "electric_vehicle": 1,
+      "pv": 1
+    },
+    {
+      "household": 1833,
+      "group": "WP_EV_met_ZP",
+      "heat_pump": 1,
+      "electric_vehicle": 1,
+      "pv": 1
+    },
+    {
+      "household": 1834,
+      "group": "WP_EV_met_ZP",
+      "heat_pump": 1,
+      "electric_vehicle": 1,
+      "pv": 1
+    },
+    {
+      "household": 1835,
+      "group": "WP_EV_met_ZP",
+      "heat_pump": 1,
+      "electric_vehicle": 1,
+      "pv": 1
+    },
+    {
+      "household": 1836,
+      "group": "WP_EV_met_ZP",
+      "heat_pump": 1,
+      "electric_vehicle": 1,
+      "pv": 1
+    },
+    {
+      "household": 1837,
+      "group": "WP_EV_met_ZP",
+      "heat_pump": 1,
+      "electric_vehicle": 1,
+      "pv": 1
+    },
+    {
+      "household": 1838,
+      "group": "WP_EV_met_ZP",
+      "heat_pump": 1,
+      "electric_vehicle": 1,
+      "pv": 1
+    },
+    {
+      "household": 1839,
+      "group": "WP_EV_met_ZP",
+      "heat_pump": 1,
+      "electric_vehicle": 1,
+      "pv": 1
+    },
+    {
+      "household": 1840,
+      "group": "WP_EV_met_ZP",
+      "heat_pump": 1,
+      "electric_vehicle": 1,
+      "pv": 1
+    },
+    {
+      "household": 1841,
+      "group": "WP_EV_met_ZP",
+      "heat_pump": 1,
+      "electric_vehicle": 1,
+      "pv": 1
+    },
+    {
+      "household": 1842,
+      "group": "WP_EV_met_ZP",
+      "heat_pump": 1,
+      "electric_vehicle": 1,
+      "pv": 1
+    },
+    {
+      "household": 1843,
+      "group": "WP_EV_met_ZP",
+      "heat_pump": 1,
+      "electric_vehicle": 1,
+      "pv": 1
+    },
+    {
+      "household": 1844,
+      "group": "WP_EV_met_ZP",
+      "heat_pump": 1,
+      "electric_vehicle": 1,
+      "pv": 1
+    },
+    {
+      "household": 1845,
+      "group": "WP_EV_met_ZP",
+      "heat_pump": 1,
+      "electric_vehicle": 1,
+      "pv": 1
+    },
+    {
+      "household": 1846,
+      "group": "WP_EV_met_ZP",
+      "heat_pump": 1,
+      "electric_vehicle": 1,
+      "pv": 1
+    },
+    {
+      "household": 1847,
+      "group": "WP_EV_met_ZP",
+      "heat_pump": 1,
+      "electric_vehicle": 1,
+      "pv": 1
+    },
+    {
+      "household": 1848,
+      "group": "WP_EV_met_ZP",
+      "heat_pump": 1,
+      "electric_vehicle": 1,
+      "pv": 1
+    },
+    {
+      "household": 1849,
+      "group": "WP_EV_met_ZP",
+      "heat_pump": 1,
+      "electric_vehicle": 1,
+      "pv": 1
+    },
+    {
+      "household": 1850,
+      "group": "WP_EV_met_ZP",
+      "heat_pump": 1,
+      "electric_vehicle": 1,
+      "pv": 1
+    },
+    {
+      "household": 1851,
+      "group": "WP_EV_met_ZP",
+      "heat_pump": 1,
+      "electric_vehicle": 1,
+      "pv": 1
+    },
+    {
+      "household": 1852,
+      "group": "WP_EV_met_ZP",
+      "heat_pump": 1,
+      "electric_vehicle": 1,
+      "pv": 1
+    },
+    {
+      "household": 1853,
+      "group": "WP_EV_met_ZP",
+      "heat_pump": 1,
+      "electric_vehicle": 1,
+      "pv": 1
+    },
+    {
+      "household": 1854,
+      "group": "WP_EV_met_ZP",
+      "heat_pump": 1,
+      "electric_vehicle": 1,
+      "pv": 1
+    },
+    {
+      "household": 1855,
+      "group": "WP_EV_met_ZP",
+      "heat_pump": 1,
+      "electric_vehicle": 1,
+      "pv": 1
+    },
+    {
+      "household": 1856,
+      "group": "WP_EV_met_ZP",
+      "heat_pump": 1,
+      "electric_vehicle": 1,
+      "pv": 1
+    },
+    {
+      "household": 1857,
+      "group": "WP_EV_met_ZP",
+      "heat_pump": 1,
+      "electric_vehicle": 1,
+      "pv": 1
+    },
+    {
+      "household": 1858,
+      "group": "WP_EV_met_ZP",
+      "heat_pump": 1,
+      "electric_vehicle": 1,
+      "pv": 1
+    },
+    {
+      "household": 1859,
+      "group": "WP_EV_met_ZP",
+      "heat_pump": 1,
+      "electric_vehicle": 1,
+      "pv": 1
+    },
+    {
+      "household": 1860,
+      "group": "WP_EV_met_ZP",
+      "heat_pump": 1,
+      "electric_vehicle": 1,
+      "pv": 1
+    },
+    {
+      "household": 1861,
+      "group": "WP_EV_met_ZP",
+      "heat_pump": 1,
+      "electric_vehicle": 1,
+      "pv": 1
+    },
+    {
+      "household": 1862,
+      "group": "WP_EV_met_ZP",
+      "heat_pump": 1,
+      "electric_vehicle": 1,
+      "pv": 1
+    },
+    {
+      "household": 1863,
+      "group": "WP_EV_met_ZP",
+      "heat_pump": 1,
+      "electric_vehicle": 1,
+      "pv": 1
+    },
+    {
+      "household": 1864,
+      "group": "WP_EV_met_ZP",
+      "heat_pump": 1,
+      "electric_vehicle": 1,
+      "pv": 1
+    },
+    {
+      "household": 1865,
+      "group": "WP_EV_met_ZP",
+      "heat_pump": 1,
+      "electric_vehicle": 1,
+      "pv": 1
+    },
+    {
+      "household": 1866,
+      "group": "WP_EV_met_ZP",
+      "heat_pump": 1,
+      "electric_vehicle": 1,
+      "pv": 1
+    },
+    {
+      "household": 1867,
+      "group": "WP_EV_met_ZP",
+      "heat_pump": 1,
+      "electric_vehicle": 1,
+      "pv": 1
+    },
+    {
+      "household": 1868,
+      "group": "WP_EV_met_ZP",
+      "heat_pump": 1,
+      "electric_vehicle": 1,
+      "pv": 1
+    },
+    {
+      "household": 1869,
+      "group": "WP_EV_met_ZP",
+      "heat_pump": 1,
+      "electric_vehicle": 1,
+      "pv": 1
+    },
+    {
+      "household": 1870,
+      "group": "WP_EV_met_ZP",
+      "heat_pump": 1,
+      "electric_vehicle": 1,
+      "pv": 1
+    },
+    {
+      "household": 1871,
+      "group": "WP_EV_met_ZP",
+      "heat_pump": 1,
+      "electric_vehicle": 1,
+      "pv": 1
+    },
+    {
+      "household": 1872,
+      "group": "WP_EV_met_ZP",
+      "heat_pump": 1,
+      "electric_vehicle": 1,
+      "pv": 1
+    },
+    {
+      "household": 1873,
+      "group": "WP_EV_met_ZP",
+      "heat_pump": 1,
+      "electric_vehicle": 1,
+      "pv": 1
+    },
+    {
+      "household": 1874,
+      "group": "WP_EV_met_ZP",
+      "heat_pump": 1,
+      "electric_vehicle": 1,
+      "pv": 1
+    },
+    {
+      "household": 1875,
+      "group": "WP_EV_met_ZP",
+      "heat_pump": 1,
+      "electric_vehicle": 1,
+      "pv": 1
+    },
+    {
+      "household": 1876,
+      "group": "WP_EV_met_ZP",
+      "heat_pump": 1,
+      "electric_vehicle": 1,
+      "pv": 1
+    },
+    {
+      "household": 1877,
+      "group": "WP_EV_met_ZP",
+      "heat_pump": 1,
+      "electric_vehicle": 1,
+      "pv": 1
+    },
+    {
+      "household": 1878,
+      "group": "WP_EV_met_ZP",
+      "heat_pump": 1,
+      "electric_vehicle": 1,
+      "pv": 1
+    },
+    {
+      "household": 1879,
+      "group": "WP_EV_met_ZP",
+      "heat_pump": 1,
+      "electric_vehicle": 1,
+      "pv": 1
+    },
+    {
+      "household": 1880,
+      "group": "WP_EV_met_ZP",
+      "heat_pump": 1,
+      "electric_vehicle": 1,
+      "pv": 1
+    },
+    {
+      "household": 1881,
+      "group": "WP_EV_met_ZP",
+      "heat_pump": 1,
+      "electric_vehicle": 1,
+      "pv": 1
+    },
+    {
+      "household": 1882,
+      "group": "WP_EV_met_ZP",
+      "heat_pump": 1,
+      "electric_vehicle": 1,
+      "pv": 1
+    },
+    {
+      "household": 1883,
+      "group": "WP_EV_met_ZP",
+      "heat_pump": 1,
+      "electric_vehicle": 1,
+      "pv": 1
+    },
+    {
+      "household": 1884,
+      "group": "WP_EV_met_ZP",
+      "heat_pump": 1,
+      "electric_vehicle": 1,
+      "pv": 1
+    },
+    {
+      "household": 1885,
+      "group": "WP_EV_met_ZP",
+      "heat_pump": 1,
+      "electric_vehicle": 1,
+      "pv": 1
+    },
+    {
+      "household": 1886,
+      "group": "WP_EV_met_ZP",
+      "heat_pump": 1,
+      "electric_vehicle": 1,
+      "pv": 1
+    },
+    {
+      "household": 1887,
+      "group": "WP_EV_met_ZP",
+      "heat_pump": 1,
+      "electric_vehicle": 1,
+      "pv": 1
+    },
+    {
+      "household": 1888,
+      "group": "WP_EV_met_ZP",
+      "heat_pump": 1,
+      "electric_vehicle": 1,
+      "pv": 1
+    },
+    {
+      "household": 1889,
+      "group": "WP_EV_met_ZP",
+      "heat_pump": 1,
+      "electric_vehicle": 1,
+      "pv": 1
+    },
+    {
+      "household": 1890,
+      "group": "WP_EV_met_ZP",
+      "heat_pump": 1,
+      "electric_vehicle": 1,
+      "pv": 1
+    },
+    {
+      "household": 1891,
+      "group": "WP_EV_met_ZP",
+      "heat_pump": 1,
+      "electric_vehicle": 1,
+      "pv": 1
+    },
+    {
+      "household": 1892,
+      "group": "WP_EV_met_ZP",
+      "heat_pump": 1,
+      "electric_vehicle": 1,
+      "pv": 1
+    },
+    {
+      "household": 1893,
+      "group": "WP_EV_met_ZP",
+      "heat_pump": 1,
+      "electric_vehicle": 1,
+      "pv": 1
+    },
+    {
+      "household": 1894,
+      "group": "WP_EV_met_ZP",
+      "heat_pump": 1,
+      "electric_vehicle": 1,
+      "pv": 1
+    },
+    {
+      "household": 1895,
+      "group": "WP_EV_met_ZP",
+      "heat_pump": 1,
+      "electric_vehicle": 1,
+      "pv": 1
+    },
+    {
+      "household": 1896,
+      "group": "WP_EV_met_ZP",
+      "heat_pump": 1,
+      "electric_vehicle": 1,
+      "pv": 1
+    },
+    {
+      "household": 1897,
+      "group": "WP_EV_met_ZP",
+      "heat_pump": 1,
+      "electric_vehicle": 1,
+      "pv": 1
+    },
+    {
+      "household": 1898,
+      "group": "WP_EV_met_ZP",
+      "heat_pump": 1,
+      "electric_vehicle": 1,
+      "pv": 1
+    },
+    {
+      "household": 1899,
+      "group": "WP_EV_met_ZP",
+      "heat_pump": 1,
+      "electric_vehicle": 1,
+      "pv": 1
+    },
+    {
+      "household": 1900,
+      "group": "WP_EV_met_ZP",
+      "heat_pump": 1,
+      "electric_vehicle": 1,
+      "pv": 1
+    },
+    {
+      "household": 1901,
+      "group": "WP_EV_met_ZP",
+      "heat_pump": 1,
+      "electric_vehicle": 1,
+      "pv": 1
+    },
+    {
+      "household": 1902,
+      "group": "WP_EV_met_ZP",
+      "heat_pump": 1,
+      "electric_vehicle": 1,
+      "pv": 1
+    },
+    {
+      "household": 1903,
+      "group": "WP_EV_met_ZP",
+      "heat_pump": 1,
+      "electric_vehicle": 1,
+      "pv": 1
+    },
+    {
+      "household": 1904,
+      "group": "WP_EV_met_ZP",
+      "heat_pump": 1,
+      "electric_vehicle": 1,
+      "pv": 1
+    },
+    {
+      "household": 1905,
+      "group": "WP_EV_met_ZP",
+      "heat_pump": 1,
+      "electric_vehicle": 1,
+      "pv": 1
+    },
+    {
+      "household": 1906,
+      "group": "WP_EV_met_ZP",
+      "heat_pump": 1,
+      "electric_vehicle": 1,
+      "pv": 1
+    },
+    {
+      "household": 1907,
+      "group": "WP_EV_met_ZP",
+      "heat_pump": 1,
+      "electric_vehicle": 1,
+      "pv": 1
+    },
+    {
+      "household": 1908,
+      "group": "WP_EV_met_ZP",
+      "heat_pump": 1,
+      "electric_vehicle": 1,
+      "pv": 1
+    },
+    {
+      "household": 1909,
+      "group": "WP_EV_met_ZP",
+      "heat_pump": 1,
+      "electric_vehicle": 1,
+      "pv": 1
+    },
+    {
+      "household": 1910,
+      "group": "WP_EV_met_ZP",
+      "heat_pump": 1,
+      "electric_vehicle": 1,
+      "pv": 1
+    },
+    {
+      "household": 1911,
+      "group": "WP_EV_met_ZP",
+      "heat_pump": 1,
+      "electric_vehicle": 1,
+      "pv": 1
+    },
+    {
+      "household": 1912,
+      "group": "WP_EV_met_ZP",
+      "heat_pump": 1,
+      "electric_vehicle": 1,
+      "pv": 1
+    },
+    {
+      "household": 1913,
+      "group": "WP_EV_met_ZP",
+      "heat_pump": 1,
+      "electric_vehicle": 1,
+      "pv": 1
+    },
+    {
+      "household": 1914,
+      "group": "WP_EV_met_ZP",
+      "heat_pump": 1,
+      "electric_vehicle": 1,
+      "pv": 1
+    },
+    {
+      "household": 1915,
+      "group": "WP_EV_met_ZP",
+      "heat_pump": 1,
+      "electric_vehicle": 1,
+      "pv": 1
+    },
+    {
+      "household": 1916,
+      "group": "WP_EV_met_ZP",
+      "heat_pump": 1,
+      "electric_vehicle": 1,
+      "pv": 1
+    },
+    {
+      "household": 1917,
+      "group": "WP_EV_met_ZP",
+      "heat_pump": 1,
+      "electric_vehicle": 1,
+      "pv": 1
+    },
+    {
+      "household": 1918,
+      "group": "WP_EV_met_ZP",
+      "heat_pump": 1,
+      "electric_vehicle": 1,
+      "pv": 1
+    },
+    {
+      "household": 1919,
+      "group": "WP_EV_met_ZP",
+      "heat_pump": 1,
+      "electric_vehicle": 1,
+      "pv": 1
+    },
+    {
+      "household": 1920,
+      "group": "WP_EV_met_ZP",
+      "heat_pump": 1,
+      "electric_vehicle": 1,
+      "pv": 1
+    },
+    {
+      "household": 1921,
+      "group": "WP_EV_met_ZP",
+      "heat_pump": 1,
+      "electric_vehicle": 1,
+      "pv": 1
+    },
+    {
+      "household": 1922,
+      "group": "WP_EV_met_ZP",
+      "heat_pump": 1,
+      "electric_vehicle": 1,
+      "pv": 1
+    },
+    {
+      "household": 1923,
+      "group": "WP_EV_met_ZP",
+      "heat_pump": 1,
+      "electric_vehicle": 1,
+      "pv": 1
+    },
+    {
+      "household": 1924,
+      "group": "WP_EV_met_ZP",
+      "heat_pump": 1,
+      "electric_vehicle": 1,
+      "pv": 1
+    },
+    {
+      "household": 1925,
+      "group": "WP_EV_met_ZP",
+      "heat_pump": 1,
+      "electric_vehicle": 1,
+      "pv": 1
+    },
+    {
+      "household": 1926,
+      "group": "WP_EV_met_ZP",
+      "heat_pump": 1,
+      "electric_vehicle": 1,
+      "pv": 1
+    },
+    {
+      "household": 1927,
+      "group": "WP_EV_met_ZP",
+      "heat_pump": 1,
+      "electric_vehicle": 1,
+      "pv": 1
+    },
+    {
+      "household": 1928,
+      "group": "WP_EV_met_ZP",
+      "heat_pump": 1,
+      "electric_vehicle": 1,
+      "pv": 1
+    },
+    {
+      "household": 1929,
+      "group": "WP_EV_met_ZP",
+      "heat_pump": 1,
+      "electric_vehicle": 1,
+      "pv": 1
+    },
+    {
+      "household": 1930,
+      "group": "WP_EV_met_ZP",
+      "heat_pump": 1,
+      "electric_vehicle": 1,
+      "pv": 1
+    },
+    {
+      "household": 1931,
+      "group": "WP_EV_met_ZP",
+      "heat_pump": 1,
+      "electric_vehicle": 1,
+      "pv": 1
+    },
+    {
+      "household": 1932,
+      "group": "WP_EV_met_ZP",
+      "heat_pump": 1,
+      "electric_vehicle": 1,
+      "pv": 1
+    },
+    {
+      "household": 1933,
+      "group": "WP_EV_met_ZP",
+      "heat_pump": 1,
+      "electric_vehicle": 1,
+      "pv": 1
+    },
+    {
+      "household": 1934,
+      "group": "WP_EV_met_ZP",
+      "heat_pump": 1,
+      "electric_vehicle": 1,
+      "pv": 1
+    },
+    {
+      "household": 1935,
+      "group": "WP_EV_met_ZP",
+      "heat_pump": 1,
+      "electric_vehicle": 1,
+      "pv": 1
+    },
+    {
+      "household": 1936,
+      "group": "WP_EV_met_ZP",
+      "heat_pump": 1,
+      "electric_vehicle": 1,
+      "pv": 1
+    },
+    {
+      "household": 1937,
+      "group": "WP_EV_met_ZP",
+      "heat_pump": 1,
+      "electric_vehicle": 1,
+      "pv": 1
+    },
+    {
+      "household": 1938,
+      "group": "WP_EV_met_ZP",
+      "heat_pump": 1,
+      "electric_vehicle": 1,
+      "pv": 1
+    },
+    {
+      "household": 1939,
+      "group": "WP_EV_met_ZP",
+      "heat_pump": 1,
+      "electric_vehicle": 1,
+      "pv": 1
+    },
+    {
+      "household": 1940,
+      "group": "WP_EV_met_ZP",
+      "heat_pump": 1,
+      "electric_vehicle": 1,
+      "pv": 1
+    },
+    {
+      "household": 1941,
+      "group": "WP_EV_met_ZP",
+      "heat_pump": 1,
+      "electric_vehicle": 1,
+      "pv": 1
+    },
+    {
+      "household": 1942,
+      "group": "WP_EV_met_ZP",
+      "heat_pump": 1,
+      "electric_vehicle": 1,
+      "pv": 1
+    },
+    {
+      "household": 1943,
+      "group": "WP_EV_met_ZP",
+      "heat_pump": 1,
+      "electric_vehicle": 1,
+      "pv": 1
+    },
+    {
+      "household": 1944,
+      "group": "WP_EV_met_ZP",
+      "heat_pump": 1,
+      "electric_vehicle": 1,
+      "pv": 1
+    },
+    {
+      "household": 1945,
+      "group": "WP_EV_met_ZP",
+      "heat_pump": 1,
+      "electric_vehicle": 1,
+      "pv": 1
+    },
+    {
+      "household": 1946,
+      "group": "WP_EV_met_ZP",
+      "heat_pump": 1,
+      "electric_vehicle": 1,
+      "pv": 1
+    },
+    {
+      "household": 1947,
+      "group": "WP_EV_met_ZP",
+      "heat_pump": 1,
+      "electric_vehicle": 1,
+      "pv": 1
+    },
+    {
+      "household": 1948,
+      "group": "WP_EV_met_ZP",
+      "heat_pump": 1,
+      "electric_vehicle": 1,
+      "pv": 1
+    },
+    {
+      "household": 1949,
+      "group": "WP_EV_met_ZP",
+      "heat_pump": 1,
+      "electric_vehicle": 1,
+      "pv": 1
+    },
+    {
+      "household": 1950,
+      "group": "WP_EV_met_ZP",
+      "heat_pump": 1,
+      "electric_vehicle": 1,
+      "pv": 1
+    },
+    {
+      "household": 1951,
+      "group": "WP_EV_met_ZP",
+      "heat_pump": 1,
+      "electric_vehicle": 1,
+      "pv": 1
+    },
+    {
+      "household": 1952,
+      "group": "WP_EV_met_ZP",
+      "heat_pump": 1,
+      "electric_vehicle": 1,
+      "pv": 1
+    },
+    {
+      "household": 1953,
+      "group": "WP_EV_met_ZP",
+      "heat_pump": 1,
+      "electric_vehicle": 1,
+      "pv": 1
+    },
+    {
+      "household": 1954,
+      "group": "WP_EV_met_ZP",
+      "heat_pump": 1,
+      "electric_vehicle": 1,
+      "pv": 1
+    },
+    {
+      "household": 1955,
+      "group": "WP_EV_met_ZP",
+      "heat_pump": 1,
+      "electric_vehicle": 1,
+      "pv": 1
+    },
+    {
+      "household": 1956,
+      "group": "WP_EV_met_ZP",
+      "heat_pump": 1,
+      "electric_vehicle": 1,
+      "pv": 1
+    },
+    {
+      "household": 1957,
+      "group": "WP_EV_met_ZP",
+      "heat_pump": 1,
+      "electric_vehicle": 1,
+      "pv": 1
+    },
+    {
+      "household": 1958,
+      "group": "WP_EV_met_ZP",
+      "heat_pump": 1,
+      "electric_vehicle": 1,
+      "pv": 1
+    },
+    {
+      "household": 1959,
+      "group": "WP_EV_met_ZP",
+      "heat_pump": 1,
+      "electric_vehicle": 1,
+      "pv": 1
+    },
+    {
+      "household": 1960,
+      "group": "WP_EV_met_ZP",
+      "heat_pump": 1,
+      "electric_vehicle": 1,
+      "pv": 1
+    },
+    {
+      "household": 1961,
+      "group": "WP_EV_met_ZP",
+      "heat_pump": 1,
+      "electric_vehicle": 1,
+      "pv": 1
+    },
+    {
+      "household": 1962,
+      "group": "WP_EV_met_ZP",
+      "heat_pump": 1,
+      "electric_vehicle": 1,
+      "pv": 1
+    },
+    {
+      "household": 1963,
+      "group": "WP_EV_met_ZP",
+      "heat_pump": 1,
+      "electric_vehicle": 1,
+      "pv": 1
+    },
+    {
+      "household": 1964,
+      "group": "WP_EV_met_ZP",
+      "heat_pump": 1,
+      "electric_vehicle": 1,
+      "pv": 1
+    },
+    {
+      "household": 1965,
+      "group": "WP_EV_met_ZP",
+      "heat_pump": 1,
+      "electric_vehicle": 1,
+      "pv": 1
+    },
+    {
+      "household": 1966,
+      "group": "WP_EV_met_ZP",
+      "heat_pump": 1,
+      "electric_vehicle": 1,
+      "pv": 1
+    },
+    {
+      "household": 1967,
+      "group": "WP_EV_met_ZP",
+      "heat_pump": 1,
+      "electric_vehicle": 1,
+      "pv": 1
+    },
+    {
+      "household": 1968,
+      "group": "WP_EV_met_ZP",
+      "heat_pump": 1,
+      "electric_vehicle": 1,
+      "pv": 1
+    },
+    {
+      "household": 1969,
+      "group": "WP_EV_met_ZP",
+      "heat_pump": 1,
+      "electric_vehicle": 1,
+      "pv": 1
+    },
+    {
+      "household": 1970,
+      "group": "WP_EV_met_ZP",
+      "heat_pump": 1,
+      "electric_vehicle": 1,
+      "pv": 1
+    },
+    {
+      "household": 1971,
+      "group": "WP_EV_met_ZP",
+      "heat_pump": 1,
+      "electric_vehicle": 1,
+      "pv": 1
+    },
+    {
+      "household": 1972,
+      "group": "WP_EV_met_ZP",
+      "heat_pump": 1,
+      "electric_vehicle": 1,
+      "pv": 1
+    },
+    {
+      "household": 1973,
+      "group": "WP_EV_met_ZP",
+      "heat_pump": 1,
+      "electric_vehicle": 1,
+      "pv": 1
+    },
+    {
+      "household": 1974,
+      "group": "WP_EV_met_ZP",
+      "heat_pump": 1,
+      "electric_vehicle": 1,
+      "pv": 1
+    },
+    {
+      "household": 1975,
+      "group": "WP_EV_met_ZP",
+      "heat_pump": 1,
+      "electric_vehicle": 1,
+      "pv": 1
+    },
+    {
+      "household": 1976,
+      "group": "WP_EV_met_ZP",
+      "heat_pump": 1,
+      "electric_vehicle": 1,
+      "pv": 1
+    },
+    {
+      "household": 1977,
+      "group": "WP_EV_met_ZP",
+      "heat_pump": 1,
+      "electric_vehicle": 1,
+      "pv": 1
+    },
+    {
+      "household": 1978,
+      "group": "WP_EV_met_ZP",
+      "heat_pump": 1,
+      "electric_vehicle": 1,
+      "pv": 1
+    },
+    {
+      "household": 1979,
+      "group": "WP_EV_met_ZP",
+      "heat_pump": 1,
+      "electric_vehicle": 1,
+      "pv": 1
+    },
+    {
+      "household": 1980,
+      "group": "WP_EV_met_ZP",
+      "heat_pump": 1,
+      "electric_vehicle": 1,
+      "pv": 1
+    },
+    {
+      "household": 1981,
+      "group": "WP_EV_met_ZP",
+      "heat_pump": 1,
+      "electric_vehicle": 1,
+      "pv": 1
+    },
+    {
+      "household": 1982,
+      "group": "WP_EV_met_ZP",
+      "heat_pump": 1,
+      "electric_vehicle": 1,
+      "pv": 1
+    },
+    {
+      "household": 1983,
+      "group": "WP_EV_met_ZP",
+      "heat_pump": 1,
+      "electric_vehicle": 1,
+      "pv": 1
+    },
+    {
+      "household": 1984,
+      "group": "WP_EV_met_ZP",
+      "heat_pump": 1,
+      "electric_vehicle": 1,
+      "pv": 1
+    },
+    {
+      "household": 1985,
+      "group": "WP_EV_met_ZP",
+      "heat_pump": 1,
+      "electric_vehicle": 1,
+      "pv": 1
+    },
+    {
+      "household": 1986,
+      "group": "WP_EV_met_ZP",
+      "heat_pump": 1,
+      "electric_vehicle": 1,
+      "pv": 1
+    },
+    {
+      "household": 1987,
+      "group": "WP_EV_met_ZP",
+      "heat_pump": 1,
+      "electric_vehicle": 1,
+      "pv": 1
+    },
+    {
+      "household": 1988,
+      "group": "WP_EV_met_ZP",
+      "heat_pump": 1,
+      "electric_vehicle": 1,
+      "pv": 1
+    },
+    {
+      "household": 1989,
+      "group": "WP_EV_met_ZP",
+      "heat_pump": 1,
+      "electric_vehicle": 1,
+      "pv": 1
+    },
+    {
+      "household": 1990,
+      "group": "WP_EV_met_ZP",
+      "heat_pump": 1,
+      "electric_vehicle": 1,
+      "pv": 1
+    },
+    {
+      "household": 1991,
+      "group": "WP_EV_met_ZP",
+      "heat_pump": 1,
+      "electric_vehicle": 1,
+      "pv": 1
+    },
+    {
+      "household": 1992,
+      "group": "WP_EV_met_ZP",
+      "heat_pump": 1,
+      "electric_vehicle": 1,
+      "pv": 1
+    },
+    {
+      "household": 1993,
+      "group": "WP_EV_met_ZP",
+      "heat_pump": 1,
+      "electric_vehicle": 1,
+      "pv": 1
+    },
+    {
+      "household": 1994,
+      "group": "WP_EV_met_ZP",
+      "heat_pump": 1,
+      "electric_vehicle": 1,
+      "pv": 1
+    },
+    {
+      "household": 1995,
+      "group": "WP_EV_met_ZP",
+      "heat_pump": 1,
+      "electric_vehicle": 1,
+      "pv": 1
+    },
+    {
+      "household": 1996,
+      "group": "WP_EV_met_ZP",
+      "heat_pump": 1,
+      "electric_vehicle": 1,
+      "pv": 1
+    },
+    {
+      "household": 1997,
+      "group": "WP_EV_met_ZP",
+      "heat_pump": 1,
+      "electric_vehicle": 1,
+      "pv": 1
+    },
+    {
+      "household": 1998,
+      "group": "WP_EV_met_ZP",
+      "heat_pump": 1,
+      "electric_vehicle": 1,
+      "pv": 1
+    },
+    {
+      "household": 1999,
+      "group": "WP_EV_met_ZP",
+      "heat_pump": 1,
+      "electric_vehicle": 1,
+      "pv": 1
+    },
+    {
+      "household": 2000,
+      "group": "WP_EV_met_ZP",
+      "heat_pump": 1,
+      "electric_vehicle": 1,
+      "pv": 1
+    },
+    {
+      "household": 2001,
+      "group": "WP_EV_met_ZP",
+      "heat_pump": 1,
+      "electric_vehicle": 1,
+      "pv": 1
+    },
+    {
+      "household": 2002,
+      "group": "WP_EV_met_ZP",
+      "heat_pump": 1,
+      "electric_vehicle": 1,
+      "pv": 1
+    },
+    {
+      "household": 2003,
+      "group": "WP_EV_met_ZP",
+      "heat_pump": 1,
+      "electric_vehicle": 1,
+      "pv": 1
+    },
+    {
+      "household": 2004,
+      "group": "WP_EV_met_ZP",
+      "heat_pump": 1,
+      "electric_vehicle": 1,
+      "pv": 1
+    },
+    {
+      "household": 2005,
+      "group": "WP_EV_met_ZP",
+      "heat_pump": 1,
+      "electric_vehicle": 1,
+      "pv": 1
+    },
+    {
+      "household": 2006,
+      "group": "WP_EV_met_ZP",
+      "heat_pump": 1,
+      "electric_vehicle": 1,
+      "pv": 1
+    },
+    {
+      "household": 2007,
+      "group": "WP_EV_met_ZP",
+      "heat_pump": 1,
+      "electric_vehicle": 1,
+      "pv": 1
+    },
+    {
+      "household": 2008,
+      "group": "WP_EV_met_ZP",
+      "heat_pump": 1,
+      "electric_vehicle": 1,
+      "pv": 1
+    },
+    {
+      "household": 2009,
+      "group": "WP_EV_met_ZP",
+      "heat_pump": 1,
+      "electric_vehicle": 1,
+      "pv": 1
+    },
+    {
+      "household": 2010,
+      "group": "WP_EV_met_ZP",
+      "heat_pump": 1,
+      "electric_vehicle": 1,
+      "pv": 1
+    },
+    {
+      "household": 2011,
+      "group": "WP_EV_met_ZP",
+      "heat_pump": 1,
+      "electric_vehicle": 1,
+      "pv": 1
+    },
+    {
+      "household": 2012,
+      "group": "WP_EV_met_ZP",
+      "heat_pump": 1,
+      "electric_vehicle": 1,
+      "pv": 1
+    },
+    {
+      "household": 2013,
+      "group": "WP_EV_met_ZP",
+      "heat_pump": 1,
+      "electric_vehicle": 1,
+      "pv": 1
+    },
+    {
+      "household": 2014,
+      "group": "WP_EV_met_ZP",
+      "heat_pump": 1,
+      "electric_vehicle": 1,
+      "pv": 1
+    },
+    {
+      "household": 2015,
+      "group": "WP_EV_met_ZP",
+      "heat_pump": 1,
+      "electric_vehicle": 1,
+      "pv": 1
+    },
+    {
+      "household": 2016,
+      "group": "WP_EV_met_ZP",
+      "heat_pump": 1,
+      "electric_vehicle": 1,
+      "pv": 1
+    },
+    {
+      "household": 2017,
+      "group": "WP_EV_met_ZP",
+      "heat_pump": 1,
+      "electric_vehicle": 1,
+      "pv": 1
+    },
+    {
+      "household": 2018,
+      "group": "WP_EV_met_ZP",
+      "heat_pump": 1,
+      "electric_vehicle": 1,
+      "pv": 1
+    },
+    {
+      "household": 2019,
+      "group": "WP_EV_met_ZP",
+      "heat_pump": 1,
+      "electric_vehicle": 1,
+      "pv": 1
+    },
+    {
+      "household": 2020,
+      "group": "WP_EV_met_ZP",
+      "heat_pump": 1,
+      "electric_vehicle": 1,
+      "pv": 1
+    },
+    {
+      "household": 2021,
+      "group": "WP_EV_met_ZP",
+      "heat_pump": 1,
+      "electric_vehicle": 1,
+      "pv": 1
+    },
+    {
+      "household": 2022,
+      "group": "WP_EV_met_ZP",
+      "heat_pump": 1,
+      "electric_vehicle": 1,
+      "pv": 1
+    },
+    {
+      "household": 2023,
+      "group": "WP_EV_met_ZP",
+      "heat_pump": 1,
+      "electric_vehicle": 1,
+      "pv": 1
+    },
+    {
+      "household": 2024,
+      "group": "WP_EV_met_ZP",
+      "heat_pump": 1,
+      "electric_vehicle": 1,
+      "pv": 1
+    },
+    {
+      "household": 2025,
+      "group": "WP_EV_met_ZP",
+      "heat_pump": 1,
+      "electric_vehicle": 1,
+      "pv": 1
+    },
+    {
+      "household": 2026,
+      "group": "WP_EV_met_ZP",
+      "heat_pump": 1,
+      "electric_vehicle": 1,
+      "pv": 1
+    },
+    {
+      "household": 2027,
+      "group": "WP_EV_met_ZP",
+      "heat_pump": 1,
+      "electric_vehicle": 1,
+      "pv": 1
+    },
+    {
+      "household": 2028,
+      "group": "WP_EV_met_ZP",
+      "heat_pump": 1,
+      "electric_vehicle": 1,
+      "pv": 1
+    },
+    {
+      "household": 2029,
+      "group": "WP_EV_met_ZP",
+      "heat_pump": 1,
+      "electric_vehicle": 1,
+      "pv": 1
+    },
+    {
+      "household": 2030,
+      "group": "WP_EV_met_ZP",
+      "heat_pump": 1,
+      "electric_vehicle": 1,
+      "pv": 1
+    },
+    {
+      "household": 2031,
+      "group": "WP_EV_met_ZP",
+      "heat_pump": 1,
+      "electric_vehicle": 1,
+      "pv": 1
+    },
+    {
+      "household": 2032,
+      "group": "WP_EV_met_ZP",
+      "heat_pump": 1,
+      "electric_vehicle": 1,
+      "pv": 1
+    },
+    {
+      "household": 2033,
+      "group": "WP_EV_met_ZP",
+      "heat_pump": 1,
+      "electric_vehicle": 1,
+      "pv": 1
+    },
+    {
+      "household": 2034,
+      "group": "WP_EV_met_ZP",
+      "heat_pump": 1,
+      "electric_vehicle": 1,
+      "pv": 1
+    },
+    {
+      "household": 2035,
+      "group": "WP_EV_met_ZP",
+      "heat_pump": 1,
+      "electric_vehicle": 1,
+      "pv": 1
+    },
+    {
+      "household": 2036,
+      "group": "WP_EV_met_ZP",
+      "heat_pump": 1,
+      "electric_vehicle": 1,
+      "pv": 1
+    },
+    {
+      "household": 2037,
+      "group": "WP_EV_met_ZP",
+      "heat_pump": 1,
+      "electric_vehicle": 1,
+      "pv": 1
+    },
+    {
+      "household": 2038,
+      "group": "WP_EV_met_ZP",
+      "heat_pump": 1,
+      "electric_vehicle": 1,
+      "pv": 1
+    },
+    {
+      "household": 2039,
+      "group": "WP_EV_met_ZP",
+      "heat_pump": 1,
+      "electric_vehicle": 1,
+      "pv": 1
+    },
+    {
+      "household": 2040,
+      "group": "WP_EV_met_ZP",
+      "heat_pump": 1,
+      "electric_vehicle": 1,
+      "pv": 1
+    },
+    {
+      "household": 2041,
+      "group": "WP_EV_met_ZP",
+      "heat_pump": 1,
+      "electric_vehicle": 1,
+      "pv": 1
+    },
+    {
+      "household": 2042,
+      "group": "WP_EV_met_ZP",
+      "heat_pump": 1,
+      "electric_vehicle": 1,
+      "pv": 1
+    },
+    {
+      "household": 2043,
+      "group": "WP_EV_met_ZP",
+      "heat_pump": 1,
+      "electric_vehicle": 1,
+      "pv": 1
+    },
+    {
+      "household": 2044,
+      "group": "WP_EV_met_ZP",
+      "heat_pump": 1,
+      "electric_vehicle": 1,
+      "pv": 1
+    },
+    {
+      "household": 2045,
+      "group": "WP_EV_met_ZP",
+      "heat_pump": 1,
+      "electric_vehicle": 1,
+      "pv": 1
+    },
+    {
+      "household": 2046,
+      "group": "WP_EV_met_ZP",
+      "heat_pump": 1,
+      "electric_vehicle": 1,
+      "pv": 1
+    },
+    {
+      "household": 2047,
+      "group": "WP_EV_met_ZP",
+      "heat_pump": 1,
+      "electric_vehicle": 1,
+      "pv": 1
+    },
+    {
+      "household": 2048,
+      "group": "WP_EV_met_ZP",
+      "heat_pump": 1,
+      "electric_vehicle": 1,
+      "pv": 1
+    },
+    {
+      "household": 2049,
+      "group": "WP_EV_met_ZP",
+      "heat_pump": 1,
+      "electric_vehicle": 1,
+      "pv": 1
+    },
+    {
+      "household": 2050,
+      "group": "WP_EV_met_ZP",
+      "heat_pump": 1,
+      "electric_vehicle": 1,
+      "pv": 1
+    },
+    {
+      "household": 2051,
+      "group": "WP_EV_met_ZP",
+      "heat_pump": 1,
+      "electric_vehicle": 1,
+      "pv": 1
+    },
+    {
+      "household": 2052,
+      "group": "WP_EV_met_ZP",
+      "heat_pump": 1,
+      "electric_vehicle": 1,
+      "pv": 1
+    },
+    {
+      "household": 2053,
+      "group": "WP_EV_met_ZP",
+      "heat_pump": 1,
+      "electric_vehicle": 1,
+      "pv": 1
+    },
+    {
+      "household": 2054,
+      "group": "WP_EV_met_ZP",
+      "heat_pump": 1,
+      "electric_vehicle": 1,
+      "pv": 1
+    },
+    {
+      "household": 2055,
+      "group": "WP_EV_met_ZP",
+      "heat_pump": 1,
+      "electric_vehicle": 1,
+      "pv": 1
+    },
+    {
+      "household": 2056,
+      "group": "WP_EV_met_ZP",
+      "heat_pump": 1,
+      "electric_vehicle": 1,
+      "pv": 1
+    },
+    {
+      "household": 2057,
+      "group": "WP_EV_met_ZP",
+      "heat_pump": 1,
+      "electric_vehicle": 1,
+      "pv": 1
+    },
+    {
+      "household": 2058,
+      "group": "WP_EV_met_ZP",
+      "heat_pump": 1,
+      "electric_vehicle": 1,
+      "pv": 1
+    },
+    {
+      "household": 2059,
+      "group": "WP_EV_met_ZP",
+      "heat_pump": 1,
+      "electric_vehicle": 1,
+      "pv": 1
+    },
+    {
+      "household": 2060,
+      "group": "WP_EV_met_ZP",
+      "heat_pump": 1,
+      "electric_vehicle": 1,
+      "pv": 1
+    },
+    {
+      "household": 2061,
+      "group": "WP_EV_met_ZP",
+      "heat_pump": 1,
+      "electric_vehicle": 1,
+      "pv": 1
+    },
+    {
+      "household": 2062,
+      "group": "WP_EV_met_ZP",
+      "heat_pump": 1,
+      "electric_vehicle": 1,
+      "pv": 1
+    },
+    {
+      "household": 2063,
+      "group": "WP_EV_met_ZP",
+      "heat_pump": 1,
+      "electric_vehicle": 1,
+      "pv": 1
+    },
+    {
+      "household": 2064,
+      "group": "WP_EV_met_ZP",
+      "heat_pump": 1,
+      "electric_vehicle": 1,
+      "pv": 1
+    },
+    {
+      "household": 2065,
+      "group": "WP_EV_met_ZP",
+      "heat_pump": 1,
+      "electric_vehicle": 1,
+      "pv": 1
+    },
+    {
+      "household": 2066,
+      "group": "WP_EV_met_ZP",
+      "heat_pump": 1,
+      "electric_vehicle": 1,
+      "pv": 1
+    },
+    {
+      "household": 2067,
+      "group": "WP_EV_met_ZP",
+      "heat_pump": 1,
+      "electric_vehicle": 1,
+      "pv": 1
+    },
+    {
+      "household": 2068,
+      "group": "WP_EV_met_ZP",
+      "heat_pump": 1,
+      "electric_vehicle": 1,
+      "pv": 1
+    },
+    {
+      "household": 2069,
+      "group": "WP_EV_met_ZP",
+      "heat_pump": 1,
+      "electric_vehicle": 1,
+      "pv": 1
+    },
+    {
+      "household": 2070,
+      "group": "WP_EV_met_ZP",
+      "heat_pump": 1,
+      "electric_vehicle": 1,
+      "pv": 1
+    },
+    {
+      "household": 2071,
+      "group": "WP_EV_met_ZP",
+      "heat_pump": 1,
+      "electric_vehicle": 1,
+      "pv": 1
+    },
+    {
+      "household": 2072,
+      "group": "WP_EV_met_ZP",
+      "heat_pump": 1,
+      "electric_vehicle": 1,
+      "pv": 1
+    },
+    {
+      "household": 2073,
+      "group": "WP_EV_met_ZP",
+      "heat_pump": 1,
+      "electric_vehicle": 1,
+      "pv": 1
+    },
+    {
+      "household": 2074,
+      "group": "WP_EV_met_ZP",
+      "heat_pump": 1,
+      "electric_vehicle": 1,
+      "pv": 1
+    },
+    {
+      "household": 2075,
+      "group": "WP_EV_met_ZP",
+      "heat_pump": 1,
+      "electric_vehicle": 1,
+      "pv": 1
+    },
+    {
+      "household": 2076,
+      "group": "WP_EV_met_ZP",
+      "heat_pump": 1,
+      "electric_vehicle": 1,
+      "pv": 1
+    },
+    {
+      "household": 2077,
+      "group": "WP_EV_met_ZP",
+      "heat_pump": 1,
+      "electric_vehicle": 1,
+      "pv": 1
+    },
+    {
+      "household": 2078,
+      "group": "WP_EV_met_ZP",
+      "heat_pump": 1,
+      "electric_vehicle": 1,
+      "pv": 1
+    },
+    {
+      "household": 2079,
+      "group": "WP_EV_met_ZP",
+      "heat_pump": 1,
+      "electric_vehicle": 1,
+      "pv": 1
+    },
+    {
+      "household": 2080,
+      "group": "WP_EV_met_ZP",
+      "heat_pump": 1,
+      "electric_vehicle": 1,
+      "pv": 1
+    },
+    {
+      "household": 2081,
+      "group": "WP_EV_met_ZP",
+      "heat_pump": 1,
+      "electric_vehicle": 1,
+      "pv": 1
+    },
+    {
+      "household": 2082,
+      "group": "WP_EV_met_ZP",
+      "heat_pump": 1,
+      "electric_vehicle": 1,
+      "pv": 1
+    },
+    {
+      "household": 2083,
+      "group": "WP_EV_met_ZP",
+      "heat_pump": 1,
+      "electric_vehicle": 1,
+      "pv": 1
+    },
+    {
+      "household": 2084,
+      "group": "WP_EV_met_ZP",
+      "heat_pump": 1,
+      "electric_vehicle": 1,
+      "pv": 1
+    },
+    {
+      "household": 2085,
+      "group": "WP_EV_met_ZP",
+      "heat_pump": 1,
+      "electric_vehicle": 1,
+      "pv": 1
+    },
+    {
+      "household": 2086,
+      "group": "WP_EV_met_ZP",
+      "heat_pump": 1,
+      "electric_vehicle": 1,
+      "pv": 1
+    },
+    {
+      "household": 2087,
+      "group": "WP_EV_met_ZP",
+      "heat_pump": 1,
+      "electric_vehicle": 1,
+      "pv": 1
+    },
+    {
+      "household": 2088,
+      "group": "WP_EV_met_ZP",
+      "heat_pump": 1,
+      "electric_vehicle": 1,
+      "pv": 1
+    },
+    {
+      "household": 2089,
+      "group": "WP_EV_met_ZP",
+      "heat_pump": 1,
+      "electric_vehicle": 1,
+      "pv": 1
+    },
+    {
+      "household": 2090,
+      "group": "WP_EV_met_ZP",
+      "heat_pump": 1,
+      "electric_vehicle": 1,
+      "pv": 1
+    },
+    {
+      "household": 2091,
+      "group": "WP_EV_met_ZP",
+      "heat_pump": 1,
+      "electric_vehicle": 1,
+      "pv": 1
+    },
+    {
+      "household": 2092,
+      "group": "WP_EV_met_ZP",
+      "heat_pump": 1,
+      "electric_vehicle": 1,
+      "pv": 1
+    },
+    {
+      "household": 2093,
+      "group": "WP_EV_met_ZP",
+      "heat_pump": 1,
+      "electric_vehicle": 1,
+      "pv": 1
+    },
+    {
+      "household": 2094,
+      "group": "WP_EV_met_ZP",
+      "heat_pump": 1,
+      "electric_vehicle": 1,
+      "pv": 1
+    },
+    {
+      "household": 2095,
+      "group": "WP_EV_met_ZP",
+      "heat_pump": 1,
+      "electric_vehicle": 1,
+      "pv": 1
+    },
+    {
+      "household": 2096,
+      "group": "WP_EV_met_ZP",
+      "heat_pump": 1,
+      "electric_vehicle": 1,
+      "pv": 1
+    },
+    {
+      "household": 2097,
+      "group": "WP_EV_met_ZP",
+      "heat_pump": 1,
+      "electric_vehicle": 1,
+      "pv": 1
+    },
+    {
+      "household": 2098,
+      "group": "WP_EV_met_ZP",
+      "heat_pump": 1,
+      "electric_vehicle": 1,
+      "pv": 1
+    },
+    {
+      "household": 2099,
+      "group": "WP_EV_met_ZP",
+      "heat_pump": 1,
+      "electric_vehicle": 1,
+      "pv": 1
+    },
+    {
+      "household": 2100,
+      "group": "WP_EV_met_ZP",
+      "heat_pump": 1,
+      "electric_vehicle": 1,
+      "pv": 1
+    }
+  ]
+}

@@ -1,0 +1,29 @@
+{
+  "name": "fluvius_dm_residential",
+  "source": "fluvius",
+  "data_type": "actual_series",
+  "time_mode": "calendar",
+  "resolution": "15min",
+  "parquet_file": "Fluvius_DM_Residential_2024_15min.parquet",
+  "column_map": {
+    "offtake_mw": "load.offtake_mw",
+    "injection_mw": "load.injection_mw"
+  },
+  "index_map": {
+    "interval_start": "datetime",
+    "household": "region"
+  },
+  "derived": {},
+  "normalize": {},
+  "data_epoch": null,
+  "cyclical": false,
+  "region_values": [],
+  "date_range": [
+    "2023-12-31",
+    "2024-12-31"
+  ],
+  "metadata_json": "Fluvius_DM_Residential_2024_15min.json",
+  "source_url": "https://opendata.fluvius.be/explore/dataset/1_50-verbruiksprofielen-dm-elek-kwartierwaarden-voor-een-volledig-jaar/",
+  "source_organization": "Fluvius",
+  "timezone": "Europe/Brussels"
+}

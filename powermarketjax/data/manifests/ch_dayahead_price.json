@@ -1,0 +1,26 @@
+{
+  "name": "ch_dayahead_price",
+  "source": "ch",
+  "data_type": "actual_series",
+  "time_mode": "calendar",
+  "resolution": "60min",
+  "parquet_file": "CH_DayAhead_Price_2015_2025_60min.parquet",
+  "column_map": {
+    "dayahead_price_eur_mwh": "market.dayahead_price_eur_mwh"
+  },
+  "index_map": {
+    "datetime": "datetime"
+  },
+  "derived": {},
+  "normalize": {},
+  "data_epoch": null,
+  "cyclical": false,
+  "region_values": [],
+  "date_range": [
+    "2015-01-01",
+    "2025-12-31"
+  ],
+  "metadata_json": "CH_DayAhead_Price_2015_2025_60min.json",
+  "source_url": "https://api.energy-charts.info/price?bzn=CH",
+  "source_organization": "Fraunhofer ISE (Energy-Charts)"
+}

@@ -1,0 +1,37 @@
+{
+  "name": "aemo_forecast",
+  "source": "aemo",
+  "data_type": "forecast_panel",
+  "time_mode": "calendar",
+  "resolution": "30min",
+  "parquet_file": "AEMO_Forecast_vs_Actual_2025.parquet",
+  "metadata_json": "AEMO_Forecast_vs_Actual_2025.json",
+  "column_map": {
+    "OPERATIONAL_DEMAND_POE10": "load.forecast_p10_mw",
+    "OPERATIONAL_DEMAND_POE50": "load.forecast_p50_mw",
+    "OPERATIONAL_DEMAND_POE90": "load.forecast_p90_mw",
+    "OPERATIONAL_DEMAND": "load.actual_mw"
+  },
+  "index_map": {
+    "REGIONID": "region",
+    "FORECAST_DATETIME": "issue_time",
+    "INTERVAL_DATETIME": "target_time"
+  },
+  "derived": {},
+  "normalize": {},
+  "data_epoch": null,
+  "cyclical": false,
+  "region_values": [
+    "NSW1",
+    "QLD1",
+    "SA1",
+    "TAS1",
+    "VIC1"
+  ],
+  "date_range": [
+    "2025-01-27",
+    "2026-02-01"
+  ],
+  "source_url": "https://visualisations.aemo.com.au/aemo/nemweb/index.html#",
+  "source_organization": "Australian Energy Market Operator (AEMO)"
+}

@@ -1,0 +1,130 @@
+{
+  "parquet_file": "CH_DayAhead_Price_2015_2025_60min.parquet",
+  "source_organization": "Fraunhofer ISE (Energy-Charts)",
+  "source_url": "https://api.energy-charts.info/price?bzn=CH",
+  "upstream_publisher_reported_by_api": "CC BY 4.0 (creativecommons.org/licenses/by/4.0) from Bundesnetzagentur | SMARD.de",
+  "bidding_zone": "CH",
+  "bidding_zone_note": "Switzerland is a single bidding zone, so this national series is the day-ahead wholesale price at every Swiss node; there is no more local Swiss day-ahead price to prefer over it.",
+  "licence": "Creative Commons Attribution 4.0 International",
+  "licence_url": "https://creativecommons.org/licenses/by/4.0/",
+  "licence_permits_redistribution": true,
+  "licence_evidence": "the licence recorded here is the license_info string returned by the API in the same responses these rows came from",
+  "attribution": "Day-ahead spot price, bidding zone CH, retrieved from the Energy-Charts API operated by Fraunhofer ISE; the API reports the data as CC BY 4.0 from Bundesnetzagentur | SMARD.de. Changes: per-year responses concatenated, unix seconds converted to UTC timestamps, no unit conversion and no gap filling.",
+  "generated_at": "2026-08-14T18:02:26.240804+00:00",
+  "currency": "EUR",
+  "currency_note": "not converted. gb_market_mid is GBP and the market specifications write $/MWh as a nominal unit; an exchange-rate series would be a further data dependency, so the currency is carried in the column name, the signal name and here instead.",
+  "units": {
+    "dayahead_price_eur_mwh": "EUR / MWh, day-ahead auction price"
+  },
+  "resolution": "60min",
+  "timestamp_convention": "datetime is the UTC start of the delivery hour, converted from the unix_seconds the API returns; no local-time column is stored, so the daylight-saving transitions need no convention",
+  "interval_steps_observed": {
+    "0 days 01:00:00": 96430
+  },
+  "hourly_and_gap_free": true,
+  "hourly_and_gap_free_note": "true means every consecutive pair of rows is exactly one hour apart, so the series carries no interior hole and no sub-hourly stretch. Read it together with per_year: a year whose rows fall short while this stays true is short at its boundary, and for the first year of the record that is where the history begins.",
+  "per_year": {
+    "2015": {
+      "rows": 8759,
+      "expected_rows": 8760,
+      "missing_rows": 1,
+      "null_prices": 0
+    },
+    "2016": {
+      "rows": 8784,
+      "expected_rows": 8784,
+      "missing_rows": 0,
+      "null_prices": 0
+    },
+    "2017": {
+      "rows": 8760,
+      "expected_rows": 8760,
+      "missing_rows": 0,
+      "null_prices": 0
+    },
+    "2018": {
+      "rows": 8760,
+      "expected_rows": 8760,
+      "missing_rows": 0,
+      "null_prices": 0
+    },
+    "2019": {
+      "rows": 8760,
+      "expected_rows": 8760,
+      "missing_rows": 0,
+      "null_prices": 0
+    },
+    "2020": {
+      "rows": 8784,
+      "expected_rows": 8784,
+      "missing_rows": 0,
+      "null_prices": 0
+    },
+    "2021": {
+      "rows": 8760,
+      "expected_rows": 8760,
+      "missing_rows": 0,
+      "null_prices": 0
+    },
+    "2022": {
+      "rows": 8760,
+      "expected_rows": 8760,
+      "missing_rows": 0,
+      "null_prices": 0
+    },
+    "2023": {
+      "rows": 8760,
+      "expected_rows": 8760,
+      "missing_rows": 0,
+      "null_prices": 0
+    },
+    "2024": {
+      "rows": 8784,
+      "expected_rows": 8784,
+      "missing_rows": 0,
+      "null_prices": 0
+    },
+    "2025": {
+      "rows": 8760,
+      "expected_rows": 8760,
+      "missing_rows": 0,
+      "null_prices": 0
+    }
+  },
+  "gap_policy": "gaps are counted in per_year.missing_rows and never filled",
+  "shape": [
+    96431,
+    2
+  ],
+  "columns": [
+    "datetime",
+    "dayahead_price_eur_mwh"
+  ],
+  "dtypes": {
+    "datetime": "datetime64[ns, UTC]",
+    "dayahead_price_eur_mwh": "float64"
+  },
+  "date_range": [
+    "2015-01-01 00:00:00+00:00",
+    "2025-12-31 22:00:00+00:00"
+  ],
+  "date_ranges": {
+    "datetime": {
+      "min": "2015-01-01 00:00:00+00:00",
+      "max": "2025-12-31 22:00:00+00:00",
+      "count": 96431,
+      "missing": 0
+    }
+  },
+  "numeric_statistics": {
+    "dayahead_price_eur_mwh": {
+      "count": 96431,
+      "mean": 84.79353382211114,
+      "std": 86.09312155049555,
+      "min": -427.51,
+      "max": 871.61,
+      "negative_hours": 872,
+      "missing": 0
+    }
+  }
+}

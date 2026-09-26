@@ -1,0 +1,29 @@
+{
+  "name": "ausgrid_solar_home",
+  "source": "ausgrid",
+  "data_type": "actual_series",
+  "time_mode": "calendar",
+  "resolution": "30min",
+  "parquet_file": "Ausgrid_Solar_Home_2010_2013_30min.parquet",
+  "column_map": {
+    "load_mw": "load.actual_mw",
+    "pv_mw": "solar.available_mw"
+  },
+  "index_map": {
+    "interval_end": "datetime",
+    "customer": "region"
+  },
+  "derived": {},
+  "normalize": {},
+  "data_epoch": null,
+  "cyclical": false,
+  "region_values": [],
+  "date_range": [
+    "2010-06-30",
+    "2013-06-30"
+  ],
+  "metadata_json": "Ausgrid_Solar_Home_2010_2013_30min.json",
+  "source_url": "https://www.ausgrid.com.au/Industry/Our-Research/Data-to-share/Solar-home-electricity-data",
+  "source_organization": "Ausgrid",
+  "timezone": "Australia/Sydney"
+}

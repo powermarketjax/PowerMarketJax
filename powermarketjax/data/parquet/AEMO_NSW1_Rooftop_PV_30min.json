@@ -1,0 +1,139 @@
+{
+  "parquet_file": "AEMO_NSW1_Rooftop_PV_30min.parquet",
+  "source_organization": "Australian Energy Market Operator (AEMO)",
+  "source_url": "https://nemweb.com.au/Data_Archive/Wholesale_Electricity/MMSDM/",
+  "licence": "AEMO Copyright Permissions Notice",
+  "licence_url": "https://www.aemo.com.au/privacy-and-legal-notices/copyright-permissions",
+  "licence_permits_redistribution": true,
+  "licence_text_read_from": "Internet Archive capture 20260729145136 of the AEMO page; aemo.com.au returns 403 to every automated client, so the notice cannot be re-verified programmatically",
+  "licence_in_retrieval_response": false,
+  "licence_note": "The notice grants 'general permission for anyone to use AEMO Material for any purpose, but only with accurate and appropriate attribution of the relevant AEMO Material and AEMO as its author'.  It grants *use*; it contains no words granting reproduction, redistribution or republication.  'AEMO Material' is material 'created by or on behalf of AEMO', which covers dispatch prices and rooftop photovoltaic estimates (AEMO's own systems compute both) but would not cover participant-submitted data.  The claim that the notice is compatible with CC BY 4.0 appears in search summaries and NOT in the notice, which never mentions CC BY; that claim is excluded.",
+  "attribution": "Australian Energy Market Operator (AEMO), NEMWeb MMSDM archive, tables DISPATCHPRICE and ROOFTOP_PV_ACTUAL, region NSW1.  Used with attribution to AEMO as author under the AEMO Copyright Permissions Notice.  Changes: non-intervention dispatch runs and MEASUREMENT-type rooftop estimates selected, region filtered to NSW1, interval-ending market time (UTC+10, no daylight saving) converted to interval-start UTC.",
+  "interval_convention": "Stored `datetime` is the UTC **start** of each interval.  The source stamps are interval-ENDING and are expressed in NEM market time, a fixed UTC+10 offset that never observes daylight saving -- unlike the `ausgrid_zone_substation_fy25_imputed` demand series this pairs with, which is Australia/Sydney local civil time and does.  Conversion is therefore `utc_start = stamp - 10h - interval_length`, applied uniformly with no transition handling, because market time has no transitions.  Skipping either term is invisible in a plot: the offset alone shifts the daily solar peak by ten hours, and the interval-ending term alone shifts every value by one period.",
+  "resampling_declaration": "The rooftop photovoltaic series is 30-minute and the demand grid is 15-minute.  **This artefact declares time interpolation, not forward fill.** Power is a rate: forward-filling a half-hourly value onto both quarter hours asserts that output was constant across the half hour and then stepped, while interpolating asserts it ramped, and for a solar profile the ramp is the physical claim.  `envs/local_flexibility/data.py` leaves the choice to the caller, which is correct for a library and insufficient for a stored artefact, so the choice is recorded here.  The 5-minute price needs no such declaration: it aggregates 3:1 onto the 15-minute grid by mean, exactly.",
+  "region": "NSW1",
+  "table": "ROOFTOP_PV_ACTUAL",
+  "filters_applied": {
+    "TYPE": "MEASUREMENT"
+  },
+  "resolution_minutes": 30,
+  "value_bounds_note": "zero at night is real, not missing: rooftop output is genuinely 0 MW between dusk and dawn, which is what the night-window check asserts.",
+  "rows": 18958,
+  "missing_intervals": 2,
+  "missing_interval_starts_utc": [
+    "2024-09-05 02:30:00",
+    "2024-09-05 03:00:00"
+  ],
+  "duplicate_rows_dropped": 192,
+  "duplicate_note": "identical republications, not revisions: the DVD-era archive files carry one extra day, so each overlaps the next month.  The overlapping values were verified identical before one copy was dropped; a disagreement raises instead.",
+  "convention_checks": {
+    "first_interval_start_market_time": "2024-04-01 00:00:00",
+    "night_max_mw": 0.0,
+    "median_local_peak_hour": 12.0
+  },
+  "window_coverage": {
+    "AEDT_summer": {
+      "intervals_expected": 8688,
+      "intervals_present": 8688,
+      "missing": []
+    },
+    "AEST_winter": {
+      "intervals_expected": 7588,
+      "intervals_present": 7586,
+      "missing": [
+        "2024-09-05 02:30:00",
+        "2024-09-05 03:00:00"
+      ]
+    }
+  },
+  "window_note": "The demand series this pairs with offers two usable windows.  **Both series are complete over the summer (AEDT) window, so choosing it costs no gap at all.** The winter (AEST) window is complete for price and misses two rooftop photovoltaic half hours at local midday on 2024-09-05.  Which window to run is a scenario parameter; this is the fact that decides it.",
+  "source_defects": [
+    "the MMSDM archive renamed its files between 2024-07 and 2024-08: PUBLIC_DVD_<TABLE>_<YYYYMM>010000.zip serves months up to 2024-07 and 404s from 2024-08, while PUBLIC_ARCHIVE#<TABLE>#FILE01#<YYYYMM>010000.zip is the mirror image.  The two forms are disjoint, so fetching with one pattern truncates the window silently at the changeover -- which falls inside the winter demand window.  Measured 2026-08-15; the form each month answered on is in `archives`."
+  ],
+  "first_interval_start_utc": "2024-03-31 14:00:00",
+  "last_interval_start_utc": "2025-04-30 13:30:00",
+  "timezone_source": "NEM market time, fixed UTC+10, no DST",
+  "timezone_stored": "UTC",
+  "archives": {
+    "ROOFTOP_PV_ACTUAL_202404": {
+      "url": "https://nemweb.com.au/Data_Archive/Wholesale_Electricity/MMSDM/2024/MMSDM_2024_04/MMSDM_Historical_Data_SQLLoader/DATA/PUBLIC_DVD_ROOFTOP_PV_ACTUAL_202404010000.zip",
+      "sha256": "39626456ae89c92d1505a17e27415f237e532621d5d115d879b07e4b9509adc8",
+      "bytes": 177343,
+      "naming": "DVD"
+    },
+    "ROOFTOP_PV_ACTUAL_202405": {
+      "url": "https://nemweb.com.au/Data_Archive/Wholesale_Electricity/MMSDM/2024/MMSDM_2024_05/MMSDM_Historical_Data_SQLLoader/DATA/PUBLIC_DVD_ROOFTOP_PV_ACTUAL_202405010000.zip",
+      "sha256": "001a8454f08ced2b67cf9f9342e9f81515558ac2d0d5462a9c4058c5a3b780e4",
+      "bytes": 180303,
+      "naming": "DVD"
+    },
+    "ROOFTOP_PV_ACTUAL_202406": {
+      "url": "https://nemweb.com.au/Data_Archive/Wholesale_Electricity/MMSDM/2024/MMSDM_2024_06/MMSDM_Historical_Data_SQLLoader/DATA/PUBLIC_DVD_ROOFTOP_PV_ACTUAL_202406010000.zip",
+      "sha256": "d667fd24c3992c274884dacb1c3020ca4a60e7c182a9165eb45e80c1abe23743",
+      "bytes": 172132,
+      "naming": "DVD"
+    },
+    "ROOFTOP_PV_ACTUAL_202407": {
+      "url": "https://nemweb.com.au/Data_Archive/Wholesale_Electricity/MMSDM/2024/MMSDM_2024_07/MMSDM_Historical_Data_SQLLoader/DATA/PUBLIC_DVD_ROOFTOP_PV_ACTUAL_202407010000.zip",
+      "sha256": "271e33d8eae6acb2388cf419f3f70defeea0499b7577dc946d46ffc741610cca",
+      "bytes": 175297,
+      "naming": "DVD"
+    },
+    "ROOFTOP_PV_ACTUAL_202408": {
+      "url": "https://nemweb.com.au/Data_Archive/Wholesale_Electricity/MMSDM/2024/MMSDM_2024_08/MMSDM_Historical_Data_SQLLoader/DATA/PUBLIC_ARCHIVE%23ROOFTOP_PV_ACTUAL%23FILE01%23202408010000.zip",
+      "sha256": "860cfe0553c04241287ce2f17546c90bc439f139462c464cd960c051b4ba398e",
+      "bytes": 190372,
+      "naming": "ARCHIVE"
+    },
+    "ROOFTOP_PV_ACTUAL_202409": {
+      "url": "https://nemweb.com.au/Data_Archive/Wholesale_Electricity/MMSDM/2024/MMSDM_2024_09/MMSDM_Historical_Data_SQLLoader/DATA/PUBLIC_ARCHIVE%23ROOFTOP_PV_ACTUAL%23FILE01%23202409010000.zip",
+      "sha256": "51f337a70df7a955f8eb819ff14e410ce679555f66af86416b3f1ec419204708",
+      "bytes": 192402,
+      "naming": "ARCHIVE"
+    },
+    "ROOFTOP_PV_ACTUAL_202410": {
+      "url": "https://nemweb.com.au/Data_Archive/Wholesale_Electricity/MMSDM/2024/MMSDM_2024_10/MMSDM_Historical_Data_SQLLoader/DATA/PUBLIC_ARCHIVE%23ROOFTOP_PV_ACTUAL%23FILE01%23202410010000.zip",
+      "sha256": "f539c14602a97bfaca19887c2d9c10d96969f43b5ed0189a4ad3c0e3221c6034",
+      "bytes": 201120,
+      "naming": "ARCHIVE"
+    },
+    "ROOFTOP_PV_ACTUAL_202411": {
+      "url": "https://nemweb.com.au/Data_Archive/Wholesale_Electricity/MMSDM/2024/MMSDM_2024_11/MMSDM_Historical_Data_SQLLoader/DATA/PUBLIC_ARCHIVE%23ROOFTOP_PV_ACTUAL%23FILE01%23202411010000.zip",
+      "sha256": "cae63cefdf627ac402d2c3fadf63c73b7430d5253977602f7746617181405dea",
+      "bytes": 201568,
+      "naming": "ARCHIVE"
+    },
+    "ROOFTOP_PV_ACTUAL_202412": {
+      "url": "https://nemweb.com.au/Data_Archive/Wholesale_Electricity/MMSDM/2024/MMSDM_2024_12/MMSDM_Historical_Data_SQLLoader/DATA/PUBLIC_ARCHIVE%23ROOFTOP_PV_ACTUAL%23FILE01%23202412010000.zip",
+      "sha256": "094866d52c085d0f68d5e7aa9cc695fa12752ad90a78a904f42658f3503842fc",
+      "bytes": 213467,
+      "naming": "ARCHIVE"
+    },
+    "ROOFTOP_PV_ACTUAL_202501": {
+      "url": "https://nemweb.com.au/Data_Archive/Wholesale_Electricity/MMSDM/2025/MMSDM_2025_01/MMSDM_Historical_Data_SQLLoader/DATA/PUBLIC_ARCHIVE%23ROOFTOP_PV_ACTUAL%23FILE01%23202501010000.zip",
+      "sha256": "1079ddb439cf80153205138949d12bc3de19b6f0d5a72aa8e449241bfd59830d",
+      "bytes": 211727,
+      "naming": "ARCHIVE"
+    },
+    "ROOFTOP_PV_ACTUAL_202502": {
+      "url": "https://nemweb.com.au/Data_Archive/Wholesale_Electricity/MMSDM/2025/MMSDM_2025_02/MMSDM_Historical_Data_SQLLoader/DATA/PUBLIC_ARCHIVE%23ROOFTOP_PV_ACTUAL%23FILE01%23202502010000.zip",
+      "sha256": "b73397266a9078fe50385292eb4c82ac4dd909a26ecd03da61174893ff868aeb",
+      "bytes": 186103,
+      "naming": "ARCHIVE"
+    },
+    "ROOFTOP_PV_ACTUAL_202503": {
+      "url": "https://nemweb.com.au/Data_Archive/Wholesale_Electricity/MMSDM/2025/MMSDM_2025_03/MMSDM_Historical_Data_SQLLoader/DATA/PUBLIC_ARCHIVE%23ROOFTOP_PV_ACTUAL%23FILE01%23202503010000.zip",
+      "sha256": "9a3c3fde37e557ef36a0bd526d65f2400f019b342b9a6d9ad143da5e21c94a22",
+      "bytes": 201855,
+      "naming": "ARCHIVE"
+    },
+    "ROOFTOP_PV_ACTUAL_202504": {
+      "url": "https://nemweb.com.au/Data_Archive/Wholesale_Electricity/MMSDM/2025/MMSDM_2025_04/MMSDM_Historical_Data_SQLLoader/DATA/PUBLIC_ARCHIVE%23ROOFTOP_PV_ACTUAL%23FILE01%23202504010000.zip",
+      "sha256": "6da02c957c1601361ffc761d984fbd2998635dacee9b5cb2be30324e658e8b68",
+      "bytes": 186894,
+      "naming": "ARCHIVE"
+    }
+  },
+  "generated_at": "2026-08-15T04:45:59.618319+00:00",
+  "licence_ruling": "Author ruling, 2026-08-15. Question put to the author: whether the AEMO Copyright Permissions Notice (granting use with attribution, containing no explicit redistribution wording, on a site that returns 403 to every automated client) is sufficient to redistribute AEMO data with this repository, that ruling also deciding the three AEMO-sourced datasets already in the tree. The author's words, verbatim: \"\u591f\uff0c\u653e\u884c\u5e76\u7ed3\u6848\u90a3\u4e09\u4e2a\" (sufficient; proceed, and close out those three). Scope, as stated in the option the author selected (wording by the coordinating session, not the author): 05B may fetch, and aemo_5min_demand, aemo_forecast and ausgrid_zone_substation_fy25_imputed are closed out. The author did NOT separately address the two ambiguities recorded in licence_note -- that the grant is to 'use' rather than to redistribute, and the scope of 'created by or on behalf of AEMO'. Both are retained verbatim in ADR-0006 and are NOT resolved by this ruling: the ruling changes whether the data may be used, not what tier the evidence is."
+}

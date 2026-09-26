@@ -1,0 +1,64 @@
+{
+  "parquet_file": "SwissDN_459_0_MV_Load_60min.parquet",
+  "source_organization": "ETH Zurich (Zapparoli et al., Scientific Data 2025)",
+  "source_url": "https://doi.org/10.5281/zenodo.15056134",
+  "source_citation": "Zapparoli, L., Oneto, A., Parajeles Herrera, M., Gjorgiev, B., Hug, G. & Sansavini, G. Future Deployment and Flexibility of Distributed Energy Resources in the Distribution Grids of Switzerland. Sci Data 12, 1491 (2025). https://doi.org/10.1038/s41597-025-05830-y",
+  "source_archive": "SwissDN_DERs.zip",
+  "source_archive_md5": "490b7b2ef411541fac8db6a7cc9dad03",
+  "licence": "Creative Commons Attribution 4.0 International",
+  "licence_url": "https://creativecommons.org/licenses/by/4.0/",
+  "licence_permits_redistribution": true,
+  "attribution": "Zapparoli, L., Oneto, A., Parajeles Herrera, M., Gjorgiev, B., Hug, G. & Sansavini, G. Future Deployment and Flexibility of Distributed Energy Resources in the Distribution Grids of Switzerland. Sci Data 12, 1491 (2025). https://doi.org/10.1038/s41597-025-05830-y Dataset: https://doi.org/10.5281/zenodo.15056134, CC BY 4.0. Changes: medium-voltage grid 459_0 and its medium-voltage resource rows extracted from the country-wide tables; GeoJSON converted to tabular form; the normalised demand profile multiplied by the nodal peak as the paper prescribes; no gap filling, no unit conversion beyond kW to MW where stated.",
+  "generated_at": "2026-08-14T18:13:14.729298+00:00",
+  "mv_grid": "459_0",
+  "content": "nodal medium-voltage non-controllable demand, hourly",
+  "construction": "the archive's single max-normalised MV_load_profile row multiplied by each node's peak_mw, which is the construction the paper prescribes; all nodes therefore share one temporal shape",
+  "carrier_year": 2029,
+  "carrier_year_note": "the source labels are MM-DD HH:MM:SS with no year under the stated convention of 365 days beginning on a Monday. 2029 satisfies that convention and lies outside the 2015-2025 span of ch_dayahead_price, so a calendar join against the price returns an empty frame instead of a plausible misalignment. It is a carrier, not the data year.",
+  "normalised_profile_max": 0.85280075627289,
+  "normalised_profile_min": 0.4138403624494697,
+  "normalised_profile_max_note": "the source describes this profile as max-normalised and its methods divide by the maximum, which would put this at 1.0. It ships at 0.852801, with the maximum falling on 06-21 14:00. The profile is vendored unchanged. Consequence: load_mw reaches only 85.28% of peak_mw at every node, so a load_scale calibrated on this series carries a factor of 1/0.852801 = 1.1726 that is a property of the data and not of the scenario, and it must not be compared with the load_scale calibrated on the Ausgrid series without that factor.",
+  "identical_across_projection_years": true,
+  "identical_note": "the paper holds non-controllable load unchanged for 2030, 2040 and 2050; the three files are byte-identical, so one copy is vendored",
+  "units": {
+    "load_mw": "MW"
+  },
+  "resolution": "60min",
+  "n_nodes": 129,
+  "sum_peak_mw": 13.719737946818594,
+  "date_range": [
+    "2029-01-01 00:00:00+00:00",
+    "2029-12-31 23:00:00+00:00"
+  ],
+  "date_ranges": {
+    "datetime": {
+      "min": "2029-01-01 00:00:00+00:00",
+      "max": "2029-12-31 23:00:00+00:00",
+      "count": 1130040,
+      "missing": 0
+    }
+  },
+  "numeric_statistics": {
+    "load_mw": {
+      "count": 1130040,
+      "mean": 0.06504292041063309,
+      "min": 0.0,
+      "max": 0.5973115563392639,
+      "missing": 0
+    }
+  },
+  "shape": [
+    1130040,
+    3
+  ],
+  "columns": [
+    "datetime",
+    "osmid",
+    "load_mw"
+  ],
+  "dtypes": {
+    "datetime": "datetime64[ns, UTC]",
+    "osmid": "object",
+    "load_mw": "float32"
+  }
+}

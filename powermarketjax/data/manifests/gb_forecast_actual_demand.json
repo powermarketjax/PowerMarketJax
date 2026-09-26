@@ -1,0 +1,27 @@
+{
+  "name": "gb_forecast_actual_demand",
+  "source": "gb",
+  "data_type": "actual_series",
+  "time_mode": "calendar",
+  "resolution": "30min",
+  "parquet_file": "GB_Forecast_Actual_Demand_2023_2025_30min.parquet",
+  "column_map": {
+    "Actual": "load.actual_mw",
+    "DAForecast": "load.forecast_da_mw"
+  },
+  "index_map": {
+    "startTime": "datetime"
+  },
+  "derived": {},
+  "normalize": {},
+  "data_epoch": null,
+  "cyclical": false,
+  "region_values": [],
+  "date_range": ["2023-07-05", "2026-04-05"],
+  "metadata_json": "GB_Forecast_Actual_Demand_2023_2025_30min.json",
+  "source_urls": [
+    "https://data.elexon.co.uk/bmrs/api/v1/demand/actual/total",
+    "https://data.elexon.co.uk/bmrs/api/v1/forecast/demand/total/day-ahead"
+  ],
+  "source_organization": "Elexon Limited"
+}

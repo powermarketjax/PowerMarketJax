@@ -1,0 +1,33 @@
+{
+  "name": "aemo_5min_demand",
+  "source": "aemo",
+  "data_type": "actual_series",
+  "time_mode": "calendar",
+  "resolution": "5min",
+  "parquet_file": "AEMO_5min_Demand_2025_2026.parquet",
+  "metadata_json": "AEMO_5min_Demand_2025_2026.json",
+  "column_map": {
+    "OPERATIONAL_DEMAND": "load.actual_mw"
+  },
+  "index_map": {
+    "INTERVAL_DATETIME": "datetime",
+    "REGIONID": "region"
+  },
+  "derived": {},
+  "normalize": {},
+  "data_epoch": null,
+  "cyclical": false,
+  "region_values": [
+    "NSW1",
+    "QLD1",
+    "SA1",
+    "TAS1",
+    "VIC1"
+  ],
+  "date_range": [
+    "2024-09-18",
+    "2026-02-12"
+  ],
+  "source_url": "https://visualisations.aemo.com.au/aemo/nemweb/index.html#",
+  "source_organization": "Australian Energy Market Operator (AEMO)"
+}

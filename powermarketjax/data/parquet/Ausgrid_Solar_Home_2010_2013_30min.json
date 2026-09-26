@@ -1,0 +1,1569 @@
+{
+  "parquet_file": "Ausgrid_Solar_Home_2010_2013_30min.parquet",
+  "source_organization": "Ausgrid",
+  "source_url": "https://www.ausgrid.com.au/Industry/Our-Research/Data-to-share/Solar-home-electricity-data",
+  "source_url_status": "404 as of 2026-08-10; files taken from Internet Archive",
+  "catalogue_record": "https://data.gov.au/data/api/3/action/package_show?id=5ab48b70-5e99-47d3-9193-5c34a2676d93",
+  "licence": "Creative Commons Attribution 3.0 Australia",
+  "licence_url": "http://creativecommons.org/licenses/by/3.0/au/",
+  "licence_permits_redistribution": true,
+  "licence_note": "the catalogue record carries isopen=false, which is a CKAN licence-register flag and not a term of the deed",
+  "attribution": "Ausgrid, \"Solar Home Electricity Data\" (2010-2013), licensed under CC BY 3.0 Australia; retrieved from Internet Archive captures of the original ausgrid.com.au distribution URLs; changes: reshaped to long form, GG kept as pv_mw, GC + CL summed into load_mw, kWh per half hour converted to MW, timestamps localised to UTC.",
+  "archives": {
+    "2010-2011": {
+      "archive_url": "https://web.archive.org/web/20251222140146id_/https://www.ausgrid.com.au/-/media/Documents/Data-to-share/Solar-home-electricity-data/Solar-home-half-hour-data---1-July-2010-to-30-June-2011.zip",
+      "original_url": "https://www.ausgrid.com.au/-/media/Documents/Data-to-share/Solar-home-electricity-data/Solar-home-half-hour-data---1-July-2010-to-30-June-2011.zip",
+      "capture_timestamp": "20251222140146",
+      "sha256": "0fdfbaaba469b91a54477d4061ee226127d95863888c2ee0bf0b02db8b491055",
+      "bytes": 15226729
+    },
+    "2011-2012": {
+      "archive_url": "https://web.archive.org/web/20251226094954id_/https://www.ausgrid.com.au/-/media/Documents/Data-to-share/Solar-home-electricity-data/Solar-home-half-hour-data---1-July-2011-to-30-June-2012.zip",
+      "original_url": "https://www.ausgrid.com.au/-/media/Documents/Data-to-share/Solar-home-electricity-data/Solar-home-half-hour-data---1-July-2011-to-30-June-2012.zip",
+      "capture_timestamp": "20251226094954",
+      "sha256": "e16f9143147c28e12f9686cf15869ac08a09724ac9074c9341d1bf0d5669155e",
+      "bytes": 15122217
+    },
+    "2012-2013": {
+      "archive_url": "https://web.archive.org/web/20251226094859id_/https://www.ausgrid.com.au/-/media/Documents/Data-to-share/Solar-home-electricity-data/Solar-home-half-hour-data---1-July-2012-to-30-June-2013.zip",
+      "original_url": "https://www.ausgrid.com.au/-/media/Documents/Data-to-share/Solar-home-electricity-data/Solar-home-half-hour-data---1-July-2012-to-30-June-2013.zip",
+      "capture_timestamp": "20251226094859",
+      "sha256": "6949ffee7ef8e2260f229f8a7e3b992390187facaaf023bb933b811a11cd1a11",
+      "bytes": 14973763
+    }
+  },
+  "generated_at": "2026-08-10T18:29:00.051851+00:00",
+  "timezone_local": "Australia/Sydney",
+  "timezone_stored": "UTC",
+  "interval_convention": "interval_end is the UTC end of a 30-minute block; the CSV column HH:MM is the interval end in local civil time including daylight saving, and 0:00 belongs to the following day. Local -> UTC uses pandas tz_localize(ambiguous=False, nonexistent='shift_forward'), matching Ausgrid_Zone_Substation_FY25_imputed_15min. Every day carries 48 columns whether or not the local day has 48 half hours, so the two daylight-saving transition days per year are misrepresented at the source. Rows whose local time does not exist (spring forward) are dropped and counted in nonexistent_local_rows_dropped; shifting them forward instead, as the substation dataset does, collapses them onto existing timestamps and makes the (time x household) grid non-unique.",
+  "duplicate_utc_rows": 0,
+  "nonexistent_local_rows_dropped": 1800,
+  "units": {
+    "pv_mw": "MW, gross photovoltaic output, GG x 2 / 1000",
+    "load_mw": "MW, household load (GC + CL) x 2 / 1000"
+  },
+  "channels_dropped": "none; GG kept, GC and CL summed",
+  "shape": [
+    15776712,
+    4
+  ],
+  "columns": [
+    "customer",
+    "interval_end",
+    "pv_mw",
+    "load_mw"
+  ],
+  "dtypes": {
+    "customer": "int16",
+    "interval_end": "datetime64[us, UTC]",
+    "pv_mw": "float32",
+    "load_mw": "float32"
+  },
+  "n_customers": 300,
+  "date_range": [
+    "2010-06-30 14:30:00+00:00",
+    "2013-06-30 14:00:00+00:00"
+  ],
+  "customers": [
+    {
+      "customer": 1,
+      "generator_capacity_kw": 3.78,
+      "postcode": 2076
+    },
+    {
+      "customer": 2,
+      "generator_capacity_kw": 1.62,
+      "postcode": 2259
+    },
+    {
+      "customer": 3,
+      "generator_capacity_kw": 1.0,
+      "postcode": 2263
+    },
+    {
+      "customer": 4,
+      "generator_capacity_kw": 1.0,
+      "postcode": 2220
+    },
+    {
+      "customer": 5,
+      "generator_capacity_kw": 1.0,
+      "postcode": 2261
+    },
+    {
+      "customer": 6,
+      "generator_capacity_kw": 2.0,
+      "postcode": 2230
+    },
+    {
+      "customer": 7,
+      "generator_capacity_kw": 2.16,
+      "postcode": 2259
+    },
+    {
+      "customer": 8,
+      "generator_capacity_kw": 1.02,
+      "postcode": 2126
+    },
+    {
+      "customer": 9,
+      "generator_capacity_kw": 1.02,
+      "postcode": 2259
+    },
+    {
+      "customer": 10,
+      "generator_capacity_kw": 1.05,
+      "postcode": 2262
+    },
+    {
+      "customer": 11,
+      "generator_capacity_kw": 2.04,
+      "postcode": 2026
+    },
+    {
+      "customer": 12,
+      "generator_capacity_kw": 1.04,
+      "postcode": 2218
+    },
+    {
+      "customer": 13,
+      "generator_capacity_kw": 2.22,
+      "postcode": 2261
+    },
+    {
+      "customer": 14,
+      "generator_capacity_kw": 1.48,
+      "postcode": 2262
+    },
+    {
+      "customer": 15,
+      "generator_capacity_kw": 1.0,
+      "postcode": 2265
+    },
+    {
+      "customer": 16,
+      "generator_capacity_kw": 3.33,
+      "postcode": 2208
+    },
+    {
+      "customer": 17,
+      "generator_capacity_kw": 1.85,
+      "postcode": 2229
+    },
+    {
+      "customer": 18,
+      "generator_capacity_kw": 1.57,
+      "postcode": 2085
+    },
+    {
+      "customer": 19,
+      "generator_capacity_kw": 1.05,
+      "postcode": 2259
+    },
+    {
+      "customer": 20,
+      "generator_capacity_kw": 1.57,
+      "postcode": 2259
+    },
+    {
+      "customer": 21,
+      "generator_capacity_kw": 1.5,
+      "postcode": 2250
+    },
+    {
+      "customer": 22,
+      "generator_capacity_kw": 1.0,
+      "postcode": 2283
+    },
+    {
+      "customer": 23,
+      "generator_capacity_kw": 1.5,
+      "postcode": 2263
+    },
+    {
+      "customer": 24,
+      "generator_capacity_kw": 5.9,
+      "postcode": 2305
+    },
+    {
+      "customer": 25,
+      "generator_capacity_kw": 1.02,
+      "postcode": 2285
+    },
+    {
+      "customer": 26,
+      "generator_capacity_kw": 1.02,
+      "postcode": 2300
+    },
+    {
+      "customer": 27,
+      "generator_capacity_kw": 1.5,
+      "postcode": 2093
+    },
+    {
+      "customer": 28,
+      "generator_capacity_kw": 1.0,
+      "postcode": 2261
+    },
+    {
+      "customer": 29,
+      "generator_capacity_kw": 1.7,
+      "postcode": 2259
+    },
+    {
+      "customer": 30,
+      "generator_capacity_kw": 1.05,
+      "postcode": 2259
+    },
+    {
+      "customer": 31,
+      "generator_capacity_kw": 1.53,
+      "postcode": 2025
+    },
+    {
+      "customer": 32,
+      "generator_capacity_kw": 1.08,
+      "postcode": 2041
+    },
+    {
+      "customer": 33,
+      "generator_capacity_kw": 2.1,
+      "postcode": 2303
+    },
+    {
+      "customer": 34,
+      "generator_capacity_kw": 1.0,
+      "postcode": 2082
+    },
+    {
+      "customer": 35,
+      "generator_capacity_kw": 2.1,
+      "postcode": 2284
+    },
+    {
+      "customer": 36,
+      "generator_capacity_kw": 1.0,
+      "postcode": 2137
+    },
+    {
+      "customer": 37,
+      "generator_capacity_kw": 1.5,
+      "postcode": 2263
+    },
+    {
+      "customer": 38,
+      "generator_capacity_kw": 1.05,
+      "postcode": 2259
+    },
+    {
+      "customer": 39,
+      "generator_capacity_kw": 1.05,
+      "postcode": 2259
+    },
+    {
+      "customer": 40,
+      "generator_capacity_kw": 1.0,
+      "postcode": 2048
+    },
+    {
+      "customer": 41,
+      "generator_capacity_kw": 1.05,
+      "postcode": 2282
+    },
+    {
+      "customer": 42,
+      "generator_capacity_kw": 3.6,
+      "postcode": 2265
+    },
+    {
+      "customer": 43,
+      "generator_capacity_kw": 1.44,
+      "postcode": 2205
+    },
+    {
+      "customer": 44,
+      "generator_capacity_kw": 1.02,
+      "postcode": 2224
+    },
+    {
+      "customer": 45,
+      "generator_capacity_kw": 2.05,
+      "postcode": 2021
+    },
+    {
+      "customer": 46,
+      "generator_capacity_kw": 1.36,
+      "postcode": 2126
+    },
+    {
+      "customer": 47,
+      "generator_capacity_kw": 1.02,
+      "postcode": 2290
+    },
+    {
+      "customer": 48,
+      "generator_capacity_kw": 2.96,
+      "postcode": 2010
+    },
+    {
+      "customer": 49,
+      "generator_capacity_kw": 1.0,
+      "postcode": 2259
+    },
+    {
+      "customer": 50,
+      "generator_capacity_kw": 1.02,
+      "postcode": 2261
+    },
+    {
+      "customer": 51,
+      "generator_capacity_kw": 1.53,
+      "postcode": 2283
+    },
+    {
+      "customer": 52,
+      "generator_capacity_kw": 1.05,
+      "postcode": 2284
+    },
+    {
+      "customer": 53,
+      "generator_capacity_kw": 1.48,
+      "postcode": 2135
+    },
+    {
+      "customer": 54,
+      "generator_capacity_kw": 2.04,
+      "postcode": 2251
+    },
+    {
+      "customer": 55,
+      "generator_capacity_kw": 2.0,
+      "postcode": 2162
+    },
+    {
+      "customer": 56,
+      "generator_capacity_kw": 2.1,
+      "postcode": 2227
+    },
+    {
+      "customer": 57,
+      "generator_capacity_kw": 2.1,
+      "postcode": 2295
+    },
+    {
+      "customer": 58,
+      "generator_capacity_kw": 1.0,
+      "postcode": 2261
+    },
+    {
+      "customer": 59,
+      "generator_capacity_kw": 2.8,
+      "postcode": 2290
+    },
+    {
+      "customer": 60,
+      "generator_capacity_kw": 1.4,
+      "postcode": 2190
+    },
+    {
+      "customer": 61,
+      "generator_capacity_kw": 2.0,
+      "postcode": 2261
+    },
+    {
+      "customer": 62,
+      "generator_capacity_kw": 1.5,
+      "postcode": 2029
+    },
+    {
+      "customer": 63,
+      "generator_capacity_kw": 1.0,
+      "postcode": 2085
+    },
+    {
+      "customer": 64,
+      "generator_capacity_kw": 1.5,
+      "postcode": 2259
+    },
+    {
+      "customer": 65,
+      "generator_capacity_kw": 1.5,
+      "postcode": 2093
+    },
+    {
+      "customer": 66,
+      "generator_capacity_kw": 1.6,
+      "postcode": 2230
+    },
+    {
+      "customer": 67,
+      "generator_capacity_kw": 2.96,
+      "postcode": 2259
+    },
+    {
+      "customer": 68,
+      "generator_capacity_kw": 1.48,
+      "postcode": 2282
+    },
+    {
+      "customer": 69,
+      "generator_capacity_kw": 2.04,
+      "postcode": 2261
+    },
+    {
+      "customer": 70,
+      "generator_capacity_kw": 1.0,
+      "postcode": 2261
+    },
+    {
+      "customer": 71,
+      "generator_capacity_kw": 1.5,
+      "postcode": 2204
+    },
+    {
+      "customer": 72,
+      "generator_capacity_kw": 1.02,
+      "postcode": 2261
+    },
+    {
+      "customer": 73,
+      "generator_capacity_kw": 2.0,
+      "postcode": 2305
+    },
+    {
+      "customer": 74,
+      "generator_capacity_kw": 4.04,
+      "postcode": 2082
+    },
+    {
+      "customer": 75,
+      "generator_capacity_kw": 8.0,
+      "postcode": 2251
+    },
+    {
+      "customer": 76,
+      "generator_capacity_kw": 1.5,
+      "postcode": 2093
+    },
+    {
+      "customer": 77,
+      "generator_capacity_kw": 1.02,
+      "postcode": 2284
+    },
+    {
+      "customer": 78,
+      "generator_capacity_kw": 2.16,
+      "postcode": 2031
+    },
+    {
+      "customer": 79,
+      "generator_capacity_kw": 1.44,
+      "postcode": 2039
+    },
+    {
+      "customer": 80,
+      "generator_capacity_kw": 1.0,
+      "postcode": 2137
+    },
+    {
+      "customer": 81,
+      "generator_capacity_kw": 1.92,
+      "postcode": 2087
+    },
+    {
+      "customer": 82,
+      "generator_capacity_kw": 3.78,
+      "postcode": 2074
+    },
+    {
+      "customer": 83,
+      "generator_capacity_kw": 3.06,
+      "postcode": 2087
+    },
+    {
+      "customer": 84,
+      "generator_capacity_kw": 1.4,
+      "postcode": 2259
+    },
+    {
+      "customer": 85,
+      "generator_capacity_kw": 2.0,
+      "postcode": 2330
+    },
+    {
+      "customer": 86,
+      "generator_capacity_kw": 1.02,
+      "postcode": 2261
+    },
+    {
+      "customer": 87,
+      "generator_capacity_kw": 2.0,
+      "postcode": 2290
+    },
+    {
+      "customer": 88,
+      "generator_capacity_kw": 1.8,
+      "postcode": 2290
+    },
+    {
+      "customer": 89,
+      "generator_capacity_kw": 1.2,
+      "postcode": 2076
+    },
+    {
+      "customer": 90,
+      "generator_capacity_kw": 1.0,
+      "postcode": 2261
+    },
+    {
+      "customer": 91,
+      "generator_capacity_kw": 1.5,
+      "postcode": 2126
+    },
+    {
+      "customer": 92,
+      "generator_capacity_kw": 1.1,
+      "postcode": 2190
+    },
+    {
+      "customer": 93,
+      "generator_capacity_kw": 2.3,
+      "postcode": 2291
+    },
+    {
+      "customer": 94,
+      "generator_capacity_kw": 1.02,
+      "postcode": 2119
+    },
+    {
+      "customer": 95,
+      "generator_capacity_kw": 2.8,
+      "postcode": 2099
+    },
+    {
+      "customer": 96,
+      "generator_capacity_kw": 1.0,
+      "postcode": 2066
+    },
+    {
+      "customer": 97,
+      "generator_capacity_kw": 2.4,
+      "postcode": 2093
+    },
+    {
+      "customer": 98,
+      "generator_capacity_kw": 1.0,
+      "postcode": 2204
+    },
+    {
+      "customer": 99,
+      "generator_capacity_kw": 1.0,
+      "postcode": 2048
+    },
+    {
+      "customer": 100,
+      "generator_capacity_kw": 1.5,
+      "postcode": 2100
+    },
+    {
+      "customer": 101,
+      "generator_capacity_kw": 2.04,
+      "postcode": 2262
+    },
+    {
+      "customer": 102,
+      "generator_capacity_kw": 2.0,
+      "postcode": 2081
+    },
+    {
+      "customer": 103,
+      "generator_capacity_kw": 3.0,
+      "postcode": 2305
+    },
+    {
+      "customer": 104,
+      "generator_capacity_kw": 1.48,
+      "postcode": 2320
+    },
+    {
+      "customer": 105,
+      "generator_capacity_kw": 1.07,
+      "postcode": 2134
+    },
+    {
+      "customer": 106,
+      "generator_capacity_kw": 1.5,
+      "postcode": 2259
+    },
+    {
+      "customer": 107,
+      "generator_capacity_kw": 1.05,
+      "postcode": 2280
+    },
+    {
+      "customer": 108,
+      "generator_capacity_kw": 1.0,
+      "postcode": 2289
+    },
+    {
+      "customer": 109,
+      "generator_capacity_kw": 6.2,
+      "postcode": 2093
+    },
+    {
+      "customer": 110,
+      "generator_capacity_kw": 2.8,
+      "postcode": 2290
+    },
+    {
+      "customer": 111,
+      "generator_capacity_kw": 2.0,
+      "postcode": 2294
+    },
+    {
+      "customer": 112,
+      "generator_capacity_kw": 1.92,
+      "postcode": 2100
+    },
+    {
+      "customer": 113,
+      "generator_capacity_kw": 1.5,
+      "postcode": 2041
+    },
+    {
+      "customer": 114,
+      "generator_capacity_kw": 1.57,
+      "postcode": 2159
+    },
+    {
+      "customer": 115,
+      "generator_capacity_kw": 1.8,
+      "postcode": 2100
+    },
+    {
+      "customer": 116,
+      "generator_capacity_kw": 2.5,
+      "postcode": 2008
+    },
+    {
+      "customer": 117,
+      "generator_capacity_kw": 1.1,
+      "postcode": 2093
+    },
+    {
+      "customer": 118,
+      "generator_capacity_kw": 1.5,
+      "postcode": 2209
+    },
+    {
+      "customer": 119,
+      "generator_capacity_kw": 2.1,
+      "postcode": 2280
+    },
+    {
+      "customer": 120,
+      "generator_capacity_kw": 2.04,
+      "postcode": 2203
+    },
+    {
+      "customer": 121,
+      "generator_capacity_kw": 1.02,
+      "postcode": 2280
+    },
+    {
+      "customer": 122,
+      "generator_capacity_kw": 1.5,
+      "postcode": 2278
+    },
+    {
+      "customer": 123,
+      "generator_capacity_kw": 1.53,
+      "postcode": 2079
+    },
+    {
+      "customer": 124,
+      "generator_capacity_kw": 1.2,
+      "postcode": 2289
+    },
+    {
+      "customer": 125,
+      "generator_capacity_kw": 2.0,
+      "postcode": 2280
+    },
+    {
+      "customer": 126,
+      "generator_capacity_kw": 1.1,
+      "postcode": 2228
+    },
+    {
+      "customer": 127,
+      "generator_capacity_kw": 1.0,
+      "postcode": 2261
+    },
+    {
+      "customer": 128,
+      "generator_capacity_kw": 1.5,
+      "postcode": 2044
+    },
+    {
+      "customer": 129,
+      "generator_capacity_kw": 1.1,
+      "postcode": 2046
+    },
+    {
+      "customer": 130,
+      "generator_capacity_kw": 1.5,
+      "postcode": 2262
+    },
+    {
+      "customer": 131,
+      "generator_capacity_kw": 1.5,
+      "postcode": 2111
+    },
+    {
+      "customer": 132,
+      "generator_capacity_kw": 1.02,
+      "postcode": 2100
+    },
+    {
+      "customer": 133,
+      "generator_capacity_kw": 1.48,
+      "postcode": 2280
+    },
+    {
+      "customer": 134,
+      "generator_capacity_kw": 1.48,
+      "postcode": 2126
+    },
+    {
+      "customer": 135,
+      "generator_capacity_kw": 1.52,
+      "postcode": 2137
+    },
+    {
+      "customer": 136,
+      "generator_capacity_kw": 1.1,
+      "postcode": 2077
+    },
+    {
+      "customer": 137,
+      "generator_capacity_kw": 1.9,
+      "postcode": 2263
+    },
+    {
+      "customer": 138,
+      "generator_capacity_kw": 4.0,
+      "postcode": 2291
+    },
+    {
+      "customer": 139,
+      "generator_capacity_kw": 1.5,
+      "postcode": 2018
+    },
+    {
+      "customer": 140,
+      "generator_capacity_kw": 1.0,
+      "postcode": 2208
+    },
+    {
+      "customer": 141,
+      "generator_capacity_kw": 3.0,
+      "postcode": 2126
+    },
+    {
+      "customer": 142,
+      "generator_capacity_kw": 2.04,
+      "postcode": 2204
+    },
+    {
+      "customer": 143,
+      "generator_capacity_kw": 2.1,
+      "postcode": 2325
+    },
+    {
+      "customer": 144,
+      "generator_capacity_kw": 1.5,
+      "postcode": 2300
+    },
+    {
+      "customer": 145,
+      "generator_capacity_kw": 1.5,
+      "postcode": 2263
+    },
+    {
+      "customer": 146,
+      "generator_capacity_kw": 1.0,
+      "postcode": 2324
+    },
+    {
+      "customer": 147,
+      "generator_capacity_kw": 1.05,
+      "postcode": 2076
+    },
+    {
+      "customer": 148,
+      "generator_capacity_kw": 1.5,
+      "postcode": 2282
+    },
+    {
+      "customer": 149,
+      "generator_capacity_kw": 1.02,
+      "postcode": 2100
+    },
+    {
+      "customer": 150,
+      "generator_capacity_kw": 2.04,
+      "postcode": 2196
+    },
+    {
+      "customer": 151,
+      "generator_capacity_kw": 1.02,
+      "postcode": 2289
+    },
+    {
+      "customer": 152,
+      "generator_capacity_kw": 4.2,
+      "postcode": 2325
+    },
+    {
+      "customer": 153,
+      "generator_capacity_kw": 2.1,
+      "postcode": 2303
+    },
+    {
+      "customer": 154,
+      "generator_capacity_kw": 1.0,
+      "postcode": 2100
+    },
+    {
+      "customer": 155,
+      "generator_capacity_kw": 1.5,
+      "postcode": 2259
+    },
+    {
+      "customer": 156,
+      "generator_capacity_kw": 1.5,
+      "postcode": 2231
+    },
+    {
+      "customer": 157,
+      "generator_capacity_kw": 9.99,
+      "postcode": 2291
+    },
+    {
+      "customer": 158,
+      "generator_capacity_kw": 3.0,
+      "postcode": 2261
+    },
+    {
+      "customer": 159,
+      "generator_capacity_kw": 2.2,
+      "postcode": 2066
+    },
+    {
+      "customer": 160,
+      "generator_capacity_kw": 1.02,
+      "postcode": 2259
+    },
+    {
+      "customer": 161,
+      "generator_capacity_kw": 3.2,
+      "postcode": 2120
+    },
+    {
+      "customer": 162,
+      "generator_capacity_kw": 1.0,
+      "postcode": 2137
+    },
+    {
+      "customer": 163,
+      "generator_capacity_kw": 1.08,
+      "postcode": 2290
+    },
+    {
+      "customer": 164,
+      "generator_capacity_kw": 1.5,
+      "postcode": 2044
+    },
+    {
+      "customer": 165,
+      "generator_capacity_kw": 1.02,
+      "postcode": 2261
+    },
+    {
+      "customer": 166,
+      "generator_capacity_kw": 1.5,
+      "postcode": 2074
+    },
+    {
+      "customer": 167,
+      "generator_capacity_kw": 2.72,
+      "postcode": 2260
+    },
+    {
+      "customer": 168,
+      "generator_capacity_kw": 1.1,
+      "postcode": 2262
+    },
+    {
+      "customer": 169,
+      "generator_capacity_kw": 2.04,
+      "postcode": 2259
+    },
+    {
+      "customer": 170,
+      "generator_capacity_kw": 1.53,
+      "postcode": 2292
+    },
+    {
+      "customer": 171,
+      "generator_capacity_kw": 1.05,
+      "postcode": 2259
+    },
+    {
+      "customer": 172,
+      "generator_capacity_kw": 1.0,
+      "postcode": 2066
+    },
+    {
+      "customer": 173,
+      "generator_capacity_kw": 2.59,
+      "postcode": 2203
+    },
+    {
+      "customer": 174,
+      "generator_capacity_kw": 1.02,
+      "postcode": 2093
+    },
+    {
+      "customer": 175,
+      "generator_capacity_kw": 1.5,
+      "postcode": 2290
+    },
+    {
+      "customer": 176,
+      "generator_capacity_kw": 1.75,
+      "postcode": 2293
+    },
+    {
+      "customer": 177,
+      "generator_capacity_kw": 1.5,
+      "postcode": 2259
+    },
+    {
+      "customer": 178,
+      "generator_capacity_kw": 1.1,
+      "postcode": 2260
+    },
+    {
+      "customer": 179,
+      "generator_capacity_kw": 1.0,
+      "postcode": 2093
+    },
+    {
+      "customer": 180,
+      "generator_capacity_kw": 1.6,
+      "postcode": 2086
+    },
+    {
+      "customer": 181,
+      "generator_capacity_kw": 1.2,
+      "postcode": 2207
+    },
+    {
+      "customer": 182,
+      "generator_capacity_kw": 1.53,
+      "postcode": 2204
+    },
+    {
+      "customer": 183,
+      "generator_capacity_kw": 1.5,
+      "postcode": 2093
+    },
+    {
+      "customer": 184,
+      "generator_capacity_kw": 1.05,
+      "postcode": 2259
+    },
+    {
+      "customer": 185,
+      "generator_capacity_kw": 1.0,
+      "postcode": 2096
+    },
+    {
+      "customer": 186,
+      "generator_capacity_kw": 1.02,
+      "postcode": 2259
+    },
+    {
+      "customer": 187,
+      "generator_capacity_kw": 1.6,
+      "postcode": 2047
+    },
+    {
+      "customer": 188,
+      "generator_capacity_kw": 1.48,
+      "postcode": 2289
+    },
+    {
+      "customer": 189,
+      "generator_capacity_kw": 2.04,
+      "postcode": 2263
+    },
+    {
+      "customer": 190,
+      "generator_capacity_kw": 1.4,
+      "postcode": 2099
+    },
+    {
+      "customer": 191,
+      "generator_capacity_kw": 3.24,
+      "postcode": 2227
+    },
+    {
+      "customer": 192,
+      "generator_capacity_kw": 1.02,
+      "postcode": 2018
+    },
+    {
+      "customer": 193,
+      "generator_capacity_kw": 4.0,
+      "postcode": 2205
+    },
+    {
+      "customer": 194,
+      "generator_capacity_kw": 1.5,
+      "postcode": 2233
+    },
+    {
+      "customer": 195,
+      "generator_capacity_kw": 1.1,
+      "postcode": 2079
+    },
+    {
+      "customer": 196,
+      "generator_capacity_kw": 1.0,
+      "postcode": 2262
+    },
+    {
+      "customer": 197,
+      "generator_capacity_kw": 1.5,
+      "postcode": 2076
+    },
+    {
+      "customer": 198,
+      "generator_capacity_kw": 1.0,
+      "postcode": 2074
+    },
+    {
+      "customer": 199,
+      "generator_capacity_kw": 1.02,
+      "postcode": 2190
+    },
+    {
+      "customer": 200,
+      "generator_capacity_kw": 1.7,
+      "postcode": 2291
+    },
+    {
+      "customer": 201,
+      "generator_capacity_kw": 1.75,
+      "postcode": 2291
+    },
+    {
+      "customer": 202,
+      "generator_capacity_kw": 1.05,
+      "postcode": 2259
+    },
+    {
+      "customer": 203,
+      "generator_capacity_kw": 1.5,
+      "postcode": 2290
+    },
+    {
+      "customer": 204,
+      "generator_capacity_kw": 1.58,
+      "postcode": 2077
+    },
+    {
+      "customer": 205,
+      "generator_capacity_kw": 2.04,
+      "postcode": 2034
+    },
+    {
+      "customer": 206,
+      "generator_capacity_kw": 1.9,
+      "postcode": 2259
+    },
+    {
+      "customer": 207,
+      "generator_capacity_kw": 2.7,
+      "postcode": 2290
+    },
+    {
+      "customer": 208,
+      "generator_capacity_kw": 1.44,
+      "postcode": 2086
+    },
+    {
+      "customer": 209,
+      "generator_capacity_kw": 1.0,
+      "postcode": 2086
+    },
+    {
+      "customer": 210,
+      "generator_capacity_kw": 1.94,
+      "postcode": 2079
+    },
+    {
+      "customer": 211,
+      "generator_capacity_kw": 1.5,
+      "postcode": 2285
+    },
+    {
+      "customer": 212,
+      "generator_capacity_kw": 2.1,
+      "postcode": 2325
+    },
+    {
+      "customer": 213,
+      "generator_capacity_kw": 1.7,
+      "postcode": 2229
+    },
+    {
+      "customer": 214,
+      "generator_capacity_kw": 1.53,
+      "postcode": 2285
+    },
+    {
+      "customer": 215,
+      "generator_capacity_kw": 1.0,
+      "postcode": 2259
+    },
+    {
+      "customer": 216,
+      "generator_capacity_kw": 1.0,
+      "postcode": 2092
+    },
+    {
+      "customer": 217,
+      "generator_capacity_kw": 1.1,
+      "postcode": 2204
+    },
+    {
+      "customer": 218,
+      "generator_capacity_kw": 1.53,
+      "postcode": 2264
+    },
+    {
+      "customer": 219,
+      "generator_capacity_kw": 1.02,
+      "postcode": 2230
+    },
+    {
+      "customer": 220,
+      "generator_capacity_kw": 2.1,
+      "postcode": 2037
+    },
+    {
+      "customer": 221,
+      "generator_capacity_kw": 1.02,
+      "postcode": 2120
+    },
+    {
+      "customer": 222,
+      "generator_capacity_kw": 1.05,
+      "postcode": 2296
+    },
+    {
+      "customer": 223,
+      "generator_capacity_kw": 1.02,
+      "postcode": 2259
+    },
+    {
+      "customer": 224,
+      "generator_capacity_kw": 1.02,
+      "postcode": 2261
+    },
+    {
+      "customer": 225,
+      "generator_capacity_kw": 1.1,
+      "postcode": 2251
+    },
+    {
+      "customer": 226,
+      "generator_capacity_kw": 1.53,
+      "postcode": 2190
+    },
+    {
+      "customer": 227,
+      "generator_capacity_kw": 1.0,
+      "postcode": 2259
+    },
+    {
+      "customer": 228,
+      "generator_capacity_kw": 1.1,
+      "postcode": 2086
+    },
+    {
+      "customer": 229,
+      "generator_capacity_kw": 1.02,
+      "postcode": 2205
+    },
+    {
+      "customer": 230,
+      "generator_capacity_kw": 1.5,
+      "postcode": 2305
+    },
+    {
+      "customer": 231,
+      "generator_capacity_kw": 2.1,
+      "postcode": 2286
+    },
+    {
+      "customer": 232,
+      "generator_capacity_kw": 1.1,
+      "postcode": 2259
+    },
+    {
+      "customer": 233,
+      "generator_capacity_kw": 1.5,
+      "postcode": 2204
+    },
+    {
+      "customer": 234,
+      "generator_capacity_kw": 1.65,
+      "postcode": 2200
+    },
+    {
+      "customer": 235,
+      "generator_capacity_kw": 1.0,
+      "postcode": 2077
+    },
+    {
+      "customer": 236,
+      "generator_capacity_kw": 1.02,
+      "postcode": 2096
+    },
+    {
+      "customer": 237,
+      "generator_capacity_kw": 1.2,
+      "postcode": 2219
+    },
+    {
+      "customer": 238,
+      "generator_capacity_kw": 1.5,
+      "postcode": 2262
+    },
+    {
+      "customer": 239,
+      "generator_capacity_kw": 2.0,
+      "postcode": 2315
+    },
+    {
+      "customer": 240,
+      "generator_capacity_kw": 1.0,
+      "postcode": 2290
+    },
+    {
+      "customer": 241,
+      "generator_capacity_kw": 1.5,
+      "postcode": 2077
+    },
+    {
+      "customer": 242,
+      "generator_capacity_kw": 1.08,
+      "postcode": 2211
+    },
+    {
+      "customer": 243,
+      "generator_capacity_kw": 1.55,
+      "postcode": 2159
+    },
+    {
+      "customer": 244,
+      "generator_capacity_kw": 2.0,
+      "postcode": 2204
+    },
+    {
+      "customer": 245,
+      "generator_capacity_kw": 2.06,
+      "postcode": 2260
+    },
+    {
+      "customer": 246,
+      "generator_capacity_kw": 1.53,
+      "postcode": 2261
+    },
+    {
+      "customer": 247,
+      "generator_capacity_kw": 1.02,
+      "postcode": 2077
+    },
+    {
+      "customer": 248,
+      "generator_capacity_kw": 5.61,
+      "postcode": 2250
+    },
+    {
+      "customer": 249,
+      "generator_capacity_kw": 1.5,
+      "postcode": 2320
+    },
+    {
+      "customer": 250,
+      "generator_capacity_kw": 1.36,
+      "postcode": 2154
+    },
+    {
+      "customer": 251,
+      "generator_capacity_kw": 1.2,
+      "postcode": 2037
+    },
+    {
+      "customer": 252,
+      "generator_capacity_kw": 1.0,
+      "postcode": 2289
+    },
+    {
+      "customer": 253,
+      "generator_capacity_kw": 2.8,
+      "postcode": 2285
+    },
+    {
+      "customer": 254,
+      "generator_capacity_kw": 1.5,
+      "postcode": 2074
+    },
+    {
+      "customer": 255,
+      "generator_capacity_kw": 2.16,
+      "postcode": 2076
+    },
+    {
+      "customer": 256,
+      "generator_capacity_kw": 4.55,
+      "postcode": 2291
+    },
+    {
+      "customer": 257,
+      "generator_capacity_kw": 1.0,
+      "postcode": 2066
+    },
+    {
+      "customer": 258,
+      "generator_capacity_kw": 1.5,
+      "postcode": 2092
+    },
+    {
+      "customer": 259,
+      "generator_capacity_kw": 1.05,
+      "postcode": 2289
+    },
+    {
+      "customer": 260,
+      "generator_capacity_kw": 1.0,
+      "postcode": 2074
+    },
+    {
+      "customer": 261,
+      "generator_capacity_kw": 1.02,
+      "postcode": 2284
+    },
+    {
+      "customer": 262,
+      "generator_capacity_kw": 1.0,
+      "postcode": 2088
+    },
+    {
+      "customer": 263,
+      "generator_capacity_kw": 2.1,
+      "postcode": 2290
+    },
+    {
+      "customer": 264,
+      "generator_capacity_kw": 1.02,
+      "postcode": 2198
+    },
+    {
+      "customer": 265,
+      "generator_capacity_kw": 1.48,
+      "postcode": 2326
+    },
+    {
+      "customer": 266,
+      "generator_capacity_kw": 1.02,
+      "postcode": 2261
+    },
+    {
+      "customer": 267,
+      "generator_capacity_kw": 1.0,
+      "postcode": 2259
+    },
+    {
+      "customer": 268,
+      "generator_capacity_kw": 2.0,
+      "postcode": 2228
+    },
+    {
+      "customer": 269,
+      "generator_capacity_kw": 1.02,
+      "postcode": 2285
+    },
+    {
+      "customer": 270,
+      "generator_capacity_kw": 1.5,
+      "postcode": 2262
+    },
+    {
+      "customer": 271,
+      "generator_capacity_kw": 1.02,
+      "postcode": 2251
+    },
+    {
+      "customer": 272,
+      "generator_capacity_kw": 1.4,
+      "postcode": 2293
+    },
+    {
+      "customer": 273,
+      "generator_capacity_kw": 3.6,
+      "postcode": 2320
+    },
+    {
+      "customer": 274,
+      "generator_capacity_kw": 1.0,
+      "postcode": 2084
+    },
+    {
+      "customer": 275,
+      "generator_capacity_kw": 2.04,
+      "postcode": 2026
+    },
+    {
+      "customer": 276,
+      "generator_capacity_kw": 2.0,
+      "postcode": 2261
+    },
+    {
+      "customer": 277,
+      "generator_capacity_kw": 1.02,
+      "postcode": 2219
+    },
+    {
+      "customer": 278,
+      "generator_capacity_kw": 2.0,
+      "postcode": 2137
+    },
+    {
+      "customer": 279,
+      "generator_capacity_kw": 1.5,
+      "postcode": 2233
+    },
+    {
+      "customer": 280,
+      "generator_capacity_kw": 1.5,
+      "postcode": 2087
+    },
+    {
+      "customer": 281,
+      "generator_capacity_kw": 1.5,
+      "postcode": 2290
+    },
+    {
+      "customer": 282,
+      "generator_capacity_kw": 3.0,
+      "postcode": 2134
+    },
+    {
+      "customer": 283,
+      "generator_capacity_kw": 1.02,
+      "postcode": 2265
+    },
+    {
+      "customer": 284,
+      "generator_capacity_kw": 1.5,
+      "postcode": 2321
+    },
+    {
+      "customer": 285,
+      "generator_capacity_kw": 1.57,
+      "postcode": 2305
+    },
+    {
+      "customer": 286,
+      "generator_capacity_kw": 1.0,
+      "postcode": 2261
+    },
+    {
+      "customer": 287,
+      "generator_capacity_kw": 1.02,
+      "postcode": 2218
+    },
+    {
+      "customer": 288,
+      "generator_capacity_kw": 1.5,
+      "postcode": 2044
+    },
+    {
+      "customer": 289,
+      "generator_capacity_kw": 6.0,
+      "postcode": 2281
+    },
+    {
+      "customer": 290,
+      "generator_capacity_kw": 1.05,
+      "postcode": 2282
+    },
+    {
+      "customer": 291,
+      "generator_capacity_kw": 1.0,
+      "postcode": 2220
+    },
+    {
+      "customer": 292,
+      "generator_capacity_kw": 1.02,
+      "postcode": 2261
+    },
+    {
+      "customer": 293,
+      "generator_capacity_kw": 1.05,
+      "postcode": 2290
+    },
+    {
+      "customer": 294,
+      "generator_capacity_kw": 1.1,
+      "postcode": 2228
+    },
+    {
+      "customer": 295,
+      "generator_capacity_kw": 1.0,
+      "postcode": 2126
+    },
+    {
+      "customer": 296,
+      "generator_capacity_kw": 1.08,
+      "postcode": 2087
+    },
+    {
+      "customer": 297,
+      "generator_capacity_kw": 1.5,
+      "postcode": 2261
+    },
+    {
+      "customer": 298,
+      "generator_capacity_kw": 1.02,
+      "postcode": 2216
+    },
+    {
+      "customer": 299,
+      "generator_capacity_kw": 1.0,
+      "postcode": 2076
+    },
+    {
+      "customer": 300,
+      "generator_capacity_kw": 3.36,
+      "postcode": 2086
+    }
+  ]
+}

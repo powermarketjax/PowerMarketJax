@@ -1,0 +1,42 @@
+{
+  "source_file": "AEMO_Forecast_vs_Actual_2025.csv",
+  "parquet_file": "AEMO_Forecast_vs_Actual_2025.parquet",
+  "source_url": "https://visualisations.aemo.com.au/aemo/nemweb/index.html#",
+  "source_organization": "Australian Energy Market Operator (AEMO)",
+  "generated_at": "2026-03-25T16:17:26.444637",
+  "shape": {
+    "rows": 89145,
+    "columns": 10
+  },
+  "columns": [
+    "REGIONID",
+    "FORECAST_DATETIME",
+    "INTERVAL_DATETIME",
+    "LOAD_DATE",
+    "OPERATIONAL_DEMAND_POE10",
+    "OPERATIONAL_DEMAND_POE50",
+    "OPERATIONAL_DEMAND_POE90",
+    "OPERATIONAL_DEMAND",
+    "OPERATIONAL_DEMAND_ADJUSTMENT",
+    "WDR_ESTIMATE"
+  ],
+  "dtypes": {
+    "REGIONID": "object",
+    "FORECAST_DATETIME": "datetime64[ns, UTC]",
+    "INTERVAL_DATETIME": "datetime64[ns, UTC]",
+    "LOAD_DATE": "datetime64[ns, UTC]",
+    "OPERATIONAL_DEMAND_POE10": "int64",
+    "OPERATIONAL_DEMAND_POE50": "int64",
+    "OPERATIONAL_DEMAND_POE90": "int64",
+    "OPERATIONAL_DEMAND": "float64",
+    "OPERATIONAL_DEMAND_ADJUSTMENT": "float64",
+    "WDR_ESTIMATE": "float64"
+  },
+  "regions": [
+    "NSW1",
+    "QLD1",
+    "SA1",
+    "TAS1",
+    "VIC1"
+  ]
+}

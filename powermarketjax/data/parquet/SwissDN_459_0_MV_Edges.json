@@ -1,0 +1,64 @@
+{
+  "parquet_file": "SwissDN_459_0_MV_Edges.parquet",
+  "source_organization": "ETH Zurich (Zapparoli et al., Scientific Data 2025)",
+  "source_url": "https://doi.org/10.5281/zenodo.15056134",
+  "source_citation": "Zapparoli, L., Oneto, A., Parajeles Herrera, M., Gjorgiev, B., Hug, G. & Sansavini, G. Future Deployment and Flexibility of Distributed Energy Resources in the Distribution Grids of Switzerland. Sci Data 12, 1491 (2025). https://doi.org/10.1038/s41597-025-05830-y",
+  "source_archive": "SwissDN_DERs.zip",
+  "source_archive_md5": "490b7b2ef411541fac8db6a7cc9dad03",
+  "licence": "Creative Commons Attribution 4.0 International",
+  "licence_url": "https://creativecommons.org/licenses/by/4.0/",
+  "licence_permits_redistribution": true,
+  "attribution": "Zapparoli, L., Oneto, A., Parajeles Herrera, M., Gjorgiev, B., Hug, G. & Sansavini, G. Future Deployment and Flexibility of Distributed Energy Resources in the Distribution Grids of Switzerland. Sci Data 12, 1491 (2025). https://doi.org/10.1038/s41597-025-05830-y Dataset: https://doi.org/10.5281/zenodo.15056134, CC BY 4.0. Changes: medium-voltage grid 459_0 and its medium-voltage resource rows extracted from the country-wide tables; GeoJSON converted to tabular form; the normalised demand profile multiplied by the nodal peak as the paper prescribes; no gap filling, no unit conversion beyond kW to MW where stated.",
+  "generated_at": "2026-08-14T18:13:14.415816+00:00",
+  "mv_grid": "459_0",
+  "content": "medium-voltage grid edges: impedance, thermal rating, base-case flow",
+  "base_kv": 20.0,
+  "units": {
+    "r_ohm": "ohm, total for the line",
+    "x_ohm": "ohm, total for the line",
+    "b_siemens": "S",
+    "s_nom_mva": "MVA, thermal rating",
+    "length_km": "km",
+    "base_case_flow": "source's own base-case value",
+    "downstream_peak_mw": "MW, sum of peak_mw over the buses this line supplies"
+  },
+  "n_edges": 128,
+  "s_nom_mva_range": [
+    4.2,
+    12.9
+  ],
+  "max_downstream_peak_over_s_nom": 0.812472014596359,
+  "impedance_note": "r_ohm and x_ohm are totals in ohms, not per-unit and not per km. Building a CaseData from them needs Z_base = base_kv^2 / base_mva.",
+  "shape": [
+    128,
+    12
+  ],
+  "columns": [
+    "u",
+    "v",
+    "key",
+    "length_km",
+    "overhead_line",
+    "x_ohm",
+    "r_ohm",
+    "b_siemens",
+    "s_nom_mva",
+    "line_type",
+    "base_case_flow",
+    "downstream_peak_mw"
+  ],
+  "dtypes": {
+    "u": "object",
+    "v": "object",
+    "key": "int64",
+    "length_km": "float64",
+    "overhead_line": "bool",
+    "x_ohm": "float64",
+    "r_ohm": "float64",
+    "b_siemens": "float64",
+    "s_nom_mva": "float64",
+    "line_type": "int64",
+    "base_case_flow": "float64",
+    "downstream_peak_mw": "float64"
+  }
+}

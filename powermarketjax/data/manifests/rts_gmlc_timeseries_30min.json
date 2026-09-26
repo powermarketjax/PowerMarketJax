@@ -1,0 +1,30 @@
+{
+  "name": "rts_gmlc_timeseries_30min",
+  "source": "rts_gmlc",
+  "data_type": "actual_series",
+  "time_mode": "calendar",
+  "resolution": "30min",
+  "parquet_file": "RTS_GMLC_RealTime_Load_and_Renewables_2020_30min.parquet",
+  "metadata_json": "RTS_GMLC_RealTime_Load_and_Renewables_2020_30min.json",
+  "column_map": {
+    "load_rt_mw": "load.rts_rt_30min_mw",
+    "hydro_rt_mw": "hydro.rts_rt_30min_mw",
+    "pv_rt_mw": "solar.rts_pv_rt_30min_mw",
+    "rtpv_rt_mw": "solar.rts_rtpv_rt_30min_mw",
+    "wind_rt_mw": "wind.rts_rt_30min_mw"
+  },
+  "index_map": {
+    "datetime": "datetime"
+  },
+  "derived": {},
+  "normalize": {},
+  "data_epoch": null,
+  "cyclical": false,
+  "region_values": [],
+  "date_range": [
+    "2020-01-01",
+    "2020-12-31"
+  ],
+  "source_url": "https://raw.githubusercontent.com/GridMod/RTS-GMLC/master/RTS_Data/timeseries_data_files/",
+  "source_organization": "National Renewable Energy Laboratory (NREL) / GridMod"
+}

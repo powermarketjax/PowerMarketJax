@@ -1,0 +1,70 @@
+MIT License
+
+Copyright (c) 2026 PowerMarketJax Contributors
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.
+
+--------------------------------------------------------------------------------
+Vendored code
+
+The following parts of this repository were copied from PowerZooJax and are
+distributed under that project's MIT licence. Each copied file names its
+upstream path in its header.
+
+  powermarketjax/case/          network cases, PTDF and graph matrices
+  powermarketjax/physics/       DC, AC (Newton) and radial BFS power flow
+  powermarketjax/resources/     battery, renewable, flexible-load, EV and
+                                diesel device models
+  powermarketjax/data/          dataset loader, manifests and registry
+  powermarketjax/spaces.py      space definitions
+  powermarketjax/utils/         JAX helpers and typing
+  tests/                        the test files whose header names an
+                                upstream path
+
+MIT License
+
+Copyright (c) 2026 PowerZooJax Contributors
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.
+
+--------------------------------------------------------------------------------
+Data
+
+Network cases and datasets under powermarketjax/case/ and powermarketjax/data/
+carry their own terms, listed in README.md ("Public data sources"). The
+RTS-GMLC disclaimer in powermarketjax/case/raw_cases/rts_gmlc/LICENCE.md must
+accompany every copy of that data, and
+powermarketjax/case/raw_cases/egrimod_nem/LICENCE.md gives the CC BY 4.0 terms
+of that case.

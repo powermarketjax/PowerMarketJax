@@ -1,0 +1,48 @@
+{
+  "name": "gb_neso_demand",
+  "source": "gb",
+  "data_type": "actual_series",
+  "time_mode": "calendar",
+  "resolution": "30min",
+  "parquet_file": "GB_NESO_Demand_2009_2025_30min.parquet",
+  "metadata_json": "GB_NESO_Demand_2009_2025_30min.json",
+  "column_map": {
+    "ND": "load.actual_mw",
+    "TSD": "load.tsd_mw",
+    "ENGLAND_WALES_DEMAND": "load.england_wales_mw",
+    "EMBEDDED_WIND_GENERATION": "wind.embedded_mw",
+    "EMBEDDED_WIND_CAPACITY": "wind.embedded_capacity_mw",
+    "EMBEDDED_SOLAR_GENERATION": "solar.embedded_mw",
+    "EMBEDDED_SOLAR_CAPACITY": "solar.embedded_capacity_mw",
+    "NON_BM_STOR": "storage.non_bm_mw",
+    "PUMP_STORAGE_PUMPING": "storage.pump_mw",
+    "IFA_FLOW": "interconnector.ifa_mw",
+    "IFA2_FLOW": "interconnector.ifa2_mw",
+    "BRITNED_FLOW": "interconnector.britned_mw",
+    "MOYLE_FLOW": "interconnector.moyle_mw",
+    "EAST_WEST_FLOW": "interconnector.east_west_mw",
+    "NEMO_FLOW": "interconnector.nemo_mw",
+    "NSL_FLOW": "interconnector.nsl_mw",
+    "ELECLINK_FLOW": "interconnector.eleclink_mw",
+    "VIKING_FLOW": "interconnector.viking_mw",
+    "GREENLINK_FLOW": "interconnector.greenlink_mw",
+    "SCOTTISH_TRANSFER": "interconnector.scottish_transfer_mw"
+  },
+  "index_map": {
+    "SETTLEMENT_DATE": "settlement_date",
+    "SETTLEMENT_PERIOD": "settlement_period"
+  },
+  "datetime_recipe": "datetime_utc = tz_convert(tz_localize(SETTLEMENT_DATE, 'Europe/London'), 'UTC') + (SETTLEMENT_PERIOD - 1) * 30min. The offset is added in UTC to local midnight, not to local wall-clock time: SETTLEMENT_PERIOD ranges 1..50 to absorb GB DST clock changes (46 on the spring-forward day, 50 on the fall-back day), so adding in local time would place period 50 past midnight. Implemented in DataLoader._datetime_from_settlement.",
+  "derived": {},
+  "normalize": {},
+  "data_epoch": null,
+  "cyclical": false,
+  "region_values": [],
+  "date_range": [
+    "2009-01-01",
+    "2025-04-13"
+  ],
+  "source_url": "https://www.neso.energy/data-portal/historic-demand-data",
+  "source_organization": "National Energy System Operator (NESO)",
+  "timezone": "Europe/London"
+}
