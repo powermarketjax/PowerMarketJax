@@ -40,10 +40,10 @@ what the Nodes sidecar derives from the data, as the **minimum** of
 downstream_peak_mw / (base_case_flow * s_nom_mva), reached on the most heavily
 loaded edges.  It is therefore a lower bound by construction, not an estimate,
 and the measured consequence is that this case sits **systematically below** the
-published base case by at most 4.69e-4 p.u., one-sided across all buses (128
+published base case by at most 4.71e-4 p.u., one-sided across all buses (128
 low, 0 high, correlation -0.995 with the voltage drop) -- the shape of slightly
 too much reactive load.  A power factor near 0.92 fits the base case better
-(1.59e-4) and **is deliberately not used**: fitting it to the published solution
+(1.58e-4) and **is deliberately not used**: fitting it to the published solution
 would spend the one independent check this dataset ships, turning the base case
 from a validation target into a fitting target.  A second candidate for the same
 residual is line charging, which the source carries as `b_siemens` and the BFS

@@ -32,7 +32,7 @@ from powermarketjax.physics.bfs_power_flow import bfs_power_flow, prepare_bfs
 #: factor of 0.9 the source's sidecar derives, and the slack held at the
 #: published slack voltage.  The published voltages span 0.0196, so this is 2.4%
 #: of the spread.  It is one-sided: see the residual test.
-MAX_ABS_DV = 4.69e-4
+MAX_ABS_DV = 4.72e-4
 
 
 @pytest.fixture(scope="module")

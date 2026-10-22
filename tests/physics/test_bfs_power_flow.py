@@ -86,7 +86,8 @@ class TestBFS_L0_JAX:
         q = case33.node_qd / case33.base_mva
         v_sq = jnp.ones(case33.n_nodes)
         jit_bs = jax.jit(backward_sweep)
-        pb, qb = jit_bs(topo33, p, q, v_sq)
+        pb, qb = jit_bs(topo33, p, q, v_sq,
+                        jnp.zeros(topo33.n_lines), jnp.zeros(topo33.n_lines))
         assert pb.shape == (topo33.n_lines,)
 
     def test_forward_sweep_jit(self, topo33, case33):

@@ -286,6 +286,8 @@ def backward_sweep(
     p_load_pu: chex.Array,
     q_load_pu: chex.Array,
     v_sq: chex.Array,
+    p_branch_prev: chex.Array,
+    q_branch_prev: chex.Array,
 ) -> Tuple[chex.Array, chex.Array]:
     """Backward sweep: branch flows from downstream loads + losses.
 
@@ -294,6 +296,8 @@ def backward_sweep(
         p_load_pu: (n_nodes,) active load [p.u.].
         q_load_pu: (n_nodes,) reactive load [p.u.].
         v_sq: (n_nodes,) voltage squared from previous iteration.
+        p_branch_prev: (n_lines,) sending-end active flow from previous iteration.
+        q_branch_prev: (n_lines,) sending-end reactive flow from previous iteration.
 
     Returns:
         (p_branch, q_branch) in p.u.
@@ -310,7 +314,8 @@ def backward_sweep(
     # ``i_sq`` is |I|² = (P² + Q²)/V² taken at the sending end, with the voltage
     # of the previous forward sweep — that lag is what makes the scheme iterate.
     v_sending_sq = jnp.maximum(v_sq[topo.sending_node_idx], _MIN_V_SQ_GUARD)
-    i_sq = (p_branch ** 2 + q_branch ** 2) / v_sending_sq
+    i_sq = (p_branch_prev ** 2 + q_branch_prev ** 2) / v_sending_sq
+    i_sq = jnp.minimum(i_sq, v_sending_sq / (topo.r_pu ** 2 + topo.x_pu ** 2))
     p_loss = topo.r_pu * i_sq
     q_loss = topo.x_pu * i_sq
 
@@ -420,12 +425,16 @@ def bfs_power_flow(
         return jnp.logical_and(it < max_iter, jnp.logical_not(settled))
 
     def _body(state):
-        v_sq, _p_br, _q_br, it, _settled = state
+        v_sq, p_br, q_br, it, _settled = state
 
-        p_branch, q_branch = backward_sweep(topo, p_load_pu, q_load_pu, v_sq)
+        p_branch, q_branch = backward_sweep(topo, p_load_pu, q_load_pu, v_sq,
+                                            p_br, q_br)
         v_sq_new = forward_sweep(topo, p_branch, q_branch, v_sq, v_slack)
 
-        max_diff = jnp.max(jnp.abs(v_sq_new - v_sq))
+        max_diff = jnp.maximum(
+            jnp.max(jnp.abs(v_sq_new - v_sq)),
+            jnp.maximum(jnp.max(jnp.abs(p_branch - p_br)),
+                        jnp.max(jnp.abs(q_branch - q_br))))
         settled = max_diff < tol_arr
 
         return (v_sq_new, p_branch, q_branch, it + 1, settled)
@@ -437,7 +446,11 @@ def bfs_power_flow(
     # alter the iterates. The test is over the whole vector: one node on the
     # floor is enough to raise ``floor_active_f`` and to withhold ``converged``.
     floor_active_f = jnp.min(v_sq_f) <= _FLOOR_DETECT_V_SQ
-    conv = jnp.logical_and(settled_f, jnp.logical_not(floor_active_f))
+    v_s_f = jnp.maximum(v_sq_f[topo.sending_node_idx], _MIN_V_SQ_GUARD)
+    cap_active_f = jnp.any(
+        p_br_f ** 2 + q_br_f ** 2 > v_s_f ** 2 / (topo.r_pu ** 2 + topo.x_pu ** 2))
+    conv = jnp.logical_and(settled_f, jnp.logical_not(
+        jnp.logical_or(floor_active_f, cap_active_f)))
 
     # Compute final losses
     # Recomputed from the final voltages; the losses formed inside the loop
